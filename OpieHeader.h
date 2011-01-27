@@ -5,7 +5,6 @@
 #import <AppKit/AppKit.h>
 
 #import <ShortcutRecorder/ShortcutRecorder.h>
-#import "DDHotKeyCenter.h"
 #import <SDGlobalShortcuts/SDGlobalShortcuts.h>
 
 #import <dlfcn.h>
@@ -14,6 +13,8 @@
 #import "CustomWindow.h"
 #import "CustomView.h"
 #import "TintedImage.h"
+
+#import "Ring.h"
 
 // Static Definitions
 #define RING_RADIUS 100

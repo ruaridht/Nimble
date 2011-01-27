@@ -27,6 +27,8 @@
 	IBOutlet NSImageView *testView;
 	
 	BOOL ringAllowsActions;
+	
+	Ring *launchedAppsRing;
 }
 
 - (IBAction)testButton:(id)sender;

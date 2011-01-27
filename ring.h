@@ -9,11 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "OpieHeader.h"
 
-@interface ring : NSObject {
+@interface Ring : NSObject {
 	NSWindow *ringWindow;
 	NSView *ringView;
-
+	
 	NSArray *ringApps;
+	
+	NSString *ringName;
 	
 	NSImageView *theArrow;
 	NSImageView *theRing;
@@ -29,18 +31,18 @@
 }
 
 
-- (void)presentApps:(NSArray *)theApps;
+- (void)addAppsToRing;
 - (NSPoint)viewCenter:(NSView *)theView;
 - (void)buildRing;
-- (void)removeAllAppViews;
+- (void)removeAllAppsFromRing;
 
 - (void)initiateAnimations;
 - (void)stopAllAnimations;
 - (void)animateRingOut;
 - (void)animateRingIn;
-- (void)mouseMovedForRing:(NSNotification *)aNote;
-- (void)mouseDownForRing:(NSNotification *)aNote;
-- (void)keyUpForRing:(NSNotification *)aNote;
+- (void)mouseMovedForRing;
+- (void)mouseDownForRing;
+- (void)keyUpForRing;
 - (CAAnimation *)rotateToMouseAnimation;
 - (CAAnimation *)rotateInfiniteAnimation;
 
@@ -50,5 +52,4 @@
 - (void)getAndPresentLaunchedApps;
 - (CFArrayRef)copyLaunchedApplicationsInFrontToBackOrder;
 
- 
 @end

@@ -10,6 +10,7 @@
 #import "OpieHeader.h"
 
 // Standard functions
+/*
 CGFloat DegreesToRadians(CGFloat degrees)
 {
     return degrees * M_PI / 180;
@@ -24,7 +25,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 {
     return [NSNumber numberWithFloat:
             DegreesToRadians(degrees)];
-}
+}*/
 
 @implementation AppController
 
@@ -46,8 +47,9 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 
 - (void)awakeFromNib
 {	
-	ringAllowsActions = NO;
-	[self buildRing];
+	//ringAllowsActions = NO;
+	//[self buildRing];
+	launchedAppsRing = [[Ring alloc] initWithName:@"launchedAppsRing"];
 }
 
 - (void)dealloc
@@ -228,13 +230,15 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 
 - (void)animateRingIn
 {
+	[launchedAppsRing animateRingIn];
+	/*
 	[self getAndPresentLaunchedApps];
 	[self initiateAnimations];
 	
 	[NSApp activateIgnoringOtherApps:YES];
 	[ringWindow makeKeyAndOrderFront:self];
 	[[ringWindow animator] setAlphaValue:1.0];
-	
+	*/
 	/*
 	NSRect windowFrame = [ringWindow frame];
 	NSRect frame = [ringView frame];
@@ -247,7 +251,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	[[[ringWindow contentView] animator] setAlphaValue:1.0];
 	*/
 	
-	NSLog(@"Animate In");
+	//NSLog(@"Animate In");
 }
 
 - (void)animateRingOut
@@ -263,10 +267,11 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 
 - (void)mouseMovedForRing:(NSNotification *)aNote
 {
-	[arrowLayer addAnimation:[self rotateToMouseAnimation] forKey:@"rotate"];
+	//[arrowLayer addAnimation:[self rotateToMouseAnimation] forKey:@"rotate"];
 	//[arrowLayer animationForKey:@"rotate"];
-	[[theArrow layer] setNeedsDisplay];
+	//[[theArrow layer] setNeedsDisplay];
 	//NSLog(@"Mouse Moved");
+	[launchedAppsRing mouseMovedForRing];
 }
 
 - (void)mouseDownForRing:(NSNotification *)aNote
@@ -306,9 +311,9 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 
 - (void)keyUpForRing:(NSNotification *)aNote
 {
-	
-	[self animateRingOut];
-	[self mouseDownForRing:nil];
+	[launchedAppsRing keyUpForRing];
+	//[self animateRingOut];
+	//[self mouseDownForRing:nil];
 	//NSLog(@"KeyUp");
 }
 

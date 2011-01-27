@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>ActivePerspectiveName</key>
-	<string>Project</string>
+	<string>Debug</string>
 	<key>AllowedModules</key>
 	<array>
 		<dict>
@@ -272,13 +272,14 @@
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
+								<string>1058C7A0FEA54F0111CA2CBB</string>
+								<string>1058C7A2FEA54F0111CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>16</integer>
-									<integer>2</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -299,8 +300,6 @@
 							<string>MainColumn</string>
 							<real>297</real>
 						</array>
-						<key>RubberWindowFrame</key>
-						<string>55 114 1331 764 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -311,14 +310,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>5514869C12ED9EBA00F4D3A9</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ring.m</string>
+								<string>OpieHeader.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -326,11 +323,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>5514869D12ED9EBA00F4D3A9</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ring.m</string>
+										<string>OpieHeader.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>55A71DD112F1E66800EE4D05</string>
+										<string>55A71E3712F1F55200EE4D05</string>
 										<key>history</key>
 										<array>
 											<string>551486D412EDA4E700F4D3A9</string>
@@ -339,18 +336,18 @@
 											<string>554BC0BB12EE11D70054B046</string>
 											<string>554BC14F12EE18BD0054B046</string>
 											<string>55B9076E12EE5085003FB263</string>
-											<string>55B9076F12EE5085003FB263</string>
-											<string>55B9077012EE5085003FB263</string>
-											<string>552085BC12EEE35700BC60F1</string>
 											<string>552085BE12EEE35700BC60F1</string>
-											<string>55A71DB512F1E25700EE4D05</string>
-											<string>55A71DB812F1E25700EE4D05</string>
 											<string>55A71DCB12F1E66800EE4D05</string>
-											<string>55A71DCC12F1E66800EE4D05</string>
-											<string>55A71DCD12F1E66800EE4D05</string>
-											<string>55A71DCE12F1E66800EE4D05</string>
-											<string>55A71DCF12F1E66800EE4D05</string>
-											<string>55A71DD012F1E66800EE4D05</string>
+											<string>55A71DDF12F1F20E00EE4D05</string>
+											<string>55A71DE012F1F20E00EE4D05</string>
+											<string>55A71DE112F1F20E00EE4D05</string>
+											<string>55A71DE512F1F20E00EE4D05</string>
+											<string>55A71DE612F1F20E00EE4D05</string>
+											<string>55A71DFE12F1F2DB00EE4D05</string>
+											<string>55A71E0912F1F32300EE4D05</string>
+											<string>55A71E3212F1F53800EE4D05</string>
+											<string>55A71E3312F1F53800EE4D05</string>
+											<string>55A71DE312F1F20E00EE4D05</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -365,8 +362,6 @@
 							<dict>
 								<key>Frame</key>
 								<string>{{0, 0}, {1012, 718}}</string>
-								<key>RubberWindowFrame</key>
-								<string>55 114 1331 764 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -390,8 +385,6 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {1012, -27}}</string>
-										<key>RubberWindowFrame</key>
-										<string>55 114 1331 764 0 0 1440 878 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -445,7 +438,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{0, 0}, {568, 405}}</string>
+										<string>{{10, 27}, {1012, -27}}</string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -529,6 +522,8 @@
 					<dict>
 						<key>Frame</key>
 						<string>{{0, 0}, {1331, 206}}</string>
+						<key>RubberWindowFrame</key>
+						<string>56 114 1331 764 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXDebugCLIModule</string>
@@ -603,7 +598,11 @@
 							</array>
 							<key>Frame</key>
 							<string>{{650, 0}, {681, 248}}</string>
+							<key>RubberWindowFrame</key>
+							<string>56 114 1331 764 0 0 1440 878 </string>
 						</dict>
+						<key>RubberWindowFrame</key>
+						<string>56 114 1331 764 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXDebugSessionModule</string>
@@ -672,7 +671,7 @@
 		<string>/Users/Northern/DockDesktop/DesktopME/Dev/opiemac/opiemac.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>55 114 1331 764 0 0 1440 878 </string>
+	<string>56 114 1331 764 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
