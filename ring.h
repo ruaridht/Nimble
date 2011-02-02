@@ -16,6 +16,11 @@
 	NSArray *ringApps;
 	
 	NSString *ringName;
+	NSColor *ringColour;
+	NSNumber *ringSize;
+	NSNumber *iconSize;
+	NSNumber *iconRadius;
+	int ringType;
 	
 	NSImageView *theArrow;
 	NSImageView *theRing;
@@ -25,6 +30,8 @@
 	float previousValue;
 	
 	BOOL ringAllowsActions;
+	BOOL ringIsStatic;
+	BOOL ringIsActive;
 	
 	SRRecorderControl *ringHotkeyControl;
 	KeyCombo ringGlobalHotKey;

@@ -16,14 +16,16 @@
 		551486C712ED9FD400F4D3A9 /* circle.tif in Resources */ = {isa = PBXBuildFile; fileRef = 551486C512ED9FD400F4D3A9 /* circle.tif */; };
 		551486C812ED9FD400F4D3A9 /* pentagon.tif in Resources */ = {isa = PBXBuildFile; fileRef = 551486C612ED9FD400F4D3A9 /* pentagon.tif */; };
 		551486CB12EDA01700F4D3A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551486CA12EDA01600F4D3A9 /* QuartzCore.framework */; };
-		5520868B12EEF44C00BC60F1 /* SDGlobalShortcuts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5520868A12EEF44C00BC60F1 /* SDGlobalShortcuts.framework */; };
-		5520869112EEF44F00BC60F1 /* SDGlobalShortcuts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5520868A12EEF44C00BC60F1 /* SDGlobalShortcuts.framework */; };
 		554B24DE12EE0B5800CAB565 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 554B24DD12EE0B5800CAB565 /* PreferencesController.m */; };
 		554BC15912EE195E0054B046 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554BC15812EE195E0054B046 /* ShortcutRecorder.framework */; };
 		554BC16412EE19660054B046 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 554BC15812EE195E0054B046 /* ShortcutRecorder.framework */; };
 		554BC21212EE20460054B046 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554BC21112EE20460054B046 /* Carbon.framework */; };
+		559175F612F97D6800A02329 /* NSString+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 559175F512F97D6800A02329 /* NSString+Crop.m */; };
 		55A71DB012F1E08200EE4D05 /* Ring.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */; };
+		55B123B112F8302D0012A986 /* SDGlobalShortcuts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B123B012F8302D0012A986 /* SDGlobalShortcuts.framework */; };
+		55B123B712F830380012A986 /* SDGlobalShortcuts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55B123B012F8302D0012A986 /* SDGlobalShortcuts.framework */; };
 		55BB1A1112EDE7FA00293DF3 /* TintedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BB1A1012EDE7FA00293DF3 /* TintedImage.m */; };
+		55C606FA12F87B3900A48443 /* RingTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C606F912F87B3900A48443 /* RingTheme.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -36,7 +38,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5520869112EEF44F00BC60F1 /* SDGlobalShortcuts.framework in CopyFiles */,
+				55B123B712F830380012A986 /* SDGlobalShortcuts.framework in CopyFiles */,
 				554BC16412EE19660054B046 /* ShortcutRecorder.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,15 +66,19 @@
 		551486C612ED9FD400F4D3A9 /* pentagon.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = pentagon.tif; sourceTree = "<group>"; };
 		551486C912ED9FFA00F4D3A9 /* OpieHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpieHeader.h; sourceTree = "<group>"; };
 		551486CA12EDA01600F4D3A9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		5520868A12EEF44C00BC60F1 /* SDGlobalShortcuts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDGlobalShortcuts.framework; sourceTree = "<group>"; };
 		554B24DC12EE0B5800CAB565 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		554B24DD12EE0B5800CAB565 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		554BC15812EE195E0054B046 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShortcutRecorder.framework; sourceTree = "<group>"; };
 		554BC21112EE20460054B046 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		559175F412F97D6800A02329 /* NSString+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Crop.h"; sourceTree = "<group>"; };
+		559175F512F97D6800A02329 /* NSString+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Crop.m"; sourceTree = "<group>"; };
 		55A71DAE12F1E08200EE4D05 /* Ring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ring.h; sourceTree = "<group>"; };
 		55A71DAF12F1E08200EE4D05 /* Ring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ring.m; sourceTree = "<group>"; };
+		55B123B012F8302D0012A986 /* SDGlobalShortcuts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDGlobalShortcuts.framework; sourceTree = "<group>"; };
 		55BB1A0F12EDE7FA00293DF3 /* TintedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TintedImage.h; sourceTree = "<group>"; };
 		55BB1A1012EDE7FA00293DF3 /* TintedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TintedImage.m; sourceTree = "<group>"; };
+		55C606F812F87B3900A48443 /* RingTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingTheme.h; sourceTree = "<group>"; };
+		55C606F912F87B3900A48443 /* RingTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RingTheme.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* opiemac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "opiemac-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* opiemac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = opiemac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -86,7 +92,7 @@
 				551486CB12EDA01700F4D3A9 /* QuartzCore.framework in Frameworks */,
 				554BC15912EE195E0054B046 /* ShortcutRecorder.framework in Frameworks */,
 				554BC21212EE20460054B046 /* Carbon.framework in Frameworks */,
-				5520868B12EEF44C00BC60F1 /* SDGlobalShortcuts.framework in Frameworks */,
+				55B123B112F8302D0012A986 /* SDGlobalShortcuts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +114,10 @@
 				554B24DD12EE0B5800CAB565 /* PreferencesController.m */,
 				55A71DAE12F1E08200EE4D05 /* Ring.h */,
 				55A71DAF12F1E08200EE4D05 /* Ring.m */,
+				55C606F812F87B3900A48443 /* RingTheme.h */,
+				55C606F912F87B3900A48443 /* RingTheme.m */,
+				559175F412F97D6800A02329 /* NSString+Crop.h */,
+				559175F512F97D6800A02329 /* NSString+Crop.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -115,7 +125,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5520868A12EEF44C00BC60F1 /* SDGlobalShortcuts.framework */,
+				55B123B012F8302D0012A986 /* SDGlobalShortcuts.framework */,
 				554BC15812EE195E0054B046 /* ShortcutRecorder.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				551486CA12EDA01600F4D3A9 /* QuartzCore.framework */,
@@ -261,6 +271,8 @@
 				55BB1A1112EDE7FA00293DF3 /* TintedImage.m in Sources */,
 				554B24DE12EE0B5800CAB565 /* PreferencesController.m in Sources */,
 				55A71DB012F1E08200EE4D05 /* Ring.m in Sources */,
+				55C606FA12F87B3900A48443 /* RingTheme.m in Sources */,
+				559175F612F97D6800A02329 /* NSString+Crop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +360,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				SDKROOT = macosx10.6;
 			};

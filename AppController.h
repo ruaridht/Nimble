@@ -27,8 +27,13 @@
 	IBOutlet NSImageView *testView;
 	
 	BOOL ringAllowsActions;
+	BOOL ringIsSticky;
+	BOOL ringIsActive;
 	
 	Ring *launchedAppsRing;
+	
+	IBOutlet NSMenu *statusMenu;
+	NSStatusItem *statusItem;
 }
 
 - (IBAction)testButton:(id)sender;

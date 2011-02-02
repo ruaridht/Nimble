@@ -13,9 +13,9 @@
 #import "CustomWindow.h"
 #import "CustomView.h"
 #import "TintedImage.h"
+#import "NSString+Crop.h"
 
 #import "Ring.h"
+#import "RingTheme.h"
 
 // Static Definitions
-#define RING_RADIUS 100
-#define ARROW_RADIUS 250

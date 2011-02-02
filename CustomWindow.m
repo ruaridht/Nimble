@@ -83,7 +83,7 @@
 - (void)mouseDown:(NSEvent *)theEvent {    
     // Get the mouse location in window coordinates.
     //self.initialLocation = [theEvent locationInWindow];
-	//[[NSNotificationCenter defaultCenter] postNotificationName:@"mouseDownForRing" object:nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"mouseDownForRing" object:nil];
 }
 
 /*

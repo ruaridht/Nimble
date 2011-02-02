@@ -8,6 +8,10 @@
 
 #import "Ring.h"
 
+#define RING_RADIUS 100
+#define ARROW_RADIUS 250
+#define ROTATION_SPEED 10.0
+
 @implementation Ring
 
 // Standard functions
@@ -41,6 +45,9 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseDownForRing:) name:@"mouseDownForRing" object:nil];
 	
 	ringAllowsActions = NO;
+	ringIsStatic = NO;
+	ringIsActive = NO;
+	
 	ringName = name;
 	[self buildRing];
 	
@@ -58,6 +65,11 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 
 #pragma mark -
 #pragma mark Delegates
+
+- (void)setTheme:(RingTheme *)theTheme
+{
+	
+}
 
 #pragma mark -
 #pragma mark Drawing
@@ -163,10 +175,8 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	//=============================
 	
 	[ringWindow center]; // Centers the ringWindow on the users screen.  Though we may wish to override this with a custom position.
-	//[ringWindow makeKeyAndOrderFront:self];
 	
 	NSLog(@"%@ built", ringName);
-	//[self initiateAnimations];
 }
 
 /*
@@ -226,12 +236,16 @@ NSNumber* DegreesToNumber(CGFloat degrees)
  */
 - (void)animateRingIn
 {
+	//[[ringWindow contentView] setWantsLayer:YES];
+	//[[[ringWindow contentView] layer] addAnimation:[self sizeDecreaseAnimation] forKey:@"size"];
+	
 	[self getAndPresentLaunchedApps];
 	[self initiateAnimations];
 	
 	[NSApp activateIgnoringOtherApps:YES];
 	[ringWindow makeKeyAndOrderFront:self];
 	[[ringWindow animator] setAlphaValue:1.0];
+	
 	NSLog(@"Animate %@ in", ringName);
 }
 
@@ -274,15 +288,24 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 			index++;
 		}
 	}
+	
+	[NSApp activateIgnoringOtherApps:YES];
 	NSRunningApplication *app = [ringApps objectAtIndex:index];
 	[app activateWithOptions:NSApplicationActivateAllWindows];
+	NSLog(@"Mouse down");
 }
 
 - (void)keyUpForRing
-{
+{	
 	
 	[self animateRingOut];
 	[self mouseDownForRing];
+	/*
+	NSWorkspace
+	NSApplication
+	NSScreen
+	 */
+	//[[NSWorkspace sharedWorkspace] launchApplication:@"Safari"];
 }
 
 - (CAAnimation *)rotateToMouseAnimation
@@ -316,9 +339,27 @@ NSNumber* DegreesToNumber(CGFloat degrees)
     
     [animation setRemovedOnCompletion:NO];
     [animation setFillMode:kCAFillModeForwards];
-	[animation setDuration:10.0];
+	[animation setDuration:ROTATION_SPEED]; // Determines the center ring rotation speed
 	
 	[animation setRepeatCount:HUGE_VALF]; // Rotate forever
+    
+	return animation;
+}
+
+- (CAAnimation *)sizeDecreaseAnimation
+{
+	NSRect fromRect = [ringWindow frame];
+	NSRect toRect = NSMakeRect(fromRect.origin.x + fromRect.origin.x, fromRect.origin.y*2, fromRect.size.width/2, fromRect.size.height/2);
+	
+	CABasicAnimation *animation;
+	animation = [CABasicAnimation 
+                 animationWithKeyPath:@"transform.size.z"];
+	
+    [animation setFromValue:1];
+    [animation setToValue:0];
+    
+    [animation setRemovedOnCompletion:YES];
+    [animation setFillMode:kCAFillModeForwards];
     
 	return animation;
 }
@@ -417,9 +458,14 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	for (NSRunningApplication *app in allProcesses) {
 		for (int j = 0; j < CFArrayGetCount(theArrayRef); j++) {
 			NSDictionary *dict = (NSDictionary *)CFArrayGetValueAtIndex(theArrayRef, j);
+			/*
 			if ([[dict objectForKey:@"CFBundleName"] isEqualToString:[app localizedName]]) {
 				[runningApps addObject:app];
 			}
+			 */
+			//NSLog(@"%@ == %@", [app localizedName], [dict objectForKey:@"CFBundleName"]);
+			if ([[app localizedName] contains:[dict objectForKey:@"CFBundleName"]])
+				 [runningApps addObject:app];
 		}
 	}
 	
