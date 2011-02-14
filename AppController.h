@@ -38,6 +38,7 @@
 	IBOutlet NSToolbarItem *ringsButtons;
 	
 	IBOutlet SRRecorderControl *theRingRecorderControl;
+	IBOutlet NSSegmentedControl *ringPositionControl;
 }
 
 @property (readwrite, assign) Ring *_currentRing;
@@ -51,6 +52,7 @@
 - (void)keyUpForRing:(NSNotification *)aNote;
 
 // Preferences
+- (void)setCurrentRing:(Ring *)aRing;
 - (IBAction)switchPreferenceView:(id)sender;
 - (void)loadView:(NSView *)theView;
 - (IBAction)setRingCenterPosition:(id)sender;

@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "OpieHeader.h"
+#import "RingTheme.h"
 
 @interface Ring : NSObject {
 	NSWindow *ringWindow;
@@ -46,12 +47,14 @@
 @property (readwrite) CGFloat iconSize;
 @property (readwrite) BOOL isSticky;
 @property (readwrite) BOOL tintRing;
+@property (readwrite) NSInteger ringPosition;
 //@property (readwrite, retain) SRRecorderControl *ringHotkeyControl;
 
 - (void)addAppsToRing;
 - (NSPoint)viewCenter:(NSView *)theView;
 - (void)buildRing;
 - (void)removeAllAppsFromRing;
+- (NSImage *)currentRingImage;
 
 - (void)initiateAnimations;
 - (void)stopAllAnimations;

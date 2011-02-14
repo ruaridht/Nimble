@@ -14,7 +14,7 @@
 
 @implementation Ring
 
-@synthesize ringName, ringColour, ringSize, iconSize, iconRadius,/* ringHotkeyControl,*/ isSticky, tintRing;
+@synthesize ringName, ringColour, ringSize, iconSize, iconRadius,/* ringHotkeyControl,*/ isSticky, tintRing, ringPosition;
 
 // Standard functions
 CGFloat DegreesToRadians(CGFloat degrees)
@@ -101,7 +101,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 
 - (RingTheme *)currentTheme
 {
-	
+	return nil;
 }
 
 - (KeyCombo)currentKeyCombo
@@ -222,8 +222,12 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 {
 	NSScreen *main = [NSScreen mainScreen];
 	NSRect screenRect = [main frame];
+	
+	// Note: there is a bug here.  If the user chooses a large ring (or large icons) then graphic will be cut at the edge of the window.
+	//		 Using the approach below the apps are drawn appropriately, though the ring is off.
 	/*
 	NSRect windowFrame = NSMakeRect(center.x - (screenRect.size.width), center.y - (screenRect.size.height), screenRect.size.width*2, screenRect.size.height*2);
+	[[ringWindow contentView] setFrame:windowFrame];
 	[ringWindow setFrame:windowFrame display:YES];
 	*/
 	

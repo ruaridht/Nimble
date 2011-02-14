@@ -203,6 +203,56 @@
 			5514382D130979F500E68F77 /* PBXTextBookmark */ = 5514382D130979F500E68F77 /* PBXTextBookmark */;
 			5514382E130979F500E68F77 /* PBXTextBookmark */ = 5514382E130979F500E68F77 /* PBXTextBookmark */;
 			5514382F130979F500E68F77 /* PBXTextBookmark */ = 5514382F130979F500E68F77 /* PBXTextBookmark */;
+			5514383613097B2700E68F77 /* PBXTextBookmark */ = 5514383613097B2700E68F77 /* PBXTextBookmark */;
+			5514383713097B2700E68F77 /* XCBuildMessageTextBookmark */ = 5514383713097B2700E68F77 /* XCBuildMessageTextBookmark */;
+			5514383813097B2700E68F77 /* PBXTextBookmark */ = 5514383813097B2700E68F77 /* PBXTextBookmark */;
+			5514383913097B2800E68F77 /* PBXTextBookmark */ = 5514383913097B2800E68F77 /* PBXTextBookmark */;
+			5514383B13097B3E00E68F77 /* PBXTextBookmark */ = 5514383B13097B3E00E68F77 /* PBXTextBookmark */;
+			5514383C13097B3E00E68F77 /* PBXTextBookmark */ = 5514383C13097B3E00E68F77 /* PBXTextBookmark */;
+			5514383D13097C2300E68F77 /* PBXTextBookmark */ = 5514383D13097C2300E68F77 /* PBXTextBookmark */;
+			5514383E13097C2300E68F77 /* PBXTextBookmark */ = 5514383E13097C2300E68F77 /* PBXTextBookmark */;
+			5514383F13097C2300E68F77 /* PBXTextBookmark */ = 5514383F13097C2300E68F77 /* PBXTextBookmark */;
+			5514384013097C2300E68F77 /* PBXTextBookmark */ = 5514384013097C2300E68F77 /* PBXTextBookmark */;
+			5514384113097C5100E68F77 /* PBXTextBookmark */ = 5514384113097C5100E68F77 /* PBXTextBookmark */;
+			5514384213097C5100E68F77 /* PBXTextBookmark */ = 5514384213097C5100E68F77 /* PBXTextBookmark */;
+			5514384313097C5100E68F77 /* PBXTextBookmark */ = 5514384313097C5100E68F77 /* PBXTextBookmark */;
+			5514384813097CBD00E68F77 /* PBXTextBookmark */ = 5514384813097CBD00E68F77 /* PBXTextBookmark */;
+			5514384913097CBD00E68F77 /* PBXTextBookmark */ = 5514384913097CBD00E68F77 /* PBXTextBookmark */;
+			5514384A13097CBD00E68F77 /* PBXTextBookmark */ = 5514384A13097CBD00E68F77 /* PBXTextBookmark */;
+			5514384B13097CBD00E68F77 /* PBXTextBookmark */ = 5514384B13097CBD00E68F77 /* PBXTextBookmark */;
+			5514384C13097CBD00E68F77 /* PBXTextBookmark */ = 5514384C13097CBD00E68F77 /* PBXTextBookmark */;
+			5514384D13097CBE00E68F77 /* PBXTextBookmark */ = 5514384D13097CBE00E68F77 /* PBXTextBookmark */;
+			5514385113097D3800E68F77 /* PBXTextBookmark */ = 5514385113097D3800E68F77 /* PBXTextBookmark */;
+			5514385213097D3800E68F77 /* PBXTextBookmark */ = 5514385213097D3800E68F77 /* PBXTextBookmark */;
+			5514385513097D9F00E68F77 /* PBXTextBookmark */ = 5514385513097D9F00E68F77 /* PBXTextBookmark */;
+			5514385613097D9F00E68F77 /* PBXTextBookmark */ = 5514385613097D9F00E68F77 /* PBXTextBookmark */;
+			5514385813097DEB00E68F77 /* PBXTextBookmark */ = 5514385813097DEB00E68F77 /* PBXTextBookmark */;
+			5514385B13097E0F00E68F77 /* PBXTextBookmark */ = 5514385B13097E0F00E68F77 /* PBXTextBookmark */;
+			5514385C13097E0F00E68F77 /* PBXTextBookmark */ = 5514385C13097E0F00E68F77 /* PBXTextBookmark */;
+			5514385D13097E0F00E68F77 /* PBXTextBookmark */ = 5514385D13097E0F00E68F77 /* PBXTextBookmark */;
+			5514385E13097E0F00E68F77 /* PBXTextBookmark */ = 5514385E13097E0F00E68F77 /* PBXTextBookmark */;
+			5514385F13097E1000E68F77 /* PBXTextBookmark */ = 5514385F13097E1000E68F77 /* PBXTextBookmark */;
+			5514386313097F0F00E68F77 /* PBXTextBookmark */ = 5514386313097F0F00E68F77 /* PBXTextBookmark */;
+			5514386413097F0F00E68F77 /* PBXTextBookmark */ = 5514386413097F0F00E68F77 /* PBXTextBookmark */;
+			5514386513097F3F00E68F77 /* PBXTextBookmark */ = 5514386513097F3F00E68F77 /* PBXTextBookmark */;
+			5514386613097F3F00E68F77 /* PBXTextBookmark */ = 5514386613097F3F00E68F77 /* PBXTextBookmark */;
+			5514386713097F3F00E68F77 /* PBXTextBookmark */ = 5514386713097F3F00E68F77 /* PBXTextBookmark */;
+			5514386813097F3F00E68F77 /* PBXTextBookmark */ = 5514386813097F3F00E68F77 /* PBXTextBookmark */;
+			5514386913097F5700E68F77 /* PBXTextBookmark */ = 5514386913097F5700E68F77 /* PBXTextBookmark */;
+			5514386E13097FFF00E68F77 /* PBXTextBookmark */ = 5514386E13097FFF00E68F77 /* PBXTextBookmark */;
+			5514386F13097FFF00E68F77 /* XCBuildMessageTextBookmark */ = 5514386F13097FFF00E68F77 /* XCBuildMessageTextBookmark */;
+			5514387013097FFF00E68F77 /* PBXTextBookmark */ = 5514387013097FFF00E68F77 /* PBXTextBookmark */;
+			551438711309800000E68F77 /* PBXTextBookmark */ = 551438711309800000E68F77 /* PBXTextBookmark */;
+			551438731309801800E68F77 /* PBXTextBookmark */ = 551438731309801800E68F77 /* PBXTextBookmark */;
+			551438741309801800E68F77 /* PBXTextBookmark */ = 551438741309801800E68F77 /* PBXTextBookmark */;
+			551438771309802900E68F77 /* PBXTextBookmark */ = 551438771309802900E68F77 /* PBXTextBookmark */;
+			551438781309802900E68F77 /* PBXTextBookmark */ = 551438781309802900E68F77 /* PBXTextBookmark */;
+			551438791309802900E68F77 /* PBXTextBookmark */ = 551438791309802900E68F77 /* PBXTextBookmark */;
+			5514387A1309802A00E68F77 /* PBXTextBookmark */ = 5514387A1309802A00E68F77 /* PBXTextBookmark */;
+			5514387E1309804700E68F77 /* PBXTextBookmark */ = 5514387E1309804700E68F77 /* PBXTextBookmark */;
+			55143880130980A800E68F77 /* PBXTextBookmark */ = 55143880130980A800E68F77 /* PBXTextBookmark */;
+			55143881130980A800E68F77 /* PBXTextBookmark */ = 55143881130980A800E68F77 /* PBXTextBookmark */;
+			55143882130980AB00E68F77 /* PBXTextBookmark */ = 55143882130980AB00E68F77 /* PBXTextBookmark */;
 			551486D412EDA4E700F4D3A9 = 551486D412EDA4E700F4D3A9 /* PBXBookmark */;
 			5529C74712F9B523007DE1A4 = 5529C74712F9B523007DE1A4 /* PBXTextBookmark */;
 			553162CD12FD897C003ACF53 = 553162CD12FD897C003ACF53 /* PBXTextBookmark */;
@@ -242,7 +292,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 285";
 		rLen = 0;
-		rLoc = 8920;
+		rLoc = 9220;
 		rType = 0;
 		vrLen = 1252;
 		vrLoc = 7628;
@@ -252,7 +302,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 285";
 		rLen = 0;
-		rLoc = 8920;
+		rLoc = 9220;
 		rType = 0;
 		vrLen = 393;
 		vrLoc = 7957;
@@ -262,7 +312,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 285";
 		rLen = 0;
-		rLoc = 8920;
+		rLoc = 9220;
 		rType = 0;
 		vrLen = 393;
 		vrLoc = 7957;
@@ -282,7 +332,7 @@
 		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
 		name = "Ring.h: 24";
 		rLen = 0;
-		rLoc = 420;
+		rLoc = 442;
 		rType = 0;
 		vrLen = 1409;
 		vrLoc = 255;
@@ -292,7 +342,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 197";
 		rLen = 6;
-		rLoc = 6334;
+		rLoc = 6359;
 		rType = 0;
 		vrLen = 2037;
 		vrLoc = 4154;
@@ -302,7 +352,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 279";
 		rLen = 0;
-		rLoc = 8787;
+		rLoc = 9087;
 		rType = 0;
 		vrLen = 1229;
 		vrLoc = 7589;
@@ -312,7 +362,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 279";
 		rLen = 0;
-		rLoc = 8787;
+		rLoc = 9087;
 		rType = 0;
 		vrLen = 1229;
 		vrLoc = 7589;
@@ -322,7 +372,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 279";
 		rLen = 0;
-		rLoc = 8787;
+		rLoc = 9087;
 		rType = 0;
 		vrLen = 392;
 		vrLoc = 8138;
@@ -332,7 +382,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 208";
 		rLen = 0;
-		rLoc = 6476;
+		rLoc = 6501;
 		rType = 0;
 		vrLen = 2024;
 		vrLoc = 4158;
@@ -342,7 +392,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 208";
 		rLen = 0;
-		rLoc = 6476;
+		rLoc = 6501;
 		rType = 0;
 		vrLen = 2024;
 		vrLoc = 4158;
@@ -352,7 +402,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 208";
 		rLen = 0;
-		rLoc = 6476;
+		rLoc = 6501;
 		rType = 0;
 		vrLen = 511;
 		vrLoc = 5671;
@@ -362,7 +412,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 207";
 		rLen = 0;
-		rLoc = 6658;
+		rLoc = 6908;
 		rType = 0;
 		vrLen = 2026;
 		vrLoc = 5632;
@@ -372,7 +422,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 207";
 		rLen = 0;
-		rLoc = 6658;
+		rLoc = 6908;
 		rType = 0;
 		vrLen = 2026;
 		vrLoc = 5632;
@@ -382,7 +432,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 207";
 		rLen = 0;
-		rLoc = 6658;
+		rLoc = 6908;
 		rType = 0;
 		vrLen = 879;
 		vrLoc = 5671;
@@ -392,7 +442,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 241";
 		rLen = 0;
-		rLoc = 6768;
+		rLoc = 7068;
 		rType = 0;
 		vrLen = 2028;
 		vrLoc = 5632;
@@ -402,7 +452,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 241";
 		rLen = 0;
-		rLoc = 6768;
+		rLoc = 7068;
 		rType = 0;
 		vrLen = 2028;
 		vrLoc = 5632;
@@ -412,7 +462,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 241";
 		rLen = 0;
-		rLoc = 6768;
+		rLoc = 7068;
 		rType = 0;
 		vrLen = 999;
 		vrLoc = 5883;
@@ -422,7 +472,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 237";
 		rLen = 0;
-		rLoc = 6785;
+		rLoc = 7085;
 		rType = 0;
 		vrLen = 2158;
 		vrLoc = 5632;
@@ -432,7 +482,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 237";
 		rLen = 0;
-		rLoc = 6785;
+		rLoc = 7085;
 		rType = 0;
 		vrLen = 2158;
 		vrLoc = 5632;
@@ -442,7 +492,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 238";
 		rLen = 0;
-		rLoc = 6905;
+		rLoc = 7205;
 		rType = 0;
 		vrLen = 2136;
 		vrLoc = 5632;
@@ -452,7 +502,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 238";
 		rLen = 0;
-		rLoc = 6905;
+		rLoc = 7205;
 		rType = 0;
 		vrLen = 2136;
 		vrLoc = 5632;
@@ -462,7 +512,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 238";
 		rLen = 0;
-		rLoc = 6905;
+		rLoc = 7205;
 		rType = 0;
 		vrLen = 1001;
 		vrLoc = 5885;
@@ -472,7 +522,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 206";
 		rLen = 0;
-		rLoc = 6556;
+		rLoc = 6806;
 		rType = 0;
 		vrLen = 1760;
 		vrLoc = 5632;
@@ -482,7 +532,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 206";
 		rLen = 0;
-		rLoc = 6556;
+		rLoc = 6806;
 		rType = 0;
 		vrLen = 1760;
 		vrLoc = 5632;
@@ -492,7 +542,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 206";
 		rLen = 0;
-		rLoc = 6556;
+		rLoc = 6806;
 		rType = 0;
 		vrLen = 661;
 		vrLoc = 5885;
@@ -502,7 +552,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 207";
 		rLen = 0;
-		rLoc = 6710;
+		rLoc = 6960;
 		rType = 0;
 		vrLen = 1744;
 		vrLoc = 5632;
@@ -512,7 +562,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 207";
 		rLen = 0;
-		rLoc = 6710;
+		rLoc = 6960;
 		rType = 0;
 		vrLen = 1744;
 		vrLoc = 5632;
@@ -522,7 +572,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 207";
 		rLen = 0;
-		rLoc = 6710;
+		rLoc = 6960;
 		rType = 0;
 		vrLen = 1776;
 		vrLoc = 5636;
@@ -532,7 +582,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 207";
 		rLen = 0;
-		rLoc = 6710;
+		rLoc = 6960;
 		rType = 0;
 		vrLen = 1777;
 		vrLoc = 5634;
@@ -542,7 +592,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 207";
 		rLen = 0;
-		rLoc = 6710;
+		rLoc = 6960;
 		rType = 0;
 		vrLen = 1772;
 		vrLoc = 5636;
@@ -552,7 +602,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 211";
 		rLen = 0;
-		rLoc = 6837;
+		rLoc = 7137;
 		rType = 0;
 		vrLen = 511;
 		vrLoc = 5885;
@@ -562,7 +612,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 211";
 		rLen = 0;
-		rLoc = 6837;
+		rLoc = 7137;
 		rType = 0;
 		vrLen = 1812;
 		vrLoc = 5636;
@@ -572,7 +622,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 211";
 		rLen = 0;
-		rLoc = 6837;
+		rLoc = 7137;
 		rType = 0;
 		vrLen = 1812;
 		vrLoc = 5636;
@@ -582,7 +632,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 212";
 		rLen = 0;
-		rLoc = 6905;
+		rLoc = 7205;
 		rType = 0;
 		vrLen = 1773;
 		vrLoc = 5636;
@@ -592,7 +642,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 212";
 		rLen = 0;
-		rLoc = 6905;
+		rLoc = 7205;
 		rType = 0;
 		vrLen = 1773;
 		vrLoc = 5636;
@@ -602,7 +652,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 215";
 		rLen = 0;
-		rLoc = 6911;
+		rLoc = 7211;
 		rType = 0;
 		vrLen = 572;
 		vrLoc = 5885;
@@ -612,7 +662,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 226";
 		rLen = 0;
-		rLoc = 7326;
+		rLoc = 7626;
 		rType = 0;
 		vrLen = 1675;
 		vrLoc = 5834;
@@ -622,7 +672,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 226";
 		rLen = 0;
-		rLoc = 7326;
+		rLoc = 7626;
 		rType = 0;
 		vrLen = 1675;
 		vrLoc = 5834;
@@ -632,7 +682,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 226";
 		rLen = 0;
-		rLoc = 7326;
+		rLoc = 7626;
 		rType = 0;
 		vrLen = 572;
 		vrLoc = 5885;
@@ -642,7 +692,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 226";
 		rLen = 0;
-		rLoc = 7326;
+		rLoc = 7626;
 		rType = 0;
 		vrLen = 1675;
 		vrLoc = 5834;
@@ -653,7 +703,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 183;
+		rLoc = 188;
 		rType = 1;
 	};
 	551437781309713800E68F77 /* PBXTextBookmark */ = {
@@ -671,7 +721,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 180";
 		rLen = 0;
-		rLoc = 4524;
+		rLoc = 4680;
 		rType = 0;
 		vrLen = 1409;
 		vrLoc = 3707;
@@ -681,7 +731,7 @@
 		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
 		name = "Ring.h: 72";
 		rLen = 0;
-		rLoc = 1725;
+		rLoc = 1824;
 		rType = 0;
 		vrLen = 1091;
 		vrLoc = 581;
@@ -691,7 +741,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 63";
 		rLen = 0;
-		rLoc = 1956;
+		rLoc = 1970;
 		rType = 0;
 		vrLen = 958;
 		vrLoc = 1494;
@@ -701,7 +751,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 243";
 		rLen = 0;
-		rLoc = 7914;
+		rLoc = 8214;
 		rType = 0;
 		vrLen = 1016;
 		vrLoc = 6944;
@@ -711,7 +761,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 243";
 		rLen = 0;
-		rLoc = 7914;
+		rLoc = 8214;
 		rType = 0;
 		vrLen = 1018;
 		vrLoc = 6944;
@@ -721,7 +771,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 186";
 		rLen = 0;
-		rLoc = 5165;
+		rLoc = 5321;
 		rType = 0;
 		vrLen = 1794;
 		vrLoc = 3318;
@@ -731,7 +781,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 243";
 		rLen = 0;
-		rLoc = 7914;
+		rLoc = 8214;
 		rType = 0;
 		vrLen = 526;
 		vrLoc = 6944;
@@ -741,7 +791,7 @@
 		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
 		name = "Ring.h: 24";
 		rLen = 0;
-		rLoc = 407;
+		rLoc = 429;
 		rType = 0;
 		vrLen = 1071;
 		vrLoc = 600;
@@ -751,7 +801,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 245";
 		rLen = 0;
-		rLoc = 7942;
+		rLoc = 8242;
 		rType = 0;
 		vrLen = 1052;
 		vrLoc = 6944;
@@ -761,7 +811,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 74";
 		rLen = 0;
-		rLoc = 2648;
+		rLoc = 2662;
 		rType = 0;
 		vrLen = 924;
 		vrLoc = 1662;
@@ -771,7 +821,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 74";
 		rLen = 0;
-		rLoc = 2648;
+		rLoc = 2662;
 		rType = 0;
 		vrLen = 924;
 		vrLoc = 1662;
@@ -781,7 +831,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 186";
 		rLen = 0;
-		rLoc = 5165;
+		rLoc = 5321;
 		rType = 0;
 		vrLen = 1794;
 		vrLoc = 3318;
@@ -791,7 +841,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 74";
 		rLen = 0;
-		rLoc = 2648;
+		rLoc = 2662;
 		rType = 0;
 		vrLen = 190;
 		vrLoc = 2396;
@@ -801,7 +851,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 63";
 		rLen = 0;
-		rLoc = 1911;
+		rLoc = 1925;
 		rType = 0;
 		vrLen = 919;
 		vrLoc = 1662;
@@ -811,7 +861,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 63";
 		rLen = 0;
-		rLoc = 1911;
+		rLoc = 1925;
 		rType = 0;
 		vrLen = 919;
 		vrLoc = 1662;
@@ -821,7 +871,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 186";
 		rLen = 0;
-		rLoc = 5165;
+		rLoc = 5321;
 		rType = 0;
 		vrLen = 1794;
 		vrLoc = 3318;
@@ -831,7 +881,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 63";
 		rLen = 0;
-		rLoc = 1911;
+		rLoc = 1925;
 		rType = 0;
 		vrLen = 191;
 		vrLoc = 2372;
@@ -841,7 +891,7 @@
 		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
 		name = "Ring.h: 49";
 		rLen = 0;
-		rLoc = 997;
+		rLoc = 1065;
 		rType = 0;
 		vrLen = 1093;
 		vrLoc = 580;
@@ -851,7 +901,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 63";
 		rLen = 0;
-		rLoc = 1911;
+		rLoc = 1925;
 		rType = 0;
 		vrLen = 940;
 		vrLoc = 1662;
@@ -881,7 +931,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 186";
 		rLen = 0;
-		rLoc = 5165;
+		rLoc = 5321;
 		rType = 0;
 		vrLen = 1794;
 		vrLoc = 3318;
@@ -901,7 +951,7 @@
 		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
 		name = "Ring.h: 49";
 		rLen = 0;
-		rLoc = 997;
+		rLoc = 1065;
 		rType = 0;
 		vrLen = 934;
 		vrLoc = 275;
@@ -941,7 +991,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 74";
 		rLen = 0;
-		rLoc = 2648;
+		rLoc = 2662;
 		rType = 0;
 		vrLen = 909;
 		vrLoc = 1664;
@@ -951,7 +1001,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 74";
 		rLen = 0;
-		rLoc = 2648;
+		rLoc = 2662;
 		rType = 0;
 		vrLen = 909;
 		vrLoc = 1664;
@@ -961,7 +1011,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 186";
 		rLen = 0;
-		rLoc = 5165;
+		rLoc = 5321;
 		rType = 0;
 		vrLen = 1794;
 		vrLoc = 3318;
@@ -971,7 +1021,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 74";
 		rLen = 0;
-		rLoc = 2648;
+		rLoc = 2662;
 		rType = 0;
 		vrLen = 628;
 		vrLoc = 1664;
@@ -981,7 +1031,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 64";
 		rLen = 0;
-		rLoc = 1958;
+		rLoc = 1972;
 		rType = 0;
 		vrLen = 1371;
 		vrLoc = 1091;
@@ -991,7 +1041,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 64";
 		rLen = 0;
-		rLoc = 1958;
+		rLoc = 1972;
 		rType = 0;
 		vrLen = 1371;
 		vrLoc = 1091;
@@ -1001,7 +1051,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 186";
 		rLen = 0;
-		rLoc = 5165;
+		rLoc = 5321;
 		rType = 0;
 		vrLen = 1794;
 		vrLoc = 3318;
@@ -1011,7 +1061,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 64";
 		rLen = 0;
-		rLoc = 1958;
+		rLoc = 1972;
 		rType = 0;
 		vrLen = 1371;
 		vrLoc = 1091;
@@ -1021,7 +1071,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 186";
 		rLen = 0;
-		rLoc = 5165;
+		rLoc = 5321;
 		rType = 0;
 		vrLen = 1794;
 		vrLoc = 3318;
@@ -1031,7 +1081,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 62";
 		rLen = 0;
-		rLoc = 1892;
+		rLoc = 1906;
 		rType = 0;
 		vrLen = 626;
 		vrLoc = 1664;
@@ -1041,7 +1091,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 62";
 		rLen = 0;
-		rLoc = 1892;
+		rLoc = 1906;
 		rType = 0;
 		vrLen = 1512;
 		vrLoc = 950;
@@ -1061,7 +1111,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 35";
 		rLen = 0;
-		rLoc = 1447;
+		rLoc = 1414;
 		rType = 0;
 		vrLen = 2178;
 		vrLoc = 23;
@@ -1081,7 +1131,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 187";
 		rLen = 0;
-		rLoc = 5165;
+		rLoc = 5321;
 		rType = 0;
 		vrLen = 1796;
 		vrLoc = 3318;
@@ -1091,7 +1141,7 @@
 		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
 		name = "Ring.h: 73";
 		rLen = 0;
-		rLoc = 1747;
+		rLoc = 1846;
 		rType = 0;
 		vrLen = 1404;
 		vrLoc = 298;
@@ -1101,7 +1151,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 79";
 		rLen = 0;
-		rLoc = 2648;
+		rLoc = 2662;
 		rType = 0;
 		vrLen = 1282;
 		vrLoc = 1498;
@@ -1111,7 +1161,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 198";
 		rLen = 0;
-		rLoc = 5285;
+		rLoc = 5441;
 		rType = 0;
 		vrLen = 1669;
 		vrLoc = 3622;
@@ -1121,7 +1171,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 199";
 		rLen = 0;
-		rLoc = 5338;
+		rLoc = 5494;
 		rType = 0;
 		vrLen = 2452;
 		vrLoc = 4069;
@@ -1131,7 +1181,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 190";
 		rLen = 0;
-		rLoc = 5165;
+		rLoc = 5321;
 		rType = 0;
 		vrLen = 1044;
 		vrLoc = 2057;
@@ -1141,7 +1191,7 @@
 		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
 		name = "Ring.h: 74";
 		rLen = 0;
-		rLoc = 1808;
+		rLoc = 1907;
 		rType = 0;
 		vrLen = 1426;
 		vrLoc = 320;
@@ -1151,7 +1201,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 108";
 		rLen = 0;
-		rLoc = 3069;
+		rLoc = 3094;
 		rType = 0;
 		vrLen = 1271;
 		vrLoc = 1790;
@@ -1171,7 +1221,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 203";
 		rLen = 0;
-		rLoc = 5470;
+		rLoc = 5626;
 		rType = 0;
 		vrLen = 1802;
 		vrLoc = 3711;
@@ -1181,7 +1231,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 191";
 		rLen = 0;
-		rLoc = 5169;
+		rLoc = 5325;
 		rType = 0;
 		vrLen = 1798;
 		vrLoc = 3711;
@@ -1191,7 +1241,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 191";
 		rLen = 0;
-		rLoc = 5169;
+		rLoc = 5325;
 		rType = 0;
 		vrLen = 1798;
 		vrLoc = 3711;
@@ -1201,7 +1251,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 190";
 		rLen = 0;
-		rLoc = 5165;
+		rLoc = 5321;
 		rType = 0;
 		vrLen = 1010;
 		vrLoc = 2057;
@@ -1211,7 +1261,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 62";
 		rLen = 0;
-		rLoc = 1892;
+		rLoc = 1906;
 		rType = 0;
 		vrLen = 633;
 		vrLoc = 1091;
@@ -1221,7 +1271,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 191";
 		rLen = 0;
-		rLoc = 5169;
+		rLoc = 5325;
 		rType = 0;
 		vrLen = 617;
 		vrLoc = 4889;
@@ -1231,7 +1281,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 191";
 		rLen = 0;
-		rLoc = 5169;
+		rLoc = 5325;
 		rType = 0;
 		vrLen = 1798;
 		vrLoc = 3711;
@@ -1241,7 +1291,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 191";
 		rLen = 0;
-		rLoc = 5169;
+		rLoc = 5325;
 		rType = 0;
 		vrLen = 1798;
 		vrLoc = 3711;
@@ -1251,7 +1301,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 191";
 		rLen = 0;
-		rLoc = 5169;
+		rLoc = 5325;
 		rType = 0;
 		vrLen = 452;
 		vrLoc = 4007;
@@ -1261,7 +1311,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 191";
 		rLen = 0;
-		rLoc = 5169;
+		rLoc = 5325;
 		rType = 0;
 		vrLen = 2187;
 		vrLoc = 265;
@@ -1291,7 +1341,7 @@
 		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
 		name = "Ring.h: 74";
 		rLen = 0;
-		rLoc = 1808;
+		rLoc = 1907;
 		rType = 0;
 		vrLen = 1405;
 		vrLoc = 341;
@@ -1301,7 +1351,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 108";
 		rLen = 0;
-		rLoc = 3069;
+		rLoc = 3094;
 		rType = 0;
 		vrLen = 1664;
 		vrLoc = 0;
@@ -1311,7 +1361,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 189";
 		rLen = 0;
-		rLoc = 5495;
+		rLoc = 5520;
 		rType = 0;
 		vrLen = 2155;
 		vrLoc = 4224;
@@ -1321,7 +1371,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 210";
 		rLen = 0;
-		rLoc = 6318;
+		rLoc = 6343;
 		rType = 0;
 		vrLen = 1951;
 		vrLoc = 5338;
@@ -1331,7 +1381,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 210";
 		rLen = 0;
-		rLoc = 6318;
+		rLoc = 6343;
 		rType = 0;
 		vrLen = 1951;
 		vrLoc = 5338;
@@ -1341,7 +1391,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 191";
 		rLen = 0;
-		rLoc = 5169;
+		rLoc = 5325;
 		rType = 0;
 		vrLen = 452;
 		vrLoc = 4007;
@@ -1351,7 +1401,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 210";
 		rLen = 0;
-		rLoc = 6318;
+		rLoc = 6343;
 		rType = 0;
 		vrLen = 421;
 		vrLoc = 6105;
@@ -1361,7 +1411,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 210";
 		rLen = 0;
-		rLoc = 6318;
+		rLoc = 6343;
 		rType = 0;
 		vrLen = 1951;
 		vrLoc = 5338;
@@ -1371,7 +1421,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 210";
 		rLen = 0;
-		rLoc = 6318;
+		rLoc = 6343;
 		rType = 0;
 		vrLen = 1951;
 		vrLoc = 5338;
@@ -1381,7 +1431,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 210";
 		rLen = 0;
-		rLoc = 6318;
+		rLoc = 6343;
 		rType = 0;
 		vrLen = 1951;
 		vrLoc = 5338;
@@ -1391,7 +1441,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 210";
 		rLen = 0;
-		rLoc = 6318;
+		rLoc = 6343;
 		rType = 0;
 		vrLen = 421;
 		vrLoc = 6105;
@@ -1401,7 +1451,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 102";
 		rLen = 0;
-		rLoc = 2890;
+		rLoc = 2904;
 		rType = 0;
 		vrLen = 1216;
 		vrLoc = 1959;
@@ -1411,7 +1461,7 @@
 		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
 		name = "Ring.h: 74";
 		rLen = 0;
-		rLoc = 1808;
+		rLoc = 1907;
 		rType = 0;
 		vrLen = 1405;
 		vrLoc = 341;
@@ -1421,10 +1471,508 @@
 		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
 		name = "Ring.h: 73";
 		rLen = 0;
-		rLoc = 1683;
+		rLoc = 1782;
 		rType = 0;
 		vrLen = 1469;
 		vrLoc = 341;
+	};
+	5514383613097B2700E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
+		name = "Ring.m: 232";
+		rLen = 0;
+		rLoc = 7060;
+		rType = 0;
+		vrLen = 1743;
+		vrLoc = 5498;
+	};
+	5514383713097B2700E68F77 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Expected ')' before 'RingTheme'";
+		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 74;
+		rType = 1;
+	};
+	5514383813097B2700E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
+		name = "Ring.h: 11";
+		rLen = 0;
+		rLoc = 202;
+		rType = 0;
+		vrLen = 1159;
+		vrLoc = 709;
+	};
+	5514383913097B2800E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
+		name = "Ring.h: 11";
+		rLen = 0;
+		rLoc = 202;
+		rType = 0;
+		vrLen = 1159;
+		vrLoc = 709;
+	};
+	5514383B13097B3E00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
+		name = "Ring.m: 214";
+		rLen = 0;
+		rLoc = 6343;
+		rType = 0;
+		vrLen = 781;
+		vrLoc = 5413;
+	};
+	5514383C13097B3E00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
+		name = "Ring.h: 11";
+		rLen = 0;
+		rLoc = 202;
+		rType = 0;
+		vrLen = 553;
+		vrLoc = 709;
+	};
+	5514383D13097C2300E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
+		name = "Ring.h: 11";
+		rLen = 0;
+		rLoc = 202;
+		rType = 0;
+		vrLen = 707;
+		vrLoc = 0;
+	};
+	5514383E13097C2300E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A512ED9F0800F4D3A9 /* AppController.h */;
+		name = "AppController.h: 41";
+		rLen = 0;
+		rLoc = 916;
+		rType = 0;
+		vrLen = 1015;
+		vrLoc = 385;
+	};
+	5514383F13097C2300E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 159";
+		rLen = 0;
+		rLoc = 3943;
+		rType = 0;
+		vrLen = 761;
+		vrLoc = 3303;
+	};
+	5514384013097C2300E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 159";
+		rLen = 0;
+		rLoc = 3896;
+		rType = 0;
+		vrLen = 785;
+		vrLoc = 3303;
+	};
+	5514384113097C5100E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A512ED9F0800F4D3A9 /* AppController.h */;
+		name = "AppController.h: 41";
+		rLen = 0;
+		rLoc = 916;
+		rType = 0;
+		vrLen = 1015;
+		vrLoc = 385;
+	};
+	5514384213097C5100E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 159";
+		rLen = 0;
+		rLoc = 3943;
+		rType = 0;
+		vrLen = 802;
+		vrLoc = 3303;
+	};
+	5514384313097C5100E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 159";
+		rLen = 0;
+		rLoc = 3943;
+		rType = 0;
+		vrLen = 802;
+		vrLoc = 3303;
+	};
+	5514384813097CBD00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 554B24DD12EE0B5800CAB565 /* PreferencesController.m */;
+		name = "PreferencesController.m: 74";
+		rLen = 0;
+		rLoc = 2036;
+		rType = 0;
+		vrLen = 1066;
+		vrLoc = 1265;
+	};
+	5514384913097CBD00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
+		name = "Ring.h: 50";
+		rLen = 0;
+		rLoc = 1062;
+		rType = 0;
+		vrLen = 988;
+		vrLoc = 320;
+	};
+	5514384A13097CBD00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
+		name = "Ring.m: 17";
+		rLen = 0;
+		rLoc = 374;
+		rType = 0;
+		vrLen = 1530;
+		vrLoc = 151;
+	};
+	5514384B13097CBD00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 159";
+		rLen = 0;
+		rLoc = 3929;
+		rType = 0;
+		vrLen = 816;
+		vrLoc = 3303;
+	};
+	5514384C13097CBD00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 154";
+		rLen = 0;
+		rLoc = 3701;
+		rType = 0;
+		vrLen = 803;
+		vrLoc = 3303;
+	};
+	5514384D13097CBE00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 154";
+		rLen = 0;
+		rLoc = 3701;
+		rType = 0;
+		vrLen = 803;
+		vrLoc = 3303;
+	};
+	5514385113097D3800E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
+		name = "Ring.h: 11";
+		rLen = 0;
+		rLoc = 202;
+		rType = 0;
+		vrLen = 571;
+		vrLoc = 709;
+	};
+	5514385213097D3800E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 154";
+		rLen = 0;
+		rLoc = 3701;
+		rType = 0;
+		vrLen = 320;
+		vrLoc = 3485;
+	};
+	5514385513097D9F00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 90";
+		rLen = 0;
+		rLoc = 2671;
+		rType = 0;
+		vrLen = 517;
+		vrLoc = 2465;
+	};
+	5514385613097D9F00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 90";
+		rLen = 0;
+		rLoc = 2671;
+		rType = 0;
+		vrLen = 517;
+		vrLoc = 2465;
+	};
+	5514385813097DEB00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 90";
+		rLen = 0;
+		rLoc = 2671;
+		rType = 0;
+		vrLen = 523;
+		vrLoc = 3735;
+	};
+	5514385B13097E0F00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 90";
+		rLen = 0;
+		rLoc = 2671;
+		rType = 0;
+		vrLen = 1455;
+		vrLoc = 0;
+	};
+	5514385C13097E0F00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BB1A0F12EDE7FA00293DF3 /* TintedImage.h */;
+		name = "TintedImage.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1966;
+		vrLoc = 0;
+	};
+	5514385D13097E0F00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BB1A1012EDE7FA00293DF3 /* TintedImage.m */;
+		name = "TintedImage.m: 31";
+		rLen = 0;
+		rLoc = 1256;
+		rType = 0;
+		vrLen = 2193;
+		vrLoc = 736;
+	};
+	5514385E13097E0F00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BB1A1012EDE7FA00293DF3 /* TintedImage.m */;
+		name = "TintedImage.m: 29";
+		rLen = 0;
+		rLoc = 1038;
+		rType = 0;
+		vrLen = 2193;
+		vrLoc = 736;
+	};
+	5514385F13097E1000E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BB1A1012EDE7FA00293DF3 /* TintedImage.m */;
+		name = "TintedImage.m: 29";
+		rLen = 0;
+		rLoc = 1038;
+		rType = 0;
+		vrLen = 2193;
+		vrLoc = 736;
+	};
+	5514386313097F0F00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 90";
+		rLen = 0;
+		rLoc = 2671;
+		rType = 0;
+		vrLen = 523;
+		vrLoc = 3735;
+	};
+	5514386413097F0F00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BB1A1012EDE7FA00293DF3 /* TintedImage.m */;
+		name = "TintedImage.m: 29";
+		rLen = 0;
+		rLoc = 1038;
+		rType = 0;
+		vrLen = 701;
+		vrLoc = 760;
+	};
+	5514386513097F3F00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BB1A1012EDE7FA00293DF3 /* TintedImage.m */;
+		name = "TintedImage.m: 29";
+		rLen = 0;
+		rLoc = 1038;
+		rType = 0;
+		vrLen = 2286;
+		vrLoc = 736;
+	};
+	5514386613097F3F00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A512ED9F0800F4D3A9 /* AppController.h */;
+		name = "AppController.h: 34";
+		rLen = 0;
+		rLoc = 657;
+		rType = 0;
+		vrLen = 1047;
+		vrLoc = 385;
+	};
+	5514386713097F3F00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 33";
+		rLen = 0;
+		rLoc = 1414;
+		rType = 0;
+		vrLen = 1561;
+		vrLoc = 0;
+	};
+	5514386813097F3F00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 12";
+		rLen = 0;
+		rLoc = 192;
+		rType = 0;
+		vrLen = 1489;
+		vrLoc = 0;
+	};
+	5514386913097F5700E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 63";
+		rLen = 0;
+		rLoc = 2267;
+		rType = 0;
+		vrLen = 1064;
+		vrLoc = 1393;
+	};
+	5514386E13097FFF00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A512ED9F0800F4D3A9 /* AppController.h */;
+		name = "AppController.h: 33";
+		rLen = 0;
+		rLoc = 657;
+		rType = 0;
+		vrLen = 1030;
+		vrLoc = 365;
+	};
+	5514386F13097FFF00E68F77 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'ringsSettingsView' undeclared (first use in this function)";
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 58;
+		rType = 1;
+	};
+	5514387013097FFF00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 59";
+		rLen = 0;
+		rLoc = 2267;
+		rType = 0;
+		vrLen = 923;
+		vrLoc = 1681;
+	};
+	551438711309800000E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 59";
+		rLen = 0;
+		rLoc = 2267;
+		rType = 0;
+		vrLen = 923;
+		vrLoc = 1681;
+	};
+	551438731309801800E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55BB1A1012EDE7FA00293DF3 /* TintedImage.m */;
+		name = "TintedImage.m: 29";
+		rLen = 0;
+		rLoc = 1038;
+		rType = 0;
+		vrLen = 701;
+		vrLoc = 760;
+	};
+	551438741309801800E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 59";
+		rLen = 0;
+		rLoc = 2267;
+		rType = 0;
+		vrLen = 335;
+		vrLoc = 2126;
+	};
+	551438771309802900E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 59";
+		rLen = 0;
+		rLoc = 2267;
+		rType = 0;
+		vrLen = 985;
+		vrLoc = 1681;
+	};
+	551438781309802900E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
+		name = "Ring.m: 17";
+		rLen = 0;
+		rLoc = 374;
+		rType = 0;
+		vrLen = 1530;
+		vrLoc = 151;
+	};
+	551438791309802900E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
+		name = "Ring.m: 230";
+		rLen = 0;
+		rLoc = 6964;
+		rType = 0;
+		vrLen = 1406;
+		vrLoc = 6417;
+	};
+	5514387A1309802A00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
+		name = "Ring.m: 230";
+		rLen = 0;
+		rLoc = 6964;
+		rType = 0;
+		vrLen = 1406;
+		vrLoc = 6417;
+	};
+	5514387E1309804700E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
+		name = "Ring.m: 230";
+		rLen = 0;
+		rLoc = 6964;
+		rType = 0;
+		vrLen = 1459;
+		vrLoc = 6346;
+	};
+	55143880130980A800E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
+		name = "AppController.m: 59";
+		rLen = 0;
+		rLoc = 2267;
+		rType = 0;
+		vrLen = 335;
+		vrLoc = 2126;
+	};
+	55143881130980A800E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
+		name = "Ring.m: 228";
+		rLen = 0;
+		rLoc = 6804;
+		rType = 0;
+		vrLen = 635;
+		vrLoc = 6712;
+	};
+	55143882130980AB00E68F77 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
+		name = "Ring.m: 239";
+		rLen = 0;
+		rLoc = 7233;
+		rType = 0;
+		vrLen = 1476;
+		vrLoc = 6346;
 	};
 	5514868E12ED9EA800F4D3A9 /* opiemac */ = {
 		isa = PBXExecutable;
@@ -1474,17 +2022,17 @@
 	};
 	551486A512ED9F0800F4D3A9 /* AppController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1007, 767}}";
-			sepNavSelRange = "{864, 0}";
-			sepNavVisRange = "{3, 1308}";
+			sepNavIntBoundsRect = "{{0, 0}, {1007, 793}}";
+			sepNavSelRange = "{657, 0}";
+			sepNavVisRange = "{365, 1030}";
 			sepNavWindowFrame = "{{15, 59}, {817, 819}}";
 		};
 	};
 	551486A612ED9F0800F4D3A9 /* AppController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1326, 2613}}";
-			sepNavSelRange = "{5169, 0}";
-			sepNavVisRange = "{4007, 452}";
+			sepNavIntBoundsRect = "{{0, 0}, {1326, 2821}}";
+			sepNavSelRange = "{2267, 0}";
+			sepNavVisRange = "{2126, 335}";
 			sepNavWindowFrame = "{{15, 4}, {817, 874}}";
 		};
 	};
@@ -1609,18 +2157,30 @@
 		vrLoc = 335;
 	};
 	554B24DC12EE0B5800CAB565 /* PreferencesController.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = PreferencesController.h;
+		path = /Users/Northern/DockDesktop/DesktopME/Dev/opiemac/PreferencesController.h;
+		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {951, 686}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1007, 486}}";
 			sepNavSelRange = "{616, 128}";
 			sepNavVisRange = "{0, 751}";
 			sepNavWindowFrame = "{{15, 59}, {817, 819}}";
 		};
 	};
 	554B24DD12EE0B5800CAB565 /* PreferencesController.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = PreferencesController.m;
+		path = /Users/Northern/DockDesktop/DesktopME/Dev/opiemac/PreferencesController.m;
+		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1007, 1989}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1007, 2028}}";
 			sepNavSelRange = "{2036, 0}";
-			sepNavVisRange = "{1265, 1066}";
+			sepNavVisRange = "{1343, 988}";
 		};
 	};
 	554BC0BB12EE11D70054B046 /* PBXTextBookmark */ = {
@@ -1687,16 +2247,16 @@
 	};
 	55A71DAE12F1E08200EE4D05 /* Ring.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1007, 1027}}";
-			sepNavSelRange = "{1683, 0}";
-			sepNavVisRange = "{341, 1469}";
+			sepNavIntBoundsRect = "{{0, 0}, {1326, 1092}}";
+			sepNavSelRange = "{202, 0}";
+			sepNavVisRange = "{709, 571}";
 		};
 	};
 	55A71DAF12F1E08200EE4D05 /* Ring.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1195, 7930}}";
-			sepNavSelRange = "{2890, 0}";
-			sepNavVisRange = "{1959, 1216}";
+			sepNavIntBoundsRect = "{{0, 0}, {1132, 7605}}";
+			sepNavSelRange = "{7233, 0}";
+			sepNavVisRange = "{6346, 1476}";
 		};
 	};
 	55B3B9E012F2E602000201E5 /* PBXTextBookmark */ = {
@@ -1801,16 +2361,16 @@
 	};
 	55BB1A0F12EDE7FA00293DF3 /* TintedImage.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1063, 686}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1007, 663}}";
 			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 2748}";
+			sepNavVisRange = "{0, 1966}";
 		};
 	};
 	55BB1A1012EDE7FA00293DF3 /* TintedImage.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1580, 949}}";
-			sepNavSelRange = "{1058, 21}";
-			sepNavVisRange = "{736, 3069}";
+			sepNavIntBoundsRect = "{{0, 0}, {1580, 975}}";
+			sepNavSelRange = "{1038, 0}";
+			sepNavVisRange = "{760, 701}";
 		};
 	};
 	55BB1A1512EDE8DD00293DF3 /* PBXTextBookmark */ = {
@@ -1882,7 +2442,7 @@
 		fRef = 551486A512ED9F0800F4D3A9 /* AppController.h */;
 		name = "AppController.h: 92";
 		rLen = 0;
-		rLoc = 1310;
+		rLoc = 1399;
 		rType = 0;
 		vrLen = 1441;
 		vrLoc = 632;
@@ -1892,7 +2452,7 @@
 		fRef = 551486A612ED9F0800F4D3A9 /* AppController.m */;
 		name = "AppController.m: 327";
 		rLen = 0;
-		rLoc = 5281;
+		rLoc = 5437;
 		rType = 0;
 		vrLen = 1815;
 		vrLoc = 7148;
@@ -1902,7 +2462,7 @@
 		fRef = 55A71DAE12F1E08200EE4D05 /* Ring.h */;
 		name = "Ring.h: 24";
 		rLen = 0;
-		rLoc = 420;
+		rLoc = 442;
 		rType = 0;
 		vrLen = 1390;
 		vrLoc = 275;
@@ -1912,7 +2472,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 282";
 		rLen = 0;
-		rLoc = 8837;
+		rLoc = 9137;
 		rType = 0;
 		vrLen = 510;
 		vrLoc = 7844;
@@ -1922,7 +2482,7 @@
 		fRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */;
 		name = "Ring.m: 285";
 		rLen = 0;
-		rLoc = 8920;
+		rLoc = 9220;
 		rType = 0;
 		vrLen = 1249;
 		vrLoc = 7629;

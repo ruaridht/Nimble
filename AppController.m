@@ -31,7 +31,6 @@
 	
 	launchedAppsRing = [[Ring alloc] initWithName:@"launchedAppsRing"];
 	otherLARing = [[Ring alloc] initWithName:@"otherLARing"];
-	currentRing = launchedAppsRing;
 	
 	return self;
 }
@@ -59,7 +58,7 @@
 	[contentView addSubview:generalView];
 	currentView = generalView;
 	
-	[theRingRecorderControl setKeyCombo:[currentRing currentKeyCombo]];
+	[self setCurrentRing:launchedAppsRing];
 }
 
 - (void)dealloc
@@ -115,14 +114,11 @@
 
 - (IBAction)testButton:(id)sender
 {
-	
-	[self willChangeValueForKey:@"currentRing"];
 	if (currentRing == launchedAppsRing) {
-		currentRing = otherLARing;
+		[self setCurrentRing:otherLARing];
 	} else if (currentRing == otherLARing) {
-		currentRing = launchedAppsRing;
+		[self setCurrentRing:launchedAppsRing];
 	}
-	[self didChangeValueForKey:@"currentRing"];
 }
 
 - (IBAction)test2Button:(id)sender
@@ -154,6 +150,15 @@
 
 #pragma mark -
 #pragma mark Preferences
+
+- (void)setCurrentRing:(Ring *)aRing
+{
+	[self willChangeValueForKey:@"currentRing"];
+	currentRing = aRing;
+	[theRingRecorderControl setKeyCombo:[currentRing currentKeyCombo]];
+	[ringPositionControl setSelectedSegment:[currentRing ringPosition]];
+	[self didChangeValueForKey:@"currentRing"];
+}
 
 - (IBAction)switchPreferenceView:(id)sender
 {
