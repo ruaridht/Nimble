@@ -21,7 +21,7 @@
 	CGFloat iconSize;
 	CGFloat iconRadius;
 	int ringType;
-	NSInteger *ringPosition;
+	NSInteger ringPosition;
 	
 	NSImageView *theArrow;
 	NSImageView *theRing;
@@ -46,7 +46,7 @@
 @property (readwrite) CGFloat iconSize;
 @property (readwrite) BOOL isSticky;
 @property (readwrite) BOOL tintRing;
-@property (readwrite, retain) SRRecorderControl *ringHotkeyControl;
+//@property (readwrite, retain) SRRecorderControl *ringHotkeyControl;
 
 - (void)addAppsToRing;
 - (NSPoint)viewCenter:(NSView *)theView;
@@ -69,6 +69,10 @@
 - (void)getAndPresentLaunchedApps;
 - (CFArrayRef)copyLaunchedApplicationsInFrontToBackOrder;
 
-- (void)setDrawingPosition:(NSInteger *)position;
+- (void)setTheme:(RingTheme *)theTheme;
+- (RingTheme *)currentTheme;
+- (void)setRingDrawingPosition:(NSInteger)position;
+- (KeyCombo)currentKeyCombo;
+- (void)setGlobalHotkey:(KeyCombo)theCombo;
 
 @end

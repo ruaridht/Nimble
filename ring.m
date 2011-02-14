@@ -14,7 +14,7 @@
 
 @implementation Ring
 
-@synthesize ringName, ringColour, ringSize, iconSize, iconRadius, ringHotkeyControl, isSticky, tintRing;
+@synthesize ringName, ringColour, ringSize, iconSize, iconRadius,/* ringHotkeyControl,*/ isSticky, tintRing;
 
 // Standard functions
 CGFloat DegreesToRadians(CGFloat degrees)
@@ -45,6 +45,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateRingIn) name:@"ringGlobalHotkeyDownTriggered" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMovedForRing) name:@"mouseMovedForRing" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseDownForRing) name:@"mouseDownForRing" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMovedForRing) name:[NSString stringWithFormat:@"%@%@",name,@"movedMouse"] object:nil];
 	
 	ringAllowsActions = NO;
 	isSticky = NO;
@@ -60,16 +61,24 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	ringName = name;
 	[self buildRing];
 	
-	KeyCombo combo1 = { (NSShiftKeyMask | NSAlternateKeyMask), (CGKeyCode)49 };
-	[ringHotkeyControl setKeyCombo:combo1];
-	/*
+	ringHotkeyControl = [[[SRRecorderControl alloc] init] retain];
+	
 	SDGlobalShortcutsController *shortcutsController = [SDGlobalShortcutsController sharedShortcutsController];
-	[shortcutsController addShortcutFromDefaultsKey:@"ringGlobalHotkey"
+	[shortcutsController addShortcutFromDefaultsKey:[NSString stringWithFormat:@"%@%@",ringName,@"GlobalHotkey"]
 										withControl:ringHotkeyControl
 											 target:self
 									selectorForDown:@selector(animateRingIn)
 											  andUp:@selector(keyUpForRing)];
-	*/
+	
+	// If this is the first time a ring with this name has existed
+	// then we want to set a default KeyCombo.  Or do we? Maybe not. =/
+	/*
+	if ([ringHotkeyControl keyCombo] == NULL) {
+		KeyCombo combo1 = { (NSShiftKeyMask | NSAlternateKeyMask), (CGKeyCode)49 };
+		[ringHotkeyControl setKeyCombo:combo1];
+	}
+	 */
+	
 	return self;
 }
 
@@ -83,11 +92,26 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 }
 
 #pragma mark -
-#pragma mark Delegates
+#pragma mark Accessing Ring Information
 
 - (void)setTheme:(RingTheme *)theTheme
 {
 	
+}
+
+- (RingTheme *)currentTheme
+{
+	
+}
+
+- (KeyCombo)currentKeyCombo
+{
+	return [ringHotkeyControl keyCombo];
+}
+
+- (void)setGlobalHotkey:(KeyCombo)theCombo
+{
+	[ringHotkeyControl setKeyCombo:theCombo];
 }
 
 #pragma mark -
@@ -164,10 +188,11 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	
 	ringView = [[CustomView alloc] initWithFrame:windowFrame];
 	ringWindow = [[CustomWindow alloc] initWithContentRect:[ringView frame] styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
+	
 	[ringWindow setContentView:ringView];
 	[ringWindow setHidesOnDeactivate:YES];
-	
 	[ringWindow setViewsNeedDisplay:YES];
+	[ringWindow setNotificationName:ringName];
 	
 	// Add the ring to the centre
 	NSPoint ringCentre = [self viewCenter:ringView];
@@ -188,24 +213,22 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	[ringView addSubview:theArrow];
 	[ringView addSubview:theRing];
 	
-	//=============================
+	[ringWindow center]; // Centers the ringWindow on the users screen.
 	
-	
-	
-	//=============================
-	
-	[ringWindow center]; // Centers the ringWindow on the users screen.  Though we may wish to override this with a custom position.
-	
-	NSLog(@"%@ built", ringName);
+	NSLog(@"%@ built.", ringName);
 }
 
 - (void)setRingCenterPosition:(NSPoint)center
 {
-	NSRect windowFrame = [[ringWindow contentView] frame];
-	windowFrame.origin.x = center.x - (windowFrame.origin.x/2);
-	windowFrame.origin.y = center.y - (windowFrame.origin.y/2);
+	NSScreen *main = [NSScreen mainScreen];
+	NSRect screenRect = [main frame];
+	/*
+	NSRect windowFrame = NSMakeRect(center.x - (screenRect.size.width), center.y - (screenRect.size.height), screenRect.size.width*2, screenRect.size.height*2);
+	[ringWindow setFrame:windowFrame display:YES];
+	*/
 	
-	[[ringWindow contentView] setFrame:windowFrame];
+	NSPoint new = NSMakePoint(center.x - (screenRect.size.width/2), center.y - (screenRect.size.height/2));
+	[ringWindow setFrameOrigin:new];
 }
 
 /*
@@ -235,7 +258,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	[[theRing animator] setImage:[[NSImage imageNamed:@"circleCentre"] tintedImageWithColor:colour operation:NSCompositeSourceIn]];
 }
 
-- (void)setRingDrawingPosition:(NSInteger *)position
+- (void)setRingDrawingPosition:(NSInteger)position
 {
 	ringPosition = position;
 }
@@ -276,15 +299,11 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	if (tintRing)
 		[self tintRingWithColour:ringColour];
 	
-	/*
 	if (ringPosition == 0) {
-		//[self setRingCenterPosition:[self screenCenter]];
 		[ringWindow center];
 	} else if (ringPosition == 1) {
 		[self setRingCenterPosition:[NSEvent mouseLocation]];
-		//NSLog(@"Set position to mouse");
 	}
-	 */
 	
 	[self getAndPresentLaunchedApps];
 	[self initiateAnimations];

@@ -122,6 +122,12 @@
 	 *	now needs an 'activeRing' variable/pointer/reference.
 	 */
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"mouseMovedForRing" object:nil];
+	//[[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil];
+}
+
+- (void)setNotificationName:(NSString *)aName
+{
+	notificationName = aName;
 }
 
 - (void)keyUp:(NSEvent *)theEvent

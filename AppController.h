@@ -12,22 +12,8 @@
 @interface AppController : NSObject <NSApplicationDelegate> {
 	IBOutlet NSWindow *window;
 	
-	NSWindow *ringWindow;
-	NSView *ringView;
-	
-	NSArray *openApps;
-	
-	NSImageView *theArrow;
-	NSImageView *theRing;
-	CALayer *arrowLayer;
-	CALayer *ringLayer;
-	
-	float previousValue;
-	
 	IBOutlet NSImageView *testView;
 	
-	BOOL ringAllowsActions;
-	BOOL ringIsSticky;
 	BOOL ringIsActive;
 	
 	Ring *launchedAppsRing;
@@ -51,8 +37,7 @@
 	IBOutlet NSToolbarItem *aboutButton;
 	IBOutlet NSToolbarItem *ringsButtons;
 	
-	IBOutlet SRRecorderControl *ringHotkeyControl;
-	//KeyCombo ringGlobalHotKey;
+	IBOutlet SRRecorderControl *theRingRecorderControl;
 }
 
 @property (readwrite, assign) Ring *_currentRing;
@@ -60,33 +45,14 @@
 - (IBAction)testButton:(id)sender;
 - (IBAction)test2Button:(id)sender;
 
-- (void)presentApps:(NSArray *)theApps;
-- (NSPoint)viewCenter:(NSView *)theView;
-- (void)buildRing;
-- (void)removeAllAppViews;
-
-- (void)initiateAnimations;
-- (void)stopAllAnimations;
-- (void)animateRingOut;
 - (void)animateRingIn;
 - (void)mouseMovedForRing:(NSNotification *)aNote;
 - (void)mouseDownForRing:(NSNotification *)aNote;
 - (void)keyUpForRing:(NSNotification *)aNote;
-- (CAAnimation *)rotateToMouseAnimation;
-- (CAAnimation *)rotateInfiniteAnimation;
-
-- (void)tintRingWithColour:(NSColor *)colour;
-
-- (CGFloat)mouseAngleAboutRing;
-- (void)getAndPresentLaunchedApps;
-- (CFArrayRef)copyLaunchedApplicationsInFrontToBackOrder;
 
 // Preferences
 - (IBAction)switchPreferenceView:(id)sender;
 - (void)loadView:(NSView *)theView;
-- (void)keyDownForRing;
-- (void)keyUpForRing;
-
 - (IBAction)setRingCenterPosition:(id)sender;
 
 @end

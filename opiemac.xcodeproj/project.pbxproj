@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		551438101309764E00E68F77 /* UIDivider.png in Resources */ = {isa = PBXBuildFile; fileRef = 5514380F1309764E00E68F77 /* UIDivider.png */; };
 		551486A712ED9F0800F4D3A9 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 551486A612ED9F0800F4D3A9 /* AppController.m */; };
 		551486B612ED9F9400F4D3A9 /* CustomWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 551486B312ED9F9400F4D3A9 /* CustomWindow.m */; };
 		551486B712ED9F9400F4D3A9 /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 551486B512ED9F9400F4D3A9 /* CustomView.m */; };
@@ -54,6 +55,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		5514380F1309764E00E68F77 /* UIDivider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIDivider.png; sourceTree = "<group>"; };
 		551486A512ED9F0800F4D3A9 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		551486A612ED9F0800F4D3A9 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
 		551486B212ED9F9400F4D3A9 /* CustomWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWindow.h; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5514380F1309764E00E68F77 /* UIDivider.png */,
 				551486C112ED9FBC00F4D3A9 /* pointer.png */,
 				551486C212ED9FBD00F4D3A9 /* circleCentre.png */,
 				551486C512ED9FD400F4D3A9 /* circle.tif */,
@@ -254,6 +257,7 @@
 				551486C412ED9FBD00F4D3A9 /* circleCentre.png in Resources */,
 				551486C712ED9FD400F4D3A9 /* circle.tif in Resources */,
 				551486C812ED9FD400F4D3A9 /* pentagon.tif in Resources */,
+				551438101309764E00E68F77 /* UIDivider.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
