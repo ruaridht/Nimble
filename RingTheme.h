@@ -16,10 +16,10 @@
 	NSImage *ringBG;
 }
 
-@property (assign) NSImage *centerImage;
-@property (assign) NSImage *mouseImage;
-@property (assign) NSImage *appBG;
-@property (assign) NSImage *ringBG;
+@property (readwrite, assign) NSImage *centerImage;
+@property (readwrite, assign) NSImage *mouseImage;
+@property (readwrite, assign) NSImage *appBG;
+@property (readwrite, assign) NSImage *ringBG;
 
 - (id)initWithCenter:(NSImage *)theCenter mouse:(NSImage *)theMouse app:(NSImage *)theApp ring:(NSImage *)theRing;
 

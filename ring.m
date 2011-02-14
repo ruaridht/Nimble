@@ -14,6 +14,8 @@
 
 @implementation Ring
 
+@synthesize ringName, ringColour, ringSize, iconSize, iconRadius, ringHotkeyControl, isSticky, tintRing;
+
 // Standard functions
 CGFloat DegreesToRadians(CGFloat degrees)
 {
@@ -41,16 +43,33 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	// We are not likely to need these, since we will be assigning the target from within the ring.
 	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyUpForRing:) name:@"ringGlobalHotkeyUpTriggered" object:nil];
 	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateRingIn) name:@"ringGlobalHotkeyDownTriggered" object:nil];
-	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMovedForRing:) name:@"mouseMovedForRing" object:nil];
-	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseDownForRing:) name:@"mouseDownForRing" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMovedForRing) name:@"mouseMovedForRing" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseDownForRing) name:@"mouseDownForRing" object:nil];
 	
 	ringAllowsActions = NO;
-	ringIsStatic = NO;
+	isSticky = NO;
+	tintRing = NO;
 	ringIsActive = NO;
+	ringColour = [NSColor clearColor];
+	ringSize = 0;
+	iconSize = 128;
+	iconRadius = 300;
+	
+	ringPosition = 0;
 	
 	ringName = name;
 	[self buildRing];
 	
+	KeyCombo combo1 = { (NSShiftKeyMask | NSAlternateKeyMask), (CGKeyCode)49 };
+	[ringHotkeyControl setKeyCombo:combo1];
+	/*
+	SDGlobalShortcutsController *shortcutsController = [SDGlobalShortcutsController sharedShortcutsController];
+	[shortcutsController addShortcutFromDefaultsKey:@"ringGlobalHotkey"
+										withControl:ringHotkeyControl
+											 target:self
+									selectorForDown:@selector(animateRingIn)
+											  andUp:@selector(keyUpForRing)];
+	*/
 	return self;
 }
 
@@ -84,19 +103,19 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	int count = [ringApps count];
 	CGFloat angle = 360.0/count;
 	CGFloat increment = 0.0;
-	CGFloat radius = 300;
-	CGFloat iconSize = 128;
+	CGFloat radius = (int)iconRadius;
+	CGFloat iconsSize = (int)iconSize;
 	
-	radius -= (iconSize/2);
+	radius -= (iconsSize/2);
 	
 	NSPoint windowCenter = [self viewCenter:ringView];
-	NSRect ivFrame = NSMakeRect(0, 0, iconSize, iconSize);
+	NSRect ivFrame = NSMakeRect(0, 0, iconsSize, iconsSize);
 	
 	for (int i = 0; i < count; i++) {
 		NSPoint position = NSMakePoint(radius*sin(DegreesToRadians(increment)), radius*cos(DegreesToRadians(increment)));
 		
-		ivFrame.origin.x = position.x + windowCenter.x - (iconSize/2);
-		ivFrame.origin.y = position.y + windowCenter.y - (iconSize/2);
+		ivFrame.origin.x = position.x + windowCenter.x - (iconsSize/2);
+		ivFrame.origin.y = position.y + windowCenter.y - (iconsSize/2);
 		
 		NSImageView *iv = [[NSImageView alloc] initWithFrame:ivFrame];
 		[iv setImageScaling:NSScaleToFit];
@@ -140,7 +159,8 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 {
 	NSScreen *main = [NSScreen mainScreen];
 	NSRect screenRect = [main frame];
-	NSRect windowFrame = NSMakeRect(0, 0, screenRect.size.width - 100, screenRect.size.height - 100);
+	//NSRect windowFrame = NSMakeRect(0, 0, screenRect.size.width - 100, screenRect.size.height - 100);
+	NSRect windowFrame = NSMakeRect(0, 0, screenRect.size.width, screenRect.size.height);
 	
 	ringView = [[CustomView alloc] initWithFrame:windowFrame];
 	ringWindow = [[CustomWindow alloc] initWithContentRect:[ringView frame] styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
@@ -179,6 +199,15 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	NSLog(@"%@ built", ringName);
 }
 
+- (void)setRingCenterPosition:(NSPoint)center
+{
+	NSRect windowFrame = [[ringWindow contentView] frame];
+	windowFrame.origin.x = center.x - (windowFrame.origin.x/2);
+	windowFrame.origin.y = center.y - (windowFrame.origin.y/2);
+	
+	[[ringWindow contentView] setFrame:windowFrame];
+}
+
 /*
  *	Returns a snapshot of this ring.
  */
@@ -204,6 +233,11 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 {	
 	[[theArrow animator] setImage:[[NSImage imageNamed:@"pointer"] tintedImageWithColor:colour operation:NSCompositeSourceIn]];
 	[[theRing animator] setImage:[[NSImage imageNamed:@"circleCentre"] tintedImageWithColor:colour operation:NSCompositeSourceIn]];
+}
+
+- (void)setRingDrawingPosition:(NSInteger *)position
+{
+	ringPosition = position;
 }
 
 #pragma mark -
@@ -239,10 +273,24 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	//[[ringWindow contentView] setWantsLayer:YES];
 	//[[[ringWindow contentView] layer] addAnimation:[self sizeDecreaseAnimation] forKey:@"size"];
 	
+	if (tintRing)
+		[self tintRingWithColour:ringColour];
+	
+	/*
+	if (ringPosition == 0) {
+		//[self setRingCenterPosition:[self screenCenter]];
+		[ringWindow center];
+	} else if (ringPosition == 1) {
+		[self setRingCenterPosition:[NSEvent mouseLocation]];
+		//NSLog(@"Set position to mouse");
+	}
+	 */
+	
 	[self getAndPresentLaunchedApps];
 	[self initiateAnimations];
 	
 	[NSApp activateIgnoringOtherApps:YES];
+	 
 	[ringWindow makeKeyAndOrderFront:self];
 	[[ringWindow animator] setAlphaValue:1.0];
 	
@@ -348,14 +396,16 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 
 - (CAAnimation *)sizeDecreaseAnimation
 {
-	NSRect fromRect = [ringWindow frame];
-	NSRect toRect = NSMakeRect(fromRect.origin.x + fromRect.origin.x, fromRect.origin.y*2, fromRect.size.width/2, fromRect.size.height/2);
+	//NSRect fromRect = [ringWindow frame];
+	//NSRect toRect = NSMakeRect(fromRect.origin.x + fromRect.origin.x, fromRect.origin.y*2, fromRect.size.width/2, fromRect.size.height/2);
 	
+	NSNumber *fromValue = [NSNumber numberWithInt:1];
+							
 	CABasicAnimation *animation;
 	animation = [CABasicAnimation 
                  animationWithKeyPath:@"transform.size.z"];
 	
-    [animation setFromValue:1];
+    [animation setFromValue:fromValue];
     [animation setToValue:0];
     
     [animation setRemovedOnCompletion:YES];

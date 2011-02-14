@@ -16,6 +16,7 @@
 	IBOutlet NSView *contentView;
 	IBOutlet NSView *generalView;
 	IBOutlet NSView *aboutView;
+	IBOutlet NSView *ringsView;
 	
 	IBOutlet NSToolbar *prefToolbar;
 	IBOutlet NSToolbarItem *generalButton;

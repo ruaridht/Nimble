@@ -11,34 +11,50 @@
 
 @implementation AppController
 
+@synthesize _currentRing = currentRing;
+
 - (id)init
 {
 	if (![super init])
 		return nil;
 	
 	
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMovedForRing:) name:@"mouseMovedForRing" object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseDownForRing:) name:@"mouseDownForRing" object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyUpForRing:) name:@"ringGlobalHotkeyUpTriggered" object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateRingIn) name:@"ringGlobalHotkeyDownTriggered" object:nil];
+	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMovedForRing:) name:@"mouseMovedForRing" object:nil];
+	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseDownForRing:) name:@"mouseDownForRing" object:nil];
+	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyUpForRing:) name:@"ringGlobalHotkeyUpTriggered" object:nil];
+	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateRingIn) name:@"ringGlobalHotkeyDownTriggered" object:nil];
 	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:) name:NSApplicationWillResignActiveNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidResignActive:) name:NSApplicationDidResignActiveNotification object:nil];
+	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidResignActive:) name:NSApplicationDidResignActiveNotification object:nil];
 	
+	[NSApp setDelegate:self];
 	[[NSColorPanel sharedColorPanel] setShowsAlpha:YES];
+	
+	launchedAppsRing = [[Ring alloc] initWithName:@"launchedAppsRing"];
+	otherLARing = [[Ring alloc] initWithName:@"otherLARing"];
+	currentRing = launchedAppsRing;
 	
 	return self;
 }
 
 - (void)awakeFromNib
-{	
-	//ringAllowsActions = NO;
-	//[self buildRing];
-	launchedAppsRing = [[Ring alloc] initWithName:@"launchedAppsRing"];
-	
+{
 	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
 	[statusItem setTitle:@"N"];
 	[statusItem setHighlightMode:YES];
 	[statusItem setMenu:statusMenu];
+	
+	//Preferences
+	
+	SDGlobalShortcutsController *shortcutsController = [SDGlobalShortcutsController sharedShortcutsController];
+	[shortcutsController addShortcutFromDefaultsKey:@"ringGlobalHotkey"
+										withControl:ringHotkeyControl
+											 target:self
+									selectorForDown:@selector(animateRingIn)
+											  andUp:@selector(keyUpForRing:)];
+	
+	[prefToolbar setSelectedItemIdentifier:[generalButton itemIdentifier]];
+	[contentView addSubview:generalView];
+	currentView = generalView;
 }
 
 - (void)dealloc
@@ -71,29 +87,22 @@
 
 - (void)applicationWillResignActive:(NSNotification *)notification
 {
-	NSLog(@"Resigning active");
-	//[launchedAppsRing keyUpForRing];
+	
 }
 
 - (void)applicationDidResignActive:(NSNotification *)notification
 {
-	NSLog(@"Resigned active");
-	/*
-	if (ringIsActive) {
-		[launchedAppsRing keyUpForStickyRing];
-		ringIsActive = NO;
-	}
-	 */
+	
 }
 
 - (void)applicationWillBecomeActive:(NSNotification *)notification
 {
-	NSLog(@"App will become active");
+	
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification
 {
-	NSLog(@"App became active");
+	
 }
 
 #pragma mark -
@@ -101,7 +110,16 @@
 
 - (IBAction)testButton:(id)sender
 {
-	[launchedAppsRing tintRingWithColour:[sender color]];
+	
+	[self willChangeValueForKey:@"currentRing"];
+	if (currentRing == launchedAppsRing) {
+		currentRing = otherLARing;
+	} else if (currentRing == otherLARing) {
+		currentRing = launchedAppsRing;
+	}
+	[self didChangeValueForKey:@"currentRing"];
+	
+	//NSLog(@"Combo: %@", launchedAppsRing.ringHotkeyControl);
 }
 
 - (IBAction)test2Button:(id)sender
@@ -202,7 +220,7 @@
 - (void)animateRingIn
 {
 	[launchedAppsRing animateRingIn];
-	ringIsActive = YES;
+	//ringIsActive = YES;
 	
 	/*
 	[self getAndPresentLaunchedApps];
@@ -250,16 +268,63 @@
 - (void)mouseDownForRing:(NSNotification *)aNote
 {
 	[launchedAppsRing keyUpForRing];
-	ringIsActive = NO;
+	//ringIsActive = NO;
 }
 
 - (void)keyUpForRing:(NSNotification *)aNote
 {
 	[launchedAppsRing keyUpForRing];
-	ringIsActive = NO;
+	//ringIsActive = NO;
 	//[self animateRingOut];
 	//[self mouseDownForRing:nil];
 	//NSLog(@"KeyUp");
+}
+
+#pragma mark -
+#pragma mark Preferences
+
+- (IBAction)switchPreferenceView:(id)sender
+{
+	[prefToolbar setSelectedItemIdentifier:[sender itemIdentifier]];
+	
+	if ([sender tag] == 1) {
+		//[self loadView:generalView];
+		[self loadViewAlt:generalView];
+	} else if ([sender tag] == 2) {
+		//[self loadView:aboutView];
+		[self loadViewAlt:aboutView];
+	} else if ([sender tag] == 3) {
+		//[self loadView:ringsView];
+		[self loadViewAlt:ringsView];
+	}
+}
+
+- (void)loadView:(NSView *)theView
+{
+	[[[prefWindow contentView] animator] setFrame:[theView frame]];
+	[contentView replaceSubview:currentView with:theView];
+	currentView = theView;
+}
+
+- (void)loadViewAlt:(NSView *)newView
+{
+	NSView *tempView = [[NSView alloc] initWithFrame: [[prefWindow contentView] frame]];
+    [prefWindow setContentView: tempView];
+    [tempView release];
+	
+	NSRect newFrame = [prefWindow frame];
+    newFrame.size.height =	[newView frame].size.height + ([prefWindow frame].size.height - [[prefWindow contentView] frame].size.height); // Compensates for toolbar
+    newFrame.size.width =	[newView frame].size.width;
+    newFrame.origin.y +=	([[prefWindow contentView] frame].size.height - [newView frame].size.height); // Origin moves by difference in two views
+    newFrame.origin.x +=	([[prefWindow contentView] frame].size.width - newFrame.size.width)/2; // Origin moves by difference in two views, halved to keep center alignment
+    
+	[prefWindow setFrame: newFrame display: YES animate: YES];
+    [prefWindow setContentView: newView];
+}
+
+- (IBAction)setRingCenterPosition:(id)sender
+{
+	[currentRing setRingDrawingPosition:[sender selectedSegment]];
 }
 
 @end

@@ -90,6 +90,8 @@
 		[self loadView:generalView];
 	} else if ([sender tag] == 2) {
 		[self loadView:aboutView];
+	} else if ([sender tag] == 3) {
+		[self loadView:ringsView];
 	}
 }
 

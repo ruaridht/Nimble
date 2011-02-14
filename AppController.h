@@ -31,10 +31,31 @@
 	BOOL ringIsActive;
 	
 	Ring *launchedAppsRing;
+	Ring *otherLARing;
+	Ring *currentRing;
 	
 	IBOutlet NSMenu *statusMenu;
 	NSStatusItem *statusItem;
+	
+	// Preferences
+	IBOutlet NSWindow *prefWindow;
+	
+	NSView *currentView;
+	IBOutlet NSView *contentView;
+	IBOutlet NSView *generalView;
+	IBOutlet NSView *aboutView;
+	IBOutlet NSView *ringsView;
+	
+	IBOutlet NSToolbar *prefToolbar;
+	IBOutlet NSToolbarItem *generalButton;
+	IBOutlet NSToolbarItem *aboutButton;
+	IBOutlet NSToolbarItem *ringsButtons;
+	
+	IBOutlet SRRecorderControl *ringHotkeyControl;
+	//KeyCombo ringGlobalHotKey;
 }
+
+@property (readwrite, assign) Ring *_currentRing;
 
 - (IBAction)testButton:(id)sender;
 - (IBAction)test2Button:(id)sender;
@@ -59,5 +80,13 @@
 - (CGFloat)mouseAngleAboutRing;
 - (void)getAndPresentLaunchedApps;
 - (CFArrayRef)copyLaunchedApplicationsInFrontToBackOrder;
+
+// Preferences
+- (IBAction)switchPreferenceView:(id)sender;
+- (void)loadView:(NSView *)theView;
+- (void)keyDownForRing;
+- (void)keyUpForRing;
+
+- (IBAction)setRingCenterPosition:(id)sender;
 
 @end

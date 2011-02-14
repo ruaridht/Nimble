@@ -16,9 +16,9 @@
 		551486C712ED9FD400F4D3A9 /* circle.tif in Resources */ = {isa = PBXBuildFile; fileRef = 551486C512ED9FD400F4D3A9 /* circle.tif */; };
 		551486C812ED9FD400F4D3A9 /* pentagon.tif in Resources */ = {isa = PBXBuildFile; fileRef = 551486C612ED9FD400F4D3A9 /* pentagon.tif */; };
 		551486CB12EDA01700F4D3A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551486CA12EDA01600F4D3A9 /* QuartzCore.framework */; };
+		5538D1CA12FDB82900AD9A99 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5538D1C912FDB82900AD9A99 /* ShortcutRecorder.framework */; };
+		5538D1D512FDB82E00AD9A99 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5538D1C912FDB82900AD9A99 /* ShortcutRecorder.framework */; };
 		554B24DE12EE0B5800CAB565 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 554B24DD12EE0B5800CAB565 /* PreferencesController.m */; };
-		554BC15912EE195E0054B046 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554BC15812EE195E0054B046 /* ShortcutRecorder.framework */; };
-		554BC16412EE19660054B046 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 554BC15812EE195E0054B046 /* ShortcutRecorder.framework */; };
 		554BC21212EE20460054B046 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554BC21112EE20460054B046 /* Carbon.framework */; };
 		559175F612F97D6800A02329 /* NSString+Crop.m in Sources */ = {isa = PBXBuildFile; fileRef = 559175F512F97D6800A02329 /* NSString+Crop.m */; };
 		55A71DB012F1E08200EE4D05 /* Ring.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A71DAF12F1E08200EE4D05 /* Ring.m */; };
@@ -38,8 +38,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				5538D1D512FDB82E00AD9A99 /* ShortcutRecorder.framework in CopyFiles */,
 				55B123B712F830380012A986 /* SDGlobalShortcuts.framework in CopyFiles */,
-				554BC16412EE19660054B046 /* ShortcutRecorder.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,9 +66,9 @@
 		551486C612ED9FD400F4D3A9 /* pentagon.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = pentagon.tif; sourceTree = "<group>"; };
 		551486C912ED9FFA00F4D3A9 /* OpieHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpieHeader.h; sourceTree = "<group>"; };
 		551486CA12EDA01600F4D3A9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5538D1C912FDB82900AD9A99 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShortcutRecorder.framework; sourceTree = "<group>"; };
 		554B24DC12EE0B5800CAB565 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		554B24DD12EE0B5800CAB565 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
-		554BC15812EE195E0054B046 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShortcutRecorder.framework; sourceTree = "<group>"; };
 		554BC21112EE20460054B046 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		559175F412F97D6800A02329 /* NSString+Crop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Crop.h"; sourceTree = "<group>"; };
 		559175F512F97D6800A02329 /* NSString+Crop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Crop.m"; sourceTree = "<group>"; };
@@ -90,9 +90,9 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				551486CB12EDA01700F4D3A9 /* QuartzCore.framework in Frameworks */,
-				554BC15912EE195E0054B046 /* ShortcutRecorder.framework in Frameworks */,
 				554BC21212EE20460054B046 /* Carbon.framework in Frameworks */,
 				55B123B112F8302D0012A986 /* SDGlobalShortcuts.framework in Frameworks */,
+				5538D1CA12FDB82900AD9A99 /* ShortcutRecorder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,8 +125,8 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5538D1C912FDB82900AD9A99 /* ShortcutRecorder.framework */,
 				55B123B012F8302D0012A986 /* SDGlobalShortcuts.framework */,
-				554BC15812EE195E0054B046 /* ShortcutRecorder.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				551486CA12EDA01600F4D3A9 /* QuartzCore.framework */,
 				554BC21112EE20460054B046 /* Carbon.framework */,
