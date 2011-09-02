@@ -18,4 +18,7 @@
 #import "Ring.h"
 #import "RingTheme.h"
 
+#import "NSVTextFieldCell.h"
+#import "NSArray+Datasource.h"
+
 // Static Definitions

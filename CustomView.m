@@ -79,6 +79,7 @@
     // A boolean tracks the previous shape of the window. If the shape changes, it's necessary for the
     // window to recalculate its shape and shadow.
     BOOL shouldDisplayWindow = NO;
+	/*
     // If the window transparency is > 0.7, draw the circle, otherwise, draw the pentagon. 
     if ([[self window] alphaValue] > 0.7) {
         shouldDisplayWindow = (showingPentagon == YES);
@@ -89,6 +90,7 @@
         showingPentagon = YES;
         [pentagonImage compositeToPoint:NSZeroPoint operation:NSCompositeSourceOver];
     }
+	*/
     // Reset the window shape and shadow.
     if (shouldDisplayWindow) {
         [[self window] display];

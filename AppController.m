@@ -29,8 +29,7 @@
 	[NSApp setDelegate:self];
 	[[NSColorPanel sharedColorPanel] setShowsAlpha:YES];
 	
-	launchedAppsRing = [[Ring alloc] initWithName:@"launchedAppsRing"];
-	otherLARing = [[Ring alloc] initWithName:@"otherLARing"];
+	allRings = [[NSMutableArray array] retain];
 	
 	return self;
 }
@@ -51,14 +50,21 @@
 									selectorForDown:@selector(animateRingIn)
 											  andUp:@selector(keyUpForRing:)];
 	 */
-	[theRingRecorderControl setDelegate:self];
-	[theRingRecorderControl setCanCaptureGlobalHotKeys:YES];
 	
-	[prefToolbar setSelectedItemIdentifier:[generalButton itemIdentifier]];
-	[contentView addSubview:generalView];
-	currentView = generalView;
+	if ([self loadRings])
+		[self setCurrentRing:[allRings objectAtIndex:0]];
 	
-	[self setCurrentRing:launchedAppsRing];
+	ringRecords = [[NSMutableArray alloc] init];
+	[ringTable setDataSource:self];
+	[ringTable setDelegate:self];
+	[ringTable setTarget:self];
+	
+	NSVTextFieldCell *cell;
+	cell = [[NSVTextFieldCell alloc] init];
+	[cell setVerticalAlignment:YES];
+	NSTableColumn *column = [ringTable tableColumnWithIdentifier:@"name"];
+	[column setDataCell:cell];
+	[cell release];
 }
 
 - (void)dealloc
@@ -114,39 +120,41 @@
 
 - (IBAction)testButton:(id)sender
 {
-	if (currentRing == launchedAppsRing) {
-		[self setCurrentRing:otherLARing];
-	} else if (currentRing == otherLARing) {
-		[self setCurrentRing:launchedAppsRing];
+	if (currentRing == [allRings objectAtIndex:0]) {
+		[self setCurrentRing:[allRings objectAtIndex:1]];
+	} else if (currentRing == [allRings objectAtIndex:1]) {
+		[self setCurrentRing:[allRings objectAtIndex:0]];
 	}
 }
 
 - (IBAction)test2Button:(id)sender
 {
-	[launchedAppsRing tintRingWithColour:[sender color]];
+	NSLog(@"Size of allRings: %i", [allRings count]);
 }
 
+/*
 #pragma mark Animations
 
 - (void)animateRingIn
 {
-	[launchedAppsRing animateRingIn];
+	[currentRing animateRingIn];
 }
 
 - (void)mouseMovedForRing:(NSNotification *)aNote
 {
-	[launchedAppsRing mouseMovedForRing];
+	[currentRing mouseMovedForRing];
 }
 
 - (void)mouseDownForRing:(NSNotification *)aNote
 {
-	[launchedAppsRing keyUpForRing];
+	[currentRing keyUpForRing];
 }
 
 - (void)keyUpForRing:(NSNotification *)aNote
 {
-	[launchedAppsRing keyUpForRing];
+	[currentRing keyUpForRing];
 }
+ */
 
 #pragma mark -
 #pragma mark Preferences
@@ -201,11 +209,152 @@
 }
 
 #pragma mark -
+#pragma mark TableView Delegates
+
+- (NSCell *)tableView:(NSTableView *)tableView dataCellForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+	
+	if (tableColumn == nil && [[ringRecords objectAtIndex:row] objectForKey:@"icon"] == [NSNull null]) {
+		return [[NSTextFieldCell alloc] init];
+	}
+	
+	NSLog(@"Test1");
+	return [tableColumn dataCellForRow:row];
+}
+
+- (BOOL)tableView:(NSTableView *)tableView isGroupRow:(NSInteger)row
+{
+	if ([[ringRecords objectAtIndex:row] objectForKey:@"icon"] == [NSNull null])
+		return YES;
+	
+	NSLog(@"Test2");
+	return NO;
+}
+
+- (BOOL)tableView:(NSTableView *)aTableView shouldSelectRow:(NSInteger)rowIndex
+{
+	if ([[ringRecords objectAtIndex:rowIndex] objectForKey:@"icon"] == [NSNull null])
+		return NO;
+	
+	NSLog(@"Test3");
+	return YES;
+}
+
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
+{
+	if ([[ringRecords objectAtIndex:row] objectForKey:@"icon"] == [NSNull null])
+		return 20.0;
+	
+	NSLog(@"Test4");
+	return 32.0;
+}
+
+
+- (int)numberOfRowsInTableView:(NSTableView *)aTableView
+{
+	NSLog(@"Test5");
+	return [ringRecords count];
+}
+
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex 
+{
+	id theRecord, theValue;
+	
+	if (aTableColumn == nil && [[ringRecords objectAtIndex:rowIndex] objectForKey:@"icon"] == [NSNull null]) {
+		theValue = [[ringRecords objectAtIndex:rowIndex] objectForKey:@"name"];
+	}
+	else {
+		theRecord = [ringRecords objectAtIndex:rowIndex];
+		theValue = [theRecord objectForKey:[aTableColumn identifier]];
+	}
+	
+	if (theValue == [NSNull null])
+		return nil;
+	
+	NSLog(@"Test6");
+	return theValue;
+}
+
+
+- (void)tableViewSelectionIsChanging:(NSNotification *)aNotification
+{
+	NSLog(@"Why?");
+}
+
+- (void)tableViewSelectionDidChange:(NSNotification *)aNotification
+{
+	int theRow = [ringTable selectedRow];
+	if (theRow != -1){
+		id theRing;
+		theRing = [allRings objectAtIndex:theRow];
+		[self setCurrentRing:theRing];
+	}
+	NSLog(@"Test7");
+}
+
+- (BOOL)selectionShouldChangeInTableView:(NSTableView *)aTableView
+{
+	NSLog(@"Test8");
+	return YES;
+}
+
+/*
+ *	Returns true if all rings have been loaded/saved properly, and false if there are any errors.
+ */
+/*
+- (NSDictionary *)tableViewRecordForTab:(NSString *)tabName icon:(id)icon view:(id)view
+{
+	NSMutableDictionary *record = [NSMutableDictionary dictionary];
+	
+	[record setObject:icon forKey:@"icon"];
+	[record setObject:tabName forKey:@"name"];
+	[record setObject:view forKey:@"view"];
+	
+	return record;
+}
+ */
+- (NSDictionary *)tableViewRecordForTab:(NSString *)tabName iconName:(NSString *)iconName
+{
+	NSMutableDictionary *record = [NSMutableDictionary dictionary];
+	
+	[record setObject:[NSImage imageNamed:iconName] forKey:@"icon"];
+	[record setObject:tabName forKey:@"name"];
+	
+	return record;
+}
+
+#pragma mark -
 #pragma mark ShortcutRecorder Delegate
 
 - (void)shortcutRecorder:(SRRecorderControl *)recorder keyComboDidChange:(KeyCombo)newKeyCombo
 {
     [currentRing setGlobalHotkey:[theRingRecorderControl keyCombo]];
+}
+
+#pragma mark -
+#pragma mark Ring Loading and Saving
+
+/*
+ *	Returns true if all rings have been loaded/saved properly, and false if there are any errors.
+ */
+- (BOOL)loadRings
+{
+	Ring *ring1 = [[[Ring alloc] initWithName:@"launchedAppsRing"] retain];
+	Ring *ring2 = [[[Ring alloc] initWithName:@"otherLARing"] retain];
+	
+	[allRings addObject:ring1];
+	[allRings addObject:ring2];
+	
+	for (Ring *r in allRings) {
+		[ringRecords addObject:[self tableViewRecordForTab:[r ringName] iconName:@"circleCentre"]];
+	}
+	
+	return YES;
+}
+
+- (BOOL)saveRings
+{
+	return NO;
 }
 
 @end

@@ -21,7 +21,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="652"/>
+			<integer value="666"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -2789,14 +2789,6 @@ AAAAAAAABhAAAJxoAAAAAMIRDgAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 					<int key="connectionID">803</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">ringHotkeyControl</string>
-						<reference key="source" ref="548384661"/>
-						<reference key="destination" ref="423433753"/>
-					</object>
-					<int key="connectionID">804</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">switchPreferenceView:</string>
 						<reference key="source" ref="548384661"/>
@@ -2979,6 +2971,14 @@ AAAAAAAABhAAAJxoAAAAAMIRDgAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 						<reference key="destination" ref="186621361"/>
 					</object>
 					<int key="connectionID">1008</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">ringTable</string>
+						<reference key="source" ref="548384661"/>
+						<reference key="destination" ref="752303858"/>
+					</object>
+					<int key="connectionID">1091</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -4652,7 +4652,7 @@ AAAAAAAABhAAAJxoAAAAAMIRDgAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{352, 256}, {700, 600}}</string>
+					<string>{{351, 256}, {700, 600}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4937,7 +4937,7 @@ AAAAAAAABhAAAJxoAAAAAMIRDgAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1090</int>
+			<int key="maxID">1091</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5003,6 +5003,7 @@ AAAAAAAABhAAAJxoAAAAAMIRDgAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 							<string>prefToolbar</string>
 							<string>prefWindow</string>
 							<string>ringPositionControl</string>
+							<string>ringTable</string>
 							<string>ringsButtons</string>
 							<string>ringsView</string>
 							<string>statusMenu</string>
@@ -5020,6 +5021,7 @@ AAAAAAAABhAAAJxoAAAAAMIRDgAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 							<string>NSToolbar</string>
 							<string>NSWindow</string>
 							<string>NSSegmentedControl</string>
+							<string>NSTableView</string>
 							<string>NSToolbarItem</string>
 							<string>NSView</string>
 							<string>NSMenu</string>
@@ -5040,6 +5042,7 @@ AAAAAAAABhAAAJxoAAAAAMIRDgAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 							<string>prefToolbar</string>
 							<string>prefWindow</string>
 							<string>ringPositionControl</string>
+							<string>ringTable</string>
 							<string>ringsButtons</string>
 							<string>ringsView</string>
 							<string>statusMenu</string>
@@ -5080,6 +5083,10 @@ AAAAAAAABhAAAJxoAAAAAMIRDgAAAAAAAAAAAAAAAAAAAAAAA</bytes>
 							<object class="IBToOneOutletInfo">
 								<string key="name">ringPositionControl</string>
 								<string key="candidateClassName">NSSegmentedControl</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">ringTable</string>
+								<string key="candidateClassName">NSTableView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">ringsButtons</string>
