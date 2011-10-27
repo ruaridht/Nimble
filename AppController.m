@@ -49,7 +49,7 @@
 											 target:self
 									selectorForDown:@selector(animateRingIn)
 											  andUp:@selector(keyUpForRing:)];
-	 */
+	*/
 	
 	if ([self loadRings])
 		[self setCurrentRing:[allRings objectAtIndex:0]];
@@ -58,6 +58,8 @@
 	[ringTable setDataSource:self];
 	[ringTable setDelegate:self];
 	[ringTable setTarget:self];
+	
+	[theRingRecorderControl setDelegate:self];
 	
 	NSVTextFieldCell *cell;
 	cell = [[NSVTextFieldCell alloc] init];
@@ -328,6 +330,7 @@
 
 - (void)shortcutRecorder:(SRRecorderControl *)recorder keyComboDidChange:(KeyCombo)newKeyCombo
 {
+    //NSLog(@"Hotkey: %@", [theRingRecorderControl keyComboString]);
     [currentRing setGlobalHotkey:[theRingRecorderControl keyCombo]];
 }
 

@@ -111,6 +111,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 
 - (void)setGlobalHotkey:(KeyCombo)theCombo
 {
+	NSLog(@"Setting hotkey to: %i", theCombo.code);
 	[ringHotkeyControl setKeyCombo:theCombo];
 }
 
@@ -521,80 +522,21 @@ NSNumber* DegreesToNumber(CGFloat degrees)
  */
 - (void)getAndPresentLaunchedApps
 {
-	CFArrayRef theArrayRef = [self copyLaunchedApplicationsInFrontToBackOrder];
-	NSArray *allProcesses = [[NSWorkspace sharedWorkspace] runningApplications];
-	NSMutableArray *runningApps = [NSMutableArray array];
-	
-	// Unfortunately this runs in O(n*m): where n is the number of processes and m is the number of launched apps.
-	// But then again, we only need to call this when the "running apps wheel" is called forward.
-	// This will add the apps in the static process order.  To change to the 
-	for (NSRunningApplication *app in allProcesses) {
-		for (int j = 0; j < CFArrayGetCount(theArrayRef); j++) {
-			NSDictionary *dict = (NSDictionary *)CFArrayGetValueAtIndex(theArrayRef, j);
-			/*
-			if ([[dict objectForKey:@"CFBundleName"] isEqualToString:[app localizedName]]) {
-				[runningApps addObject:app];
-			}
-			 */
-			//NSLog(@"%@ == %@", [app localizedName], [dict objectForKey:@"CFBundleName"]);
-			if ([[app localizedName] contains:[dict objectForKey:@"CFBundleName"]])
-				 [runningApps addObject:app];
-		}
-	}
-	
-	ringApps = [[[runningApps copy] retain] autorelease];
-	[self addAppsToRing];
-}
-
-/*
- * Returns an array of CFDictionaryRef types, each of which contains information about one of the processes.
- * The processes are ordered in front to back, i.e. in the same order they appear when typing command + tab, from left to right.
- * See the ProcessInformationCopyDictionary function documentation for the keys used in the dictionaries.
- * If something goes wrong, then this function returns NULL.
- */
-- (CFArrayRef)copyLaunchedApplicationsInFrontToBackOrder
-{    
-    CFArrayRef (*_LSCopyApplicationArrayInFrontToBackOrder)(uint32_t sessionID) = NULL;
-    void       (*_LSASNExtractHighAndLowParts)(void const* asn, UInt32* psnHigh, UInt32* psnLow) = NULL;
-    CFTypeID   (*_LSASNGetTypeID)(void) = NULL;
+    NSMutableArray *runningApps = [NSMutableArray array];
+    NSArray *launchedNames = [[NSWorkspace sharedWorkspace] valueForKeyPath:@"launchedApplications.NSApplicationName"];
+    NSArray *allProcesses = [[NSWorkspace sharedWorkspace] runningApplications];
     
-    void *lsHandle = dlopen("/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/LaunchServices", RTLD_LAZY);
-    if (!lsHandle) { return NULL; }
-    
-    _LSCopyApplicationArrayInFrontToBackOrder = (CFArrayRef(*)(uint32_t))dlsym(lsHandle, "_LSCopyApplicationArrayInFrontToBackOrder");
-    _LSASNExtractHighAndLowParts = (void(*)(void const*, UInt32*, UInt32*))dlsym(lsHandle, "_LSASNExtractHighAndLowParts");
-    _LSASNGetTypeID = (CFTypeID(*)(void))dlsym(lsHandle, "_LSASNGetTypeID");
-    
-    if (_LSCopyApplicationArrayInFrontToBackOrder == NULL || _LSASNExtractHighAndLowParts == NULL || _LSASNGetTypeID == NULL) { return NULL; }
-    
-    CFMutableArrayRef orderedApplications = CFArrayCreateMutable(kCFAllocatorDefault, 64, &kCFTypeArrayCallBacks);
-    if (!orderedApplications) { return NULL; }
-    
-    CFArrayRef apps = _LSCopyApplicationArrayInFrontToBackOrder(-1);
-    if (!apps) { CFRelease(orderedApplications); return NULL; }
-    
-    CFIndex count = CFArrayGetCount(apps);
-    for (CFIndex i = 0; i < count; i++)
-    {
-        ProcessSerialNumber psn = {0, kNoProcess};
-        CFTypeRef asn = CFArrayGetValueAtIndex(apps, i);
-        if (CFGetTypeID(asn) == _LSASNGetTypeID())
-        {
-            _LSASNExtractHighAndLowParts(asn, &psn.highLongOfPSN, &psn.lowLongOfPSN);
-            
-            CFDictionaryRef processInfo = ProcessInformationCopyDictionary(&psn, kProcessDictionaryIncludeAllInformationMask);
-            if (processInfo)
-            {
-                CFArrayAppendValue(orderedApplications, processInfo);
-                CFRelease(processInfo);
+    for (NSRunningApplication *app in allProcesses) {
+        for (NSString *appName in launchedNames) {
+            if ([[app localizedName] isEqualToString:appName]) {
+                [runningApps addObject:app];
+                break;
             }
         }
     }
-    CFRelease(apps);
-    
-    CFArrayRef result = CFArrayGetCount(orderedApplications) == 0 ? NULL : CFArrayCreateCopy(kCFAllocatorDefault, orderedApplications);
-    CFRelease(orderedApplications);
-    return result;
+	
+	ringApps = [[[runningApps copy] retain] autorelease];
+	[self addAppsToRing];
 }
 
 @end
