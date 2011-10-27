@@ -70,7 +70,6 @@
 
 - (CGFloat)mouseAngleAboutRing;
 - (void)getAndPresentLaunchedApps;
-- (CFArrayRef)copyLaunchedApplicationsInFrontToBackOrder;
 
 - (void)setTheme:(RingTheme *)theTheme;
 - (RingTheme *)currentTheme;

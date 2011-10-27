@@ -193,7 +193,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	[ringWindow setContentView:ringView];
 	[ringWindow setHidesOnDeactivate:YES];
 	[ringWindow setViewsNeedDisplay:YES];
-	[ringWindow setNotificationName:ringName];
+	//[ringWindow setNotificationName:ringName]; // Not sure why I need this anymore.
 	
 	// Add the ring to the centre
 	NSPoint ringCentre = [self viewCenter:ringView];
