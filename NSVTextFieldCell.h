@@ -7,7 +7,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-
 @interface NSVTextFieldCell : NSTextFieldCell {
 	@private
 	BOOL _vAlign;

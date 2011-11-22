@@ -18,18 +18,11 @@
 	if (![super init])
 		return nil;
 	
-	
-	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMovedForRing:) name:@"mouseMovedForRing" object:nil];
-	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseDownForRing:) name:@"mouseDownForRing" object:nil];
-	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyUpForRing:) name:@"ringGlobalHotkeyUpTriggered" object:nil];
-	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateRingIn) name:@"ringGlobalHotkeyDownTriggered" object:nil];
-	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:) name:NSApplicationWillResignActiveNotification object:nil];
-	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidResignActive:) name:NSApplicationDidResignActiveNotification object:nil];
-	
 	[NSApp setDelegate:self];
 	[[NSColorPanel sharedColorPanel] setShowsAlpha:YES];
 	
 	allRings = [[NSMutableArray array] retain];
+    ringRecords = [[NSMutableArray array] retain];
 	
 	return self;
 }
@@ -41,21 +34,10 @@
 	[statusItem setHighlightMode:YES];
 	[statusItem setMenu:statusMenu];
 	
-	//Preferences
-	/*
-	SDGlobalShortcutsController *shortcutsController = [SDGlobalShortcutsController sharedShortcutsController];
-	[shortcutsController addShortcutFromDefaultsKey:@"ringGlobalHotkey"
-										withControl:ringHotkeyControl
-											 target:self
-									selectorForDown:@selector(animateRingIn)
-											  andUp:@selector(keyUpForRing:)];
-	*/
-	
 	if ([self loadRings])
 		[self setCurrentRing:[allRings objectAtIndex:0]];
 	
-	ringRecords = [[NSMutableArray alloc] init];
-	[ringTable setDataSource:self];
+	[ringTable setDataSource:ringRecords];
 	[ringTable setDelegate:self];
 	[ringTable setTarget:self];
 	
@@ -64,8 +46,10 @@
 	NSVTextFieldCell *cell;
 	cell = [[NSVTextFieldCell alloc] init];
 	[cell setVerticalAlignment:YES];
+    [cell setTruncatesLastVisibleLine:YES];
 	NSTableColumn *column = [ringTable tableColumnWithIdentifier:@"name"];
 	[column setDataCell:cell];
+    [column setResizingMask: NSTableColumnAutoresizingMask];
 	[cell release];
 }
 
@@ -132,31 +116,8 @@
 - (IBAction)test2Button:(id)sender
 {
 	NSLog(@"Size of allRings: %i", [allRings count]);
+    NSLog(@"What's in ringRecords: %@", [ringRecords count]); //[[ringRecords objectAtIndex:0] objectForKey:@"name"]);
 }
-
-/*
-#pragma mark Animations
-
-- (void)animateRingIn
-{
-	[currentRing animateRingIn];
-}
-
-- (void)mouseMovedForRing:(NSNotification *)aNote
-{
-	[currentRing mouseMovedForRing];
-}
-
-- (void)mouseDownForRing:(NSNotification *)aNote
-{
-	[currentRing keyUpForRing];
-}
-
-- (void)keyUpForRing:(NSNotification *)aNote
-{
-	[currentRing keyUpForRing];
-}
- */
 
 #pragma mark -
 #pragma mark Preferences
@@ -215,12 +176,10 @@
 
 - (NSCell *)tableView:(NSTableView *)tableView dataCellForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-	
 	if (tableColumn == nil && [[ringRecords objectAtIndex:row] objectForKey:@"icon"] == [NSNull null]) {
 		return [[NSTextFieldCell alloc] init];
 	}
 	
-	NSLog(@"Test1");
 	return [tableColumn dataCellForRow:row];
 }
 
@@ -229,7 +188,6 @@
 	if ([[ringRecords objectAtIndex:row] objectForKey:@"icon"] == [NSNull null])
 		return YES;
 	
-	NSLog(@"Test2");
 	return NO;
 }
 
@@ -238,7 +196,6 @@
 	if ([[ringRecords objectAtIndex:rowIndex] objectForKey:@"icon"] == [NSNull null])
 		return NO;
 	
-	NSLog(@"Test3");
 	return YES;
 }
 
@@ -247,14 +204,12 @@
 	if ([[ringRecords objectAtIndex:row] objectForKey:@"icon"] == [NSNull null])
 		return 20.0;
 	
-	NSLog(@"Test4");
 	return 32.0;
 }
 
 
 - (int)numberOfRowsInTableView:(NSTableView *)aTableView
 {
-	NSLog(@"Test5");
 	return [ringRecords count];
 }
 
@@ -272,8 +227,7 @@
 	
 	if (theValue == [NSNull null])
 		return nil;
-	
-	NSLog(@"Test6");
+
 	return theValue;
 }
 
@@ -291,30 +245,13 @@
 		theRing = [allRings objectAtIndex:theRow];
 		[self setCurrentRing:theRing];
 	}
-	NSLog(@"Test7");
 }
 
 - (BOOL)selectionShouldChangeInTableView:(NSTableView *)aTableView
 {
-	NSLog(@"Test8");
 	return YES;
 }
 
-/*
- *	Returns true if all rings have been loaded/saved properly, and false if there are any errors.
- */
-/*
-- (NSDictionary *)tableViewRecordForTab:(NSString *)tabName icon:(id)icon view:(id)view
-{
-	NSMutableDictionary *record = [NSMutableDictionary dictionary];
-	
-	[record setObject:icon forKey:@"icon"];
-	[record setObject:tabName forKey:@"name"];
-	[record setObject:view forKey:@"view"];
-	
-	return record;
-}
- */
 - (NSDictionary *)tableViewRecordForTab:(NSString *)tabName iconName:(NSString *)iconName
 {
 	NSMutableDictionary *record = [NSMutableDictionary dictionary];
@@ -355,6 +292,9 @@
 	return YES;
 }
 
+/*
+ *	Returns true if all rings have been loaded/saved properly, and false if there are any errors.
+ */
 - (BOOL)saveRings
 {
 	return NO;

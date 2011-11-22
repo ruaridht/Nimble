@@ -7,7 +7,6 @@
 
 #import "NSVTextFieldCell.h"
 
-
 @implementation NSVTextFieldCell
 
 - (id) init
