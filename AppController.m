@@ -37,7 +37,7 @@
 	if ([self loadRings])
 		[self setCurrentRing:[allRings objectAtIndex:0]];
 	
-	[ringTable setDataSource:ringRecords];
+	[ringTable setDataSource:ringRecords]; // Does not implement NSTableViewDelegate ... but it does!
 	[ringTable setDelegate:self];
 	[ringTable setTarget:self];
 	
@@ -111,12 +111,9 @@
 	} else if (currentRing == [allRings objectAtIndex:1]) {
 		[self setCurrentRing:[allRings objectAtIndex:0]];
 	}
-}
-
-- (IBAction)test2Button:(id)sender
-{
-	NSLog(@"Size of allRings: %i", [allRings count]);
-    NSLog(@"What's in ringRecords: %@", [ringRecords count]); //[[ringRecords objectAtIndex:0] objectForKey:@"name"]);
+    
+    NSLog(@"Size of allRings: %i", [allRings count]);
+    NSLog(@"What's in ringRecords: %@", [ringRecords count]);
 }
 
 #pragma mark -
@@ -234,7 +231,7 @@
 
 - (void)tableViewSelectionIsChanging:(NSNotification *)aNotification
 {
-	NSLog(@"Why?");
+	//NSLog(@"TableViewSelectionIsChanging");
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification

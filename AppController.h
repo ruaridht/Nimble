@@ -13,10 +13,6 @@
 #import "NSArray+Datasource.h"
 
 @interface AppController : NSObject <NSApplicationDelegate, NSTableViewDelegate, NSTableViewDataSource> {
-	IBOutlet NSWindow *window;
-	
-	IBOutlet NSImageView *testView;
-	
 	BOOL ringIsActive;
 	
 	/*
@@ -53,7 +49,6 @@
 @property (readwrite, assign) Ring *_currentRing;
 
 - (IBAction)testButton:(id)sender;
-- (IBAction)test2Button:(id)sender;
 
 /*
 - (void)animateRingIn;
