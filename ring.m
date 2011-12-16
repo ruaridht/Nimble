@@ -7,6 +7,7 @@
 //
 
 #import "Ring.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define RING_RADIUS 300
 #define ARROW_RADIUS 300
@@ -162,7 +163,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	NSArray *allViews = [ringView subviews];
 	NSMutableArray *allViewsMut = [NSMutableArray arrayWithArray:allViews];
 	for (NSView *aView in allViewsMut) {
-		if ((aView != theRing) && (aView != theArrow)){
+		if ((aView != theRing) && (aView != theArrow) && (aView != blurView)){
 			[aView removeFromSuperview];
 		}
 	}
@@ -175,6 +176,28 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 {
 	NSRect viewFrame = [theView frame];
 	return NSMakePoint(viewFrame.origin.x + (viewFrame.size.width/2.0), viewFrame.origin.y + (viewFrame.size.height/2.0));
+}
+
+- (void)blurAndSetBackground
+{
+    NSURL *bgURL = [[NSWorkspace sharedWorkspace] desktopImageURLForScreen:[NSScreen mainScreen]];
+    NSImage* sourceImage = [[NSImage alloc] initWithContentsOfURL:bgURL];
+    CIImage* inputImage = [CIImage imageWithData:[sourceImage
+                                                  TIFFRepresentation]];
+    CIFilter* filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+    [filter setDefaults];
+    [filter setValue:inputImage forKey:@"inputImage"];
+    CIImage* outputImage = [filter valueForKey:@"outputImage"];
+    
+    NSRect outputImageRect = NSRectFromCGRect([outputImage extent]);
+    NSImage* blurredImage = [[NSImage alloc]
+                             initWithSize:outputImageRect.size];
+    [blurredImage lockFocus];
+    [outputImage drawAtPoint:NSZeroPoint fromRect:outputImageRect
+                   operation:NSCompositeCopy fraction:1.0];
+    [blurredImage unlockFocus];
+    
+    [blurView setImage:blurredImage];
 }
 
 /*
@@ -200,14 +223,15 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	NSRect ringFrame = NSMakeRect(ringCentre.x - (RING_RADIUS/2), ringCentre.y - (RING_RADIUS/2), RING_RADIUS, RING_RADIUS);
     
     // weird blur thing
-    /*
+    
     blurView = [[NSImageView alloc] initWithFrame:windowFrame];
+    [blurView setAutoresizingMask:NSScaleProportionally];
     [blurView setImageFrameStyle:NSImageFrameNone];
-    NSURL *bgURL = [[NSWorkspace sharedWorkspace] desktopImageURLForScreen:main];
-    bgBlur = [[[NSImage alloc] initWithContentsOfURL:bgURL] retain];
-    [blurView setImage:bgBlur];
-    [ringView addSubview:blurView];
-	*/
+    [self blurAndSetBackground];
+    //NSURL *bgURL = [[NSWorkspace sharedWorkspace] desktopImageURLForScreen:[NSScreen mainScreen]];
+    //[blurView setImage:[[NSImage alloc] initWithContentsOfURL:bgURL]];
+    
+	
 	theArrow = [[NSImageView alloc] initWithFrame:arrowFrame];
 	theRing = [[NSImageView alloc] initWithFrame:ringFrame];
 	
@@ -217,9 +241,10 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	[theRing setImageFrameStyle:NSImageFrameNone];
 	
     // Set the look of the ring (the theme)
-	[theArrow setImage:[NSImage imageNamed:@"nimbletheme_pointer"]];
-	[theRing setImage:[NSImage imageNamed:@"nimbletheme_center"]];
+	[theArrow setImage:[NSImage imageNamed:@"dark_noir_pointer"]];
+	[theRing setImage:[NSImage imageNamed:@"dark_noir_circle_blue"]];
 	
+    [ringView addSubview:blurView];
 	[ringView addSubview:theArrow];
 	[ringView addSubview:theRing];
 	
@@ -268,8 +293,8 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 /* Tints the ring to the chosen colour. */
 - (void)tintRingWithColour:(NSColor *)colour
 {	
-	[[theArrow animator] setImage:[[NSImage imageNamed:@"pointer"] tintedImageWithColor:colour operation:NSCompositeSourceIn]];
-	[[theRing animator] setImage:[[NSImage imageNamed:@"circleCentre"] tintedImageWithColor:colour operation:NSCompositeSourceIn]];
+	[[theArrow animator] setImage:[[NSImage imageNamed:@"dark_noir_pointer"] tintedImageWithColor:colour operation:NSCompositeSourceIn]];
+	[[theRing animator] setImage:[[NSImage imageNamed:@"dark_noir_circle_blue"] tintedImageWithColor:colour operation:NSCompositeSourceIn]];
 }
 
 - (void)setRingDrawingPosition:(NSInteger)position
@@ -335,10 +360,45 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	[[ringWindow animator] setAlphaValue:0.0];
 }
 
+- (void)adjustHighlightedApp
+{
+    CGFloat angle = [self mouseAngleAboutRing];
+	
+	CGFloat spacing = 360.0 / [ringApps count];
+	CGFloat increment = spacing/2;
+	int index = 0;
+	
+	BOOL found = NO;
+	
+	if (angle > 0) {
+		angle -= 360;
+	}
+	
+	angle = -angle;
+	
+	// Ineffiecient, but the number of loops is the index. Typically there shouldn't be too many loops.
+	while (!found) {
+		if (angle > (360 - (spacing/2))) {
+			found = YES;
+			index = 0;
+		} else if (angle < increment ) {
+			found = YES;
+		} else {
+			increment += spacing;
+			index++;
+		}
+	}
+    
+    //NSImageView *ringViewApp = [[ringView subviews] objectAtIndex:index];
+    
+}
+
 - (void)mouseMovedForRing
 {
 	[arrowLayer addAnimation:[self rotateToMouseAnimation] forKey:@"rotate"];
 	[[theArrow layer] setNeedsDisplay];
+    
+    //[self adjustHighlightedApp];
 }
 
 - (void)mouseDownForRing

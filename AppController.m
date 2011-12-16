@@ -56,6 +56,12 @@
 	[column setDataCell:cell];
     [column setResizingMask: NSTableColumnAutoresizingMask];
 	[cell release];
+    
+    // Hide the menubar when activating the app
+    /*
+    NSApplicationPresentationOptions options = NSApplicationPresentationHideDock + NSApplicationPresentationHideMenuBar;
+    [NSApp setPresentationOptions:options];
+     */
 }
 
 - (void)dealloc
@@ -133,6 +139,12 @@
 
 #pragma mark -
 #pragma mark Preferences
+
+- (IBAction)openPreferences:(id)sender
+{
+    [NSApp activateIgnoringOtherApps:YES];
+    [prefWindow makeKeyAndOrderFront:self];
+}
 
 - (void)setCurrentRing:(Ring *)aRing
 {

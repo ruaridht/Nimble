@@ -44,6 +44,9 @@
 	
 	IBOutlet NSTableView *ringTable;
 	NSMutableArray *ringRecords;
+    
+    // Anything past here is being tested.
+    IBOutlet NSImageView *bgView;
 }
 
 @property (readwrite, assign) Ring *_currentRing;
@@ -57,6 +60,8 @@
 - (IBAction)switchPreferenceView:(id)sender;
 - (void)loadView:(NSView *)theView;
 - (IBAction)setRingCenterPosition:(id)sender;
+
+- (IBAction)openPreferences:(id)sender;
 
 - (BOOL)loadRings;
 - (BOOL)saveRings;

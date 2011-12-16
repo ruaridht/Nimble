@@ -63,6 +63,8 @@
 - (void)stopAllAnimations;
 - (void)animateRingOut;
 - (void)animateRingIn;
+
+- (void)adjustHighlightedApp;
 - (void)mouseMovedForRing;
 - (void)mouseDownForRing;
 - (void)keyUpForRing;
