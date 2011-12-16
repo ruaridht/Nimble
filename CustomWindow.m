@@ -138,6 +138,9 @@
 - (void)keyDown:(NSEvent *)theEvent
 {
 	//[[NSNotificationCenter defaultCenter] postNotificationName:@"keyDownForStickyRing" object:nil];
+    if ([theEvent keyCode] == 53){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"escapeWindow" object:nil];
+    }
 }
 
 @end

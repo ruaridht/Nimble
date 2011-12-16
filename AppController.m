@@ -23,6 +23,8 @@
 	
 	allRings = [[NSMutableArray array] retain];
     ringRecords = [[NSMutableArray array] retain];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeAppFromFront) name:@"escapeWindow" object:nil];
 	
 	return self;
 }
@@ -34,6 +36,9 @@
 	[statusItem setHighlightMode:YES];
 	[statusItem setMenu:statusMenu];
 	
+    // TODO: This is wrong at the moment.
+    //[ringRecords addObject:[self tableViewRecordForTab:@"Rings" iconName:NULL]];
+    
 	if ([self loadRings])
 		[self setCurrentRing:[allRings objectAtIndex:0]];
 	
@@ -60,6 +65,10 @@
 
 #pragma mark -
 #pragma mark Delegates
+
+/*
+ * Some funky delegates that I might have use for. :)
+ */
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
@@ -88,7 +97,7 @@
 
 - (void)applicationDidResignActive:(NSNotification *)notification
 {
-	
+	[currentRing animateRingOut];
 }
 
 - (void)applicationWillBecomeActive:(NSNotification *)notification
@@ -103,6 +112,12 @@
 
 #pragma mark -
 #pragma mark IBActions
+
+- (void)removeAppFromFront
+{
+    // Probs shouldn't do this.
+    //[NSApp deactivate];
+}
 
 - (IBAction)testButton:(id)sender
 {
@@ -252,8 +267,8 @@
 - (NSDictionary *)tableViewRecordForTab:(NSString *)tabName iconName:(NSString *)iconName
 {
 	NSMutableDictionary *record = [NSMutableDictionary dictionary];
-	
-	[record setObject:[NSImage imageNamed:iconName] forKey:@"icon"];
+    
+    [record setObject:[NSImage imageNamed:iconName] forKey:@"icon"];
 	[record setObject:tabName forKey:@"name"];
 	
 	return record;
@@ -276,11 +291,11 @@
  */
 - (BOOL)loadRings
 {
-	Ring *ring1 = [[[Ring alloc] initWithName:@"launchedAppsRing"] retain];
-	Ring *ring2 = [[[Ring alloc] initWithName:@"otherLARing"] retain];
+	Ring *ring1 = [[[Ring alloc] initWithName:@"Launched Apps"] retain];
+	//Ring *ring2 = [[[Ring alloc] initWithName:@"Spaces"] retain];
 	
 	[allRings addObject:ring1];
-	[allRings addObject:ring2];
+	//[allRings addObject:ring2];
 	
 	for (Ring *r in allRings) {
 		[ringRecords addObject:[self tableViewRecordForTab:[r ringName] iconName:@"circleCentre"]];

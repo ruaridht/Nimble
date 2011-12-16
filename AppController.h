@@ -50,12 +50,7 @@
 
 - (IBAction)testButton:(id)sender;
 
-/*
-- (void)animateRingIn;
-- (void)mouseMovedForRing:(NSNotification *)aNote;
-- (void)mouseDownForRing:(NSNotification *)aNote;
-- (void)keyUpForRing:(NSNotification *)aNote;
-*/
+- (void)removeAppFromFront;
 
 // Preferences
 - (void)setCurrentRing:(Ring *)aRing;
@@ -65,5 +60,9 @@
 
 - (BOOL)loadRings;
 - (BOOL)saveRings;
+
+// Delegates
+- (NSDictionary *)tableViewRecordForTab:(NSString *)tabName iconName:(NSString *)iconName;
+- (void)shortcutRecorder:(SRRecorderControl *)recorder keyComboDidChange:(KeyCombo)newKeyCombo;
 
 @end

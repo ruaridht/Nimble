@@ -8,8 +8,8 @@
 
 #import "Ring.h"
 
-#define RING_RADIUS 100
-#define ARROW_RADIUS 250
+#define RING_RADIUS 300
+#define ARROW_RADIUS 300
 #define ROTATION_SPEED 10.0
 
 @implementation Ring
@@ -46,6 +46,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMovedForRing) name:@"mouseMovedForRing" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseDownForRing) name:@"mouseDownForRing" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMovedForRing) name:[NSString stringWithFormat:@"%@%@",name,@"movedMouse"] object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateRingOut) name:@"escapeWindow" object:nil];
 	
 	ringAllowsActions = NO;
 	isSticky = NO;
@@ -184,7 +185,6 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 {
 	NSScreen *main = [NSScreen mainScreen];
 	NSRect screenRect = [main frame];
-	//NSRect windowFrame = NSMakeRect(0, 0, screenRect.size.width - 100, screenRect.size.height - 100);
 	NSRect windowFrame = NSMakeRect(0, 0, screenRect.size.width, screenRect.size.height);
 	
 	ringView = [[CustomView alloc] initWithFrame:windowFrame];
@@ -193,13 +193,21 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	[ringWindow setContentView:ringView];
 	[ringWindow setHidesOnDeactivate:YES];
 	[ringWindow setViewsNeedDisplay:YES];
-	//[ringWindow setNotificationName:ringName]; // Not sure why I need this anymore.
 	
 	// Add the ring to the centre
 	NSPoint ringCentre = [self viewCenter:ringView];
 	NSRect arrowFrame = NSMakeRect(ringCentre.x - (ARROW_RADIUS/2), ringCentre.y - (ARROW_RADIUS/2), ARROW_RADIUS, ARROW_RADIUS);
 	NSRect ringFrame = NSMakeRect(ringCentre.x - (RING_RADIUS/2), ringCentre.y - (RING_RADIUS/2), RING_RADIUS, RING_RADIUS);
-	
+    
+    // weird blur thing
+    /*
+    blurView = [[NSImageView alloc] initWithFrame:windowFrame];
+    [blurView setImageFrameStyle:NSImageFrameNone];
+    NSURL *bgURL = [[NSWorkspace sharedWorkspace] desktopImageURLForScreen:main];
+    bgBlur = [[[NSImage alloc] initWithContentsOfURL:bgURL] retain];
+    [blurView setImage:bgBlur];
+    [ringView addSubview:blurView];
+	*/
 	theArrow = [[NSImageView alloc] initWithFrame:arrowFrame];
 	theRing = [[NSImageView alloc] initWithFrame:ringFrame];
 	
@@ -208,8 +216,9 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	[theRing setAutoresizingMask:NSScaleToFit];
 	[theRing setImageFrameStyle:NSImageFrameNone];
 	
-	[theArrow setImage:[NSImage imageNamed:@"pointer"]];
-	[theRing setImage:[NSImage imageNamed:@"circleCentre"]];
+    // Set the look of the ring (the theme)
+	[theArrow setImage:[NSImage imageNamed:@"nimbletheme_pointer"]];
+	[theRing setImage:[NSImage imageNamed:@"nimbletheme_center"]];
 	
 	[ringView addSubview:theArrow];
 	[ringView addSubview:theRing];
@@ -369,7 +378,9 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 
 - (void)keyUpForRing
 {	
-	
+	if (isSticky)
+        return;
+    
 	[self animateRingOut];
 	[self mouseDownForRing];
 	/*

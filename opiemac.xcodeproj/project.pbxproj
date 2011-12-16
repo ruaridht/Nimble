@@ -14,8 +14,6 @@
 		551486B712ED9F9400F4D3A9 /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 551486B512ED9F9400F4D3A9 /* CustomView.m */; };
 		551486C312ED9FBD00F4D3A9 /* pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 551486C112ED9FBC00F4D3A9 /* pointer.png */; };
 		551486C412ED9FBD00F4D3A9 /* circleCentre.png in Resources */ = {isa = PBXBuildFile; fileRef = 551486C212ED9FBD00F4D3A9 /* circleCentre.png */; };
-		551486C712ED9FD400F4D3A9 /* circle.tif in Resources */ = {isa = PBXBuildFile; fileRef = 551486C512ED9FD400F4D3A9 /* circle.tif */; };
-		551486C812ED9FD400F4D3A9 /* pentagon.tif in Resources */ = {isa = PBXBuildFile; fileRef = 551486C612ED9FD400F4D3A9 /* pentagon.tif */; };
 		551486CB12EDA01700F4D3A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551486CA12EDA01600F4D3A9 /* QuartzCore.framework */; };
 		5538D1CA12FDB82900AD9A99 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5538D1C912FDB82900AD9A99 /* ShortcutRecorder.framework */; };
 		5538D1D512FDB82E00AD9A99 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5538D1C912FDB82900AD9A99 /* ShortcutRecorder.framework */; };
@@ -27,6 +25,8 @@
 		55B1514B130C7D1E007C79A8 /* NSVTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B15148130C7D1E007C79A8 /* NSVTextFieldCell.m */; };
 		55B1514C130C7D1E007C79A8 /* NSArray+Datasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B1514A130C7D1E007C79A8 /* NSArray+Datasource.m */; };
 		55BB1A1112EDE7FA00293DF3 /* TintedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BB1A1012EDE7FA00293DF3 /* TintedImage.m */; };
+		55C3FA9D149AC9840044D0C3 /* nimbletheme_center.png in Resources */ = {isa = PBXBuildFile; fileRef = 55C3FA9B149AC9840044D0C3 /* nimbletheme_center.png */; };
+		55C3FA9E149AC9840044D0C3 /* nimbletheme_pointer.psd in Resources */ = {isa = PBXBuildFile; fileRef = 55C3FA9C149AC9840044D0C3 /* nimbletheme_pointer.psd */; };
 		55C606FA12F87B3900A48443 /* RingTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C606F912F87B3900A48443 /* RingTheme.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -65,8 +65,6 @@
 		551486B512ED9F9400F4D3A9 /* CustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomView.m; sourceTree = "<group>"; };
 		551486C112ED9FBC00F4D3A9 /* pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pointer.png; sourceTree = "<group>"; };
 		551486C212ED9FBD00F4D3A9 /* circleCentre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circleCentre.png; sourceTree = "<group>"; };
-		551486C512ED9FD400F4D3A9 /* circle.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = circle.tif; sourceTree = "<group>"; };
-		551486C612ED9FD400F4D3A9 /* pentagon.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = pentagon.tif; sourceTree = "<group>"; };
 		551486C912ED9FFA00F4D3A9 /* OpieHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpieHeader.h; sourceTree = "<group>"; };
 		551486CA12EDA01600F4D3A9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5538D1C912FDB82900AD9A99 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShortcutRecorder.framework; sourceTree = "<group>"; };
@@ -82,6 +80,8 @@
 		55B1514A130C7D1E007C79A8 /* NSArray+Datasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Datasource.m"; sourceTree = "<group>"; };
 		55BB1A0F12EDE7FA00293DF3 /* TintedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TintedImage.h; sourceTree = "<group>"; };
 		55BB1A1012EDE7FA00293DF3 /* TintedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TintedImage.m; sourceTree = "<group>"; };
+		55C3FA9B149AC9840044D0C3 /* nimbletheme_center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nimbletheme_center.png; sourceTree = "<group>"; };
+		55C3FA9C149AC9840044D0C3 /* nimbletheme_pointer.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = nimbletheme_pointer.psd; sourceTree = "<group>"; };
 		55C606F812F87B3900A48443 /* RingTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingTheme.h; sourceTree = "<group>"; };
 		55C606F912F87B3900A48443 /* RingTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RingTheme.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* opiemac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "opiemac-Info.plist"; sourceTree = "<group>"; };
@@ -184,11 +184,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				55C3FA9B149AC9840044D0C3 /* nimbletheme_center.png */,
+				55C3FA9C149AC9840044D0C3 /* nimbletheme_pointer.psd */,
 				5514380F1309764E00E68F77 /* UIDivider.png */,
 				551486C112ED9FBC00F4D3A9 /* pointer.png */,
 				551486C212ED9FBD00F4D3A9 /* circleCentre.png */,
-				551486C512ED9FD400F4D3A9 /* circle.tif */,
-				551486C612ED9FD400F4D3A9 /* pentagon.tif */,
 				8D1107310486CEB800E47090 /* opiemac-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -263,9 +263,9 @@
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				551486C312ED9FBD00F4D3A9 /* pointer.png in Resources */,
 				551486C412ED9FBD00F4D3A9 /* circleCentre.png in Resources */,
-				551486C712ED9FD400F4D3A9 /* circle.tif in Resources */,
-				551486C812ED9FD400F4D3A9 /* pentagon.tif in Resources */,
 				551438101309764E00E68F77 /* UIDivider.png in Resources */,
+				55C3FA9D149AC9840044D0C3 /* nimbletheme_center.png in Resources */,
+				55C3FA9E149AC9840044D0C3 /* nimbletheme_pointer.psd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

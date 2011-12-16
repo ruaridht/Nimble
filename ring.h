@@ -38,6 +38,9 @@
 	
 	SRRecorderControl *ringHotkeyControl;
 	KeyCombo ringGlobalHotKey;
+    
+    NSImageView *blurView;
+    NSImage *bgBlur;
 }
 
 @property (readwrite, retain) NSString *ringName;
