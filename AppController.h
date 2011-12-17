@@ -15,10 +15,8 @@
 @interface AppController : NSObject <NSApplicationDelegate, NSTableViewDelegate, NSTableViewDataSource> {
 	BOOL ringIsActive;
 	
-	/*
-	Ring *launchedAppsRing;
-	Ring *otherLARing;
-	*/
+    FileHandler *handler;
+    
 	Ring *currentRing;
 	NSMutableArray *allRings;
 	
@@ -63,6 +61,7 @@
 - (IBAction)toggleBlurredBackground:(id)sender;
 
 - (IBAction)openPreferences:(id)sender;
+- (IBAction)ringPreferenceChanged:(id)sender;
 
 - (BOOL)loadRings;
 - (BOOL)saveRings;

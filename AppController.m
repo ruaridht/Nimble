@@ -24,6 +24,8 @@
 	allRings = [[NSMutableArray array] retain];
     ringRecords = [[NSMutableArray array] retain];
     
+    handler = [[[FileHandler alloc] init] retain];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeAppFromFront) name:@"escapeWindow" object:nil];
 	
 	return self;
@@ -31,6 +33,8 @@
 
 - (void)awakeFromNib
 {
+    [handler checkSupportPaths];
+    
 	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
 	[statusItem setTitle:@"N"];
 	[statusItem setHighlightMode:YES];
@@ -56,6 +60,8 @@
 	[column setDataCell:cell];
     [column setResizingMask: NSTableColumnAutoresizingMask];
 	[cell release];
+    
+    //if ([self saveRings]) NSLog(@"Saved?");
 }
 
 - (void)dealloc
@@ -77,8 +83,7 @@
 
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
-	if ([self saveRings])
-        NSLog(@"Safe.");
+    
 }
 
 - (void)applicationWillHide:(NSNotification *)notification
@@ -293,22 +298,44 @@
 {
     //NSLog(@"Hotkey: %@", [theRingRecorderControl keyComboString]);
     [currentRing setGlobalHotkey:[theRingRecorderControl keyCombo]];
+    //[self saveRings];
 }
 
 #pragma mark -
 #pragma mark Ring Loading and Saving
+
+- (IBAction)ringPreferenceChanged:(id)sender
+{
+    if ([self saveRings]) {
+        NSLog(@"Rings saved");
+    }
+}
 
 /*
  *	Returns true if all rings have been loaded/saved properly, and false if there are any errors.
  */
 - (BOOL)loadRings
 {
-	Ring *ring1 = [[[Ring alloc] initWithName:@"Launched Apps"] retain];
-	//Ring *ring2 = [[[Ring alloc] initWithName:@"Spaces"] retain];
-	
-	[allRings addObject:ring1];
-	//[allRings addObject:ring2];
-	
+    NSArray *ringPaths = [handler ringReadPaths];
+    for (NSString *ringPath in ringPaths) {
+        if ([ringPath isEqualToString:@".DS_Store"]) continue;
+        
+        NSString *fullPath = [NSString stringWithFormat:@"%@/%@", [handler ringWritePath], ringPath];
+        NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:fullPath];
+        
+        Ring *r = [[[Ring alloc] initFromDictionary:dict] retain];
+        [allRings addObject:r];
+    }
+    
+    // If there aren't any known rings then create the default.
+    if ([ringPaths count] == 1) {
+        Ring *ring1 = [[[Ring alloc] initWithName:@"Launched Apps"] retain];
+        //Ring *ring2 = [[[Ring alloc] initWithName:@"Spaces"] retain];
+        [allRings addObject:ring1];
+        //[allRings addObject:ring2];
+        NSLog(@"Default ring added");
+	}
+    
 	for (Ring *r in allRings) {
 		[ringRecords addObject:[self tableViewRecordForTab:[r ringName] iconName:@"circleCentre"]];
 	}
@@ -321,21 +348,11 @@
  */
 - (BOOL)saveRings
 {
-    NSURL *applicationSupportFolder = [[NSFileManager defaultManager] URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-    
-    NSString *path = [NSString stringWithFormat:@"%@%@", [applicationSupportFolder path], @"/Nimble"];
-    NSLog(@"%@", path);
-    BOOL supportFolderExists = [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:YES];
-    
-    if (!supportFolderExists) {
-        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
-    }
-    
-    return YES;
-    
     for (Ring *r in allRings) {
         NSDictionary *dict = [r dictionaryForRing];
+        NSString *writePath = [NSString stringWithFormat:@"%@/%@%@", [handler ringWritePath], [r ringName], @".nimblering"];
         
+        [dict writeToFile:writePath atomically:YES];
     }
 	return YES;
 }

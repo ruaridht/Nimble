@@ -14,17 +14,6 @@
 #define ROTATION_SPEED 10.0
 #define CROP_VALUE 50.0
 
-#define RING_NAME       @"NAME_OF_RING"
-#define RING_BLUR       @"RING_BG_BLUR"
-#define RING_KEYCODE    @"RING_KEYCODE"
-#define RING_MODS       @"RING_MODIFIERS"
-#define RING_KEYCOMBO   @"RING_KEYCOMBO"
-#define RING_SIZE       @"RING_SIZE"
-#define RING_THEME      @"RING_THEME"
-#define RING_POSITION   @"RING_POSITION"
-#define RING_ICON_SIZE  @"RING_ICON_SIZE"
-#define RING_ICON_RAD   @"RING_ICON_RADIUS"
-
 @implementation Ring
 
 @synthesize ringName, ringColour, ringSize, iconSize, iconRadius,/* ringHotkeyControl,*/ isSticky, isBGBlur, ringPosition, ringTheme;
@@ -99,22 +88,21 @@ NSNumber* DegreesToNumber(CGFloat degrees)
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMovedForRing) name:@"mouseMovedForRing" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseDownForRing) name:@"mouseDownForRing" object:nil];
-	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMovedForRing) name:[NSString stringWithFormat:@"%@%@",name,@"movedMouse"] object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateRingOut) name:@"escapeWindow" object:nil];
 	
 	ringAllowsActions = NO;
-	isSticky = NO;
-    isBGBlur = NO;
+	isSticky = [[dict objectForKey:RING_STICKY] boolValue];
+    isBGBlur = [[dict objectForKey:RING_BLUR] boolValue];
 	ringIsActive = NO;
 	ringColour = [NSColor clearColor];
-	ringSize = 300;
-	iconSize = 128;
-	iconRadius = 300;
-    ringTheme = @"default";
+	ringSize = [[dict objectForKey:RING_SIZE] intValue];
+	iconSize = [[dict objectForKey:RING_ICON_SIZE] floatValue];
+	iconRadius = [[dict objectForKey:RING_ICON_RAD] floatValue];;
+    ringTheme = [dict objectForKey:RING_THEME];
 	
-	ringPosition = 0;
+	ringPosition = [[dict objectForKey:RING_POSITION] integerValue];
 	
-	//ringName = name;
+	ringName = [dict objectForKey:RING_NAME];
 	[self buildRing];
 	
 	ringHotkeyControl = [[[SRRecorderControl alloc] init] retain];
@@ -125,6 +113,11 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 											 target:self
 									selectorForDown:@selector(animateRingIn)
 											  andUp:@selector(keyUpForRing)];
+    
+    KeyCombo combo;
+    combo.code = [[dict objectForKey:RING_KEYCODE] intValue];
+    combo.flags = [[dict objectForKey:RING_MODS] intValue];
+    [self setGlobalHotkey:combo];
 	
 	return self;
 }
@@ -184,9 +177,10 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 
 - (NSDictionary *)dictionaryForRing
 {
-    NSDictionary *dict = [NSDictionary dictionary];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setValue:ringName forKey:RING_NAME];
     [dict setValue:[NSNumber numberWithBool:isBGBlur] forKey:RING_BLUR];
+    [dict setValue:[NSNumber numberWithBool:isSticky] forKey:RING_STICKY];
     
     KeyCombo combo = [ringHotkeyControl keyCombo];
     int keycode = combo.code;
