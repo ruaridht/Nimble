@@ -56,12 +56,6 @@
 	[column setDataCell:cell];
     [column setResizingMask: NSTableColumnAutoresizingMask];
 	[cell release];
-    
-    // Hide the menubar when activating the app
-    /*
-    NSApplicationPresentationOptions options = NSApplicationPresentationHideDock + NSApplicationPresentationHideMenuBar;
-    [NSApp setPresentationOptions:options];
-     */
 }
 
 - (void)dealloc
@@ -83,7 +77,8 @@
 
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
-	
+	if ([self saveRings])
+        NSLog(@"Safe.");
 }
 
 - (void)applicationWillHide:(NSNotification *)notification
@@ -120,9 +115,9 @@
 #pragma mark IBActions
 
 - (void)removeAppFromFront
-{
-    // Probs shouldn't do this.
-    //[NSApp deactivate];
+{  
+    // Basically we just want to send the app to the background.
+    [[NSApplication sharedApplication] hide:self];
 }
 
 - (IBAction)testButton:(id)sender
@@ -193,6 +188,11 @@
 - (IBAction)setRingCenterPosition:(id)sender
 {
 	[currentRing setRingDrawingPosition:[sender selectedSegment]];
+}
+
+- (IBAction)toggleBlurredBackground:(id)sender
+{
+    [currentRing toggleBlurredBackground];
 }
 
 #pragma mark -
@@ -321,7 +321,23 @@
  */
 - (BOOL)saveRings
 {
-	return NO;
+    NSURL *applicationSupportFolder = [[NSFileManager defaultManager] URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+    
+    NSString *path = [NSString stringWithFormat:@"%@%@", [applicationSupportFolder path], @"/Nimble"];
+    NSLog(@"%@", path);
+    BOOL supportFolderExists = [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:YES];
+    
+    if (!supportFolderExists) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:nil];
+    }
+    
+    return YES;
+    
+    for (Ring *r in allRings) {
+        NSDictionary *dict = [r dictionaryForRing];
+        
+    }
+	return YES;
 }
 
 @end

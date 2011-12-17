@@ -12,7 +12,6 @@
 
 #import "CustomWindow.h"
 #import "CustomView.h"
-#import "TintedImage.h"
 #import "NSString+Crop.h"
 
 #import "Ring.h"

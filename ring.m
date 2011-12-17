@@ -12,10 +12,22 @@
 #define RING_RADIUS 300
 #define ARROW_RADIUS 300
 #define ROTATION_SPEED 10.0
+#define CROP_VALUE 50.0
+
+#define RING_NAME       @"NAME_OF_RING"
+#define RING_BLUR       @"RING_BG_BLUR"
+#define RING_KEYCODE    @"RING_KEYCODE"
+#define RING_MODS       @"RING_MODIFIERS"
+#define RING_KEYCOMBO   @"RING_KEYCOMBO"
+#define RING_SIZE       @"RING_SIZE"
+#define RING_THEME      @"RING_THEME"
+#define RING_POSITION   @"RING_POSITION"
+#define RING_ICON_SIZE  @"RING_ICON_SIZE"
+#define RING_ICON_RAD   @"RING_ICON_RADIUS"
 
 @implementation Ring
 
-@synthesize ringName, ringColour, ringSize, iconSize, iconRadius,/* ringHotkeyControl,*/ isSticky, tintRing, ringPosition;
+@synthesize ringName, ringColour, ringSize, iconSize, iconRadius,/* ringHotkeyControl,*/ isSticky, isBGBlur, ringPosition, ringTheme;
 
 // Standard functions
 CGFloat DegreesToRadians(CGFloat degrees)
@@ -39,11 +51,6 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	if (![super init])
 		return nil;
 	
-	// Something at ring start.
-	// At the moment we will just use this backwards way of triggering the ring.
-	// We are not likely to need these, since we will be assigning the target from within the ring.
-	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyUpForRing:) name:@"ringGlobalHotkeyUpTriggered" object:nil];
-	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateRingIn) name:@"ringGlobalHotkeyDownTriggered" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMovedForRing) name:@"mouseMovedForRing" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseDownForRing) name:@"mouseDownForRing" object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMovedForRing) name:[NSString stringWithFormat:@"%@%@",name,@"movedMouse"] object:nil];
@@ -51,12 +58,13 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	
 	ringAllowsActions = NO;
 	isSticky = NO;
-	tintRing = NO;
+    isBGBlur = NO;
 	ringIsActive = NO;
 	ringColour = [NSColor clearColor];
-	ringSize = 0;
+	ringSize = 300;
 	iconSize = 128;
 	iconRadius = 300;
+    ringTheme = @"default";
 	
 	ringPosition = 0;
 	
@@ -84,6 +92,43 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	return self;
 }
 
+- (id)initFromDictionary:(NSDictionary *)dict
+{
+    if (![super init])
+		return nil;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMovedForRing) name:@"mouseMovedForRing" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseDownForRing) name:@"mouseDownForRing" object:nil];
+	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMovedForRing) name:[NSString stringWithFormat:@"%@%@",name,@"movedMouse"] object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateRingOut) name:@"escapeWindow" object:nil];
+	
+	ringAllowsActions = NO;
+	isSticky = NO;
+    isBGBlur = NO;
+	ringIsActive = NO;
+	ringColour = [NSColor clearColor];
+	ringSize = 300;
+	iconSize = 128;
+	iconRadius = 300;
+    ringTheme = @"default";
+	
+	ringPosition = 0;
+	
+	//ringName = name;
+	[self buildRing];
+	
+	ringHotkeyControl = [[[SRRecorderControl alloc] init] retain];
+	
+	SDGlobalShortcutsController *shortcutsController = [SDGlobalShortcutsController sharedShortcutsController];
+	[shortcutsController addShortcutFromDefaultsKey:[NSString stringWithFormat:@"%@%@",ringName,@"GlobalHotkey"]
+										withControl:ringHotkeyControl
+											 target:self
+									selectorForDown:@selector(animateRingIn)
+											  andUp:@selector(keyUpForRing)];
+	
+	return self;
+}
+
 - (void)dealloc
 {
 	[ringWindow release];
@@ -98,7 +143,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 
 - (void)setTheme:(RingTheme *)theTheme
 {
-	
+	// Woah, this does nothing yet!
 }
 
 - (RingTheme *)currentTheme
@@ -106,15 +151,56 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	return nil;
 }
 
+- (void)setGlobalHotkey:(KeyCombo)theCombo
+{
+	NSLog(@"Setting hotkey to: %i and %i", theCombo.code, theCombo.flags);
+	[ringHotkeyControl setKeyCombo:theCombo];
+}
+
 - (KeyCombo)currentKeyCombo
 {
 	return [ringHotkeyControl keyCombo];
 }
 
-- (void)setGlobalHotkey:(KeyCombo)theCombo
+/*
+ *	Returns a snapshot of this ring.
+ */
+- (NSImage *)currentRingImage
 {
-	NSLog(@"Setting hotkey to: %i", theCombo.code);
-	[ringHotkeyControl setKeyCombo:theCombo];
+	CGImageRef windowImage = CGWindowListCreateImage(CGRectNull, 
+													 kCGWindowListOptionIncludingWindow, 
+													 (CGWindowID)[ringWindow windowNumber], 
+													 kCGWindowImageDefault);
+	
+	NSRect rect = NSMakeRect(0, 0, CGImageGetWidth(windowImage), CGImageGetHeight(windowImage));
+	NSImage* image = [[NSImage alloc] initWithSize:rect.size];
+    [image lockFocus];
+    CGContextDrawImage([[NSGraphicsContext currentContext]
+						graphicsPort], *(CGRect*)&rect, windowImage);
+    [image unlockFocus];
+	
+	return image;
+}
+
+- (NSDictionary *)dictionaryForRing
+{
+    NSDictionary *dict = [NSDictionary dictionary];
+    [dict setValue:ringName forKey:RING_NAME];
+    [dict setValue:[NSNumber numberWithBool:isBGBlur] forKey:RING_BLUR];
+    
+    KeyCombo combo = [ringHotkeyControl keyCombo];
+    int keycode = combo.code;
+    int flags = combo.flags;
+    [dict setValue:[NSNumber numberWithInt:keycode] forKey:RING_KEYCODE];
+    [dict setValue:[NSNumber numberWithInt:flags] forKey:RING_MODS];
+    
+    [dict setValue:[NSNumber numberWithInt:ringSize] forKey:RING_SIZE];
+    [dict setValue:ringTheme forKey:@"RING_THEME"];
+    [dict setValue:[NSNumber numberWithInteger:ringPosition] forKey:RING_POSITION];
+    [dict setValue:[NSNumber numberWithFloat:iconRadius] forKey:RING_ICON_RAD];
+    [dict setValue:[NSNumber numberWithFloat:iconSize] forKey:RING_ICON_SIZE];
+    
+    return dict;
 }
 
 #pragma mark -
@@ -170,7 +256,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 }
 
 /*
- *	Gets ad returns the center point of an NSView.  Why isn't this in CustomView?
+ *	Gets ad returns the center point of an NSView. Why isn't this in CustomView?
  */
 - (NSPoint)viewCenter:(NSView *)theView
 {
@@ -178,24 +264,45 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	return NSMakePoint(viewFrame.origin.x + (viewFrame.size.width/2.0), viewFrame.origin.y + (viewFrame.size.height/2.0));
 }
 
+/*
+ *  Gets the current screen's background image, scales it to the screen size and 
+ *  blurs it using either CIGaussianBlur, CIBoxBlur, CIDiscBlur, CIMotionBlur or
+ *  CIZoomBlur.
+ *  Also crop 21 pixels off the top of the image to account for the menubar we can't
+ *  get rid of.
+ */
+
 - (void)blurAndSetBackground
 {
+    NSRect screenRect = [[NSScreen mainScreen] frame];
     NSURL *bgURL = [[NSWorkspace sharedWorkspace] desktopImageURLForScreen:[NSScreen mainScreen]];
-    NSImage* sourceImage = [[NSImage alloc] initWithContentsOfURL:bgURL];
-    CIImage* inputImage = [CIImage imageWithData:[sourceImage
-                                                  TIFFRepresentation]];
-    CIFilter* filter = [CIFilter filterWithName:@"CIGaussianBlur"];
-    [filter setDefaults];
-    [filter setValue:inputImage forKey:@"inputImage"];
-    CIImage* outputImage = [filter valueForKey:@"outputImage"];
     
-    NSRect outputImageRect = NSRectFromCGRect([outputImage extent]);
-    NSImage* blurredImage = [[NSImage alloc]
-                             initWithSize:outputImageRect.size];
+    NSImage *sourceImage = [[NSImage alloc] initWithContentsOfURL:bgURL];
+    NSSize sourceSize = [sourceImage size];
+    float scaleFactor = screenRect.size.width / sourceSize.width;
+    
+    CIImage *inputImage = [CIImage imageWithData:[sourceImage TIFFRepresentation]];
+    
+    CIFilter *blur = [CIFilter filterWithName:@"CIGaussianBlur"];
+    [blur setValue:inputImage forKey:@"inputImage"];
+    [blur setValue:[NSNumber numberWithFloat:5.0] forKey:@"inputRadius"];
+    CIImage *blurred = [blur valueForKey:@"outputImage"];
+    
+    //scaleFactor = screenRect.size.width / [blurred extent].size.width;
+    
+    CIFilter *scale = [CIFilter filterWithName:@"CILanczosScaleTransform"];
+    [scale setValue:blurred forKey:@"inputImage"];
+    [scale setValue:[NSNumber numberWithFloat:scaleFactor] forKey:@"inputScale"];
+    [scale setValue:[NSNumber numberWithFloat:1.0] forKey:@"inputAspectRatio"];
+    CIImage *scaled = [scale valueForKey:@"outputImage"];
+    
+    NSImage *blurredImage = [[NSImage alloc] initWithSize:screenRect.size];
+    
     [blurredImage lockFocus];
-    [outputImage drawAtPoint:NSZeroPoint fromRect:outputImageRect
-                   operation:NSCompositeCopy fraction:1.0];
+    [scaled drawAtPoint:NSZeroPoint fromRect:screenRect operation:NSCompositeCopy fraction:1.0];
     [blurredImage unlockFocus];
+    
+    //NSLog(@"Size: %fx%f", [scaled extent].size.width, [scaled extent].size.height);
     
     [blurView setImage:blurredImage];
 }
@@ -216,6 +323,9 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	[ringWindow setContentView:ringView];
 	[ringWindow setHidesOnDeactivate:YES];
 	[ringWindow setViewsNeedDisplay:YES];
+    
+    // Does this work?
+    //[ringWindow setLevel:kCGDockWindowLevel - 1];
 	
 	// Add the ring to the centre
 	NSPoint ringCentre = [self viewCenter:ringView];
@@ -225,7 +335,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
     // weird blur thing
     
     blurView = [[NSImageView alloc] initWithFrame:windowFrame];
-    [blurView setAutoresizingMask:NSScaleProportionally];
+    [blurView setAutoresizingMask:NSScaleToFit];
     [blurView setImageFrameStyle:NSImageFrameNone];
     [self blurAndSetBackground];
     //NSURL *bgURL = [[NSWorkspace sharedWorkspace] desktopImageURLForScreen:[NSScreen mainScreen]];
@@ -244,13 +354,36 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	[theArrow setImage:[NSImage imageNamed:@"dark_noir_pointer"]];
 	[theRing setImage:[NSImage imageNamed:@"dark_noir_circle_blue"]];
 	
-    [ringView addSubview:blurView];
+    if (isBGBlur) [ringView addSubview:blurView];
 	[ringView addSubview:theArrow];
 	[ringView addSubview:theRing];
 	
 	[ringWindow center]; // Centers the ringWindow on the users screen.
 	
 	NSLog(@"%@ built.", ringName);
+}
+
+- (void)toggleBlurredBackground
+{
+    NSArray *allViews = [ringView subviews];
+	NSMutableArray *allViewsMut = [NSMutableArray arrayWithArray:allViews];
+    BOOL isOn = NO;
+    
+    // First just a quick sanity check if it is on already.
+    for (NSView *aView in allViewsMut) {
+        if (aView == blurView){
+            isOn = YES;
+        }
+    }
+    
+    if (isBGBlur) {
+        // If we want it on and it's not on, add it.
+        if (!isOn)
+            [ringView addSubview:blurView];
+    } else {
+        if (isOn)
+            [blurView removeFromSuperview];
+    }
 }
 
 - (void)setRingCenterPosition:(NSPoint)center
@@ -268,33 +401,6 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	
 	NSPoint new = NSMakePoint(center.x - (screenRect.size.width/2), center.y - (screenRect.size.height/2));
 	[ringWindow setFrameOrigin:new];
-}
-
-/*
- *	Returns a snapshot of this ring.
- */
-- (NSImage *)currentRingImage
-{
-	CGImageRef windowImage = CGWindowListCreateImage(CGRectNull, 
-													 kCGWindowListOptionIncludingWindow, 
-													 (CGWindowID)[ringWindow windowNumber], 
-													 kCGWindowImageDefault);
-	
-	NSRect rect = NSMakeRect(0, 0, CGImageGetWidth(windowImage), CGImageGetHeight(windowImage));
-	NSImage* image = [[NSImage alloc] initWithSize:rect.size];
-    [image lockFocus];
-    CGContextDrawImage([[NSGraphicsContext currentContext]
-						graphicsPort], *(CGRect*)&rect, windowImage);
-    [image unlockFocus];
-	
-	return image;
-}
-
-/* Tints the ring to the chosen colour. */
-- (void)tintRingWithColour:(NSColor *)colour
-{	
-	[[theArrow animator] setImage:[[NSImage imageNamed:@"dark_noir_pointer"] tintedImageWithColor:colour operation:NSCompositeSourceIn]];
-	[[theRing animator] setImage:[[NSImage imageNamed:@"dark_noir_circle_blue"] tintedImageWithColor:colour operation:NSCompositeSourceIn]];
 }
 
 - (void)setRingDrawingPosition:(NSInteger)position
@@ -332,11 +438,14 @@ NSNumber* DegreesToNumber(CGFloat degrees)
  */
 - (void)animateRingIn
 {
+    if (isBGBlur) {
+        // Hide the menubar when activating the app
+        NSApplicationPresentationOptions options = NSApplicationPresentationHideDock + NSApplicationPresentationHideMenuBar;
+        [NSApp setPresentationOptions:options];
+    }
+    
 	//[[ringWindow contentView] setWantsLayer:YES];
 	//[[[ringWindow contentView] layer] addAnimation:[self sizeDecreaseAnimation] forKey:@"size"];
-	
-	if (tintRing)
-		[self tintRingWithColour:ringColour];
 	
 	if (ringPosition == 0) {
 		[ringWindow center];
@@ -352,12 +461,15 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	[ringWindow makeKeyAndOrderFront:self];
 	[[ringWindow animator] setAlphaValue:1.0];
 	
-	NSLog(@"Animate %@ in", ringName);
+	//NSLog(@"Animate %@ in", ringName);
 }
 
 - (void)animateRingOut
 {
-	[[ringWindow animator] setAlphaValue:0.0];
+    if (isBGBlur)
+        [NSApp setPresentationOptions:NSApplicationPresentationDefault];
+	
+    [[ringWindow animator] setAlphaValue:0.0];
 }
 
 - (void)adjustHighlightedApp
@@ -433,7 +545,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	[NSApp activateIgnoringOtherApps:YES];
 	NSRunningApplication *app = [ringApps objectAtIndex:index];
 	[app activateWithOptions:NSApplicationActivateAllWindows];
-	NSLog(@"Mouse down");
+	//NSLog(@"Mouse down");
 }
 
 - (void)keyUpForRing

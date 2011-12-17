@@ -46,7 +46,7 @@
 	NSMutableArray *ringRecords;
     
     // Anything past here is being tested.
-    IBOutlet NSImageView *bgView;
+    // Nothing
 }
 
 @property (readwrite, assign) Ring *_currentRing;
@@ -60,6 +60,7 @@
 - (IBAction)switchPreferenceView:(id)sender;
 - (void)loadView:(NSView *)theView;
 - (IBAction)setRingCenterPosition:(id)sender;
+- (IBAction)toggleBlurredBackground:(id)sender;
 
 - (IBAction)openPreferences:(id)sender;
 

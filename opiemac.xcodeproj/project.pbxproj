@@ -24,7 +24,6 @@
 		55B123B712F830380012A986 /* SDGlobalShortcuts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55B123B012F8302D0012A986 /* SDGlobalShortcuts.framework */; };
 		55B1514B130C7D1E007C79A8 /* NSVTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B15148130C7D1E007C79A8 /* NSVTextFieldCell.m */; };
 		55B1514C130C7D1E007C79A8 /* NSArray+Datasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B1514A130C7D1E007C79A8 /* NSArray+Datasource.m */; };
-		55BB1A1112EDE7FA00293DF3 /* TintedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BB1A1012EDE7FA00293DF3 /* TintedImage.m */; };
 		55C3FA9D149AC9840044D0C3 /* nimbletheme_center.png in Resources */ = {isa = PBXBuildFile; fileRef = 55C3FA9B149AC9840044D0C3 /* nimbletheme_center.png */; };
 		55C3FA9E149AC9840044D0C3 /* nimbletheme_pointer.psd in Resources */ = {isa = PBXBuildFile; fileRef = 55C3FA9C149AC9840044D0C3 /* nimbletheme_pointer.psd */; };
 		55C606FA12F87B3900A48443 /* RingTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C606F912F87B3900A48443 /* RingTheme.m */; };
@@ -82,8 +81,6 @@
 		55B15148130C7D1E007C79A8 /* NSVTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSVTextFieldCell.m; sourceTree = "<group>"; };
 		55B15149130C7D1E007C79A8 /* NSArray+Datasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Datasource.h"; sourceTree = "<group>"; };
 		55B1514A130C7D1E007C79A8 /* NSArray+Datasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Datasource.m"; sourceTree = "<group>"; };
-		55BB1A0F12EDE7FA00293DF3 /* TintedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TintedImage.h; sourceTree = "<group>"; };
-		55BB1A1012EDE7FA00293DF3 /* TintedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TintedImage.m; sourceTree = "<group>"; };
 		55C3FA9B149AC9840044D0C3 /* nimbletheme_center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nimbletheme_center.png; sourceTree = "<group>"; };
 		55C3FA9C149AC9840044D0C3 /* nimbletheme_pointer.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = nimbletheme_pointer.psd; sourceTree = "<group>"; };
 		55C606F812F87B3900A48443 /* RingTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingTheme.h; sourceTree = "<group>"; };
@@ -121,8 +118,6 @@
 				551486B312ED9F9400F4D3A9 /* CustomWindow.m */,
 				551486B412ED9F9400F4D3A9 /* CustomView.h */,
 				551486B512ED9F9400F4D3A9 /* CustomView.m */,
-				55BB1A0F12EDE7FA00293DF3 /* TintedImage.h */,
-				55BB1A1012EDE7FA00293DF3 /* TintedImage.m */,
 				55A71DAE12F1E08200EE4D05 /* Ring.h */,
 				55A71DAF12F1E08200EE4D05 /* Ring.m */,
 				55C606F812F87B3900A48443 /* RingTheme.h */,
@@ -296,7 +291,6 @@
 				551486A712ED9F0800F4D3A9 /* AppController.m in Sources */,
 				551486B612ED9F9400F4D3A9 /* CustomWindow.m in Sources */,
 				551486B712ED9F9400F4D3A9 /* CustomView.m in Sources */,
-				55BB1A1112EDE7FA00293DF3 /* TintedImage.m in Sources */,
 				55A71DB012F1E08200EE4D05 /* Ring.m in Sources */,
 				55C606FA12F87B3900A48443 /* RingTheme.m in Sources */,
 				559175F612F97D6800A02329 /* NSString+Crop.m in Sources */,

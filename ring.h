@@ -18,11 +18,12 @@
 	
 	NSString *ringName;
 	NSColor *ringColour;
-	NSNumber *ringSize;
+	int ringSize;
 	CGFloat iconSize;
 	CGFloat iconRadius;
 	int ringType;
 	NSInteger ringPosition;
+    NSString *ringTheme;
 	
 	NSImageView *theArrow;
 	NSImageView *theRing;
@@ -33,8 +34,8 @@
 	
 	BOOL ringAllowsActions;
 	BOOL isSticky;
+    BOOL isBGBlur;
 	BOOL ringIsActive;
-	BOOL tintRing;
 	
 	SRRecorderControl *ringHotkeyControl;
 	KeyCombo ringGlobalHotKey;
@@ -45,19 +46,33 @@
 
 @property (readwrite, retain) NSString *ringName;
 @property (readwrite, retain) NSColor *ringColour;
-@property (readwrite, retain) NSNumber *ringSize;
+@property (readwrite) int ringSize;
 @property (readwrite) CGFloat iconRadius;
 @property (readwrite) CGFloat iconSize;
 @property (readwrite) BOOL isSticky;
-@property (readwrite) BOOL tintRing;
+@property (readwrite) BOOL isBGBlur;
 @property (readwrite) NSInteger ringPosition;
-//@property (readwrite, retain) SRRecorderControl *ringHotkeyControl;
+@property (readwrite, retain) NSString *ringTheme;
+
+- (id)initWithName:(NSString *)name;
+- (id)initFromDictionary:(NSDictionary *)dict;
+
+- (void)setTheme:(RingTheme *)theTheme;
+- (RingTheme *)currentTheme;
+- (void)setGlobalHotkey:(KeyCombo)theCombo;
+- (KeyCombo)currentKeyCombo;
+- (NSImage *)currentRingImage;
+- (NSDictionary *)dictionaryForRing;
 
 - (void)addAppsToRing;
-- (NSPoint)viewCenter:(NSView *)theView;
-- (void)buildRing;
 - (void)removeAllAppsFromRing;
-- (NSImage *)currentRingImage;
+- (NSPoint)viewCenter:(NSView *)theView;
+- (void)blurAndSetBackground;
+- (void)buildRing;
+- (void)toggleBlurredBackground;
+
+- (void)setRingCenterPosition:(NSPoint)center;
+- (void)setRingDrawingPosition:(NSInteger)position;
 
 - (void)initiateAnimations;
 - (void)stopAllAnimations;
@@ -68,18 +83,14 @@
 - (void)mouseMovedForRing;
 - (void)mouseDownForRing;
 - (void)keyUpForRing;
+
 - (CAAnimation *)rotateToMouseAnimation;
 - (CAAnimation *)rotateInfiniteAnimation;
-
-- (void)tintRingWithColour:(NSColor *)colour;
+- (CAAnimation *)sizeDecreaseAnimation;
 
 - (CGFloat)mouseAngleAboutRing;
 - (void)getAndPresentLaunchedApps;
 
-- (void)setTheme:(RingTheme *)theTheme;
-- (RingTheme *)currentTheme;
-- (void)setRingDrawingPosition:(NSInteger)position;
-- (KeyCombo)currentKeyCombo;
-- (void)setGlobalHotkey:(KeyCombo)theCombo;
+// Saving and loading the ring
 
 @end
