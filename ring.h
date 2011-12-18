@@ -36,6 +36,7 @@
 	BOOL isSticky;
     BOOL isBGBlur;
 	BOOL ringIsActive;
+    BOOL openPrefsOnRing;
 	
 	SRRecorderControl *ringHotkeyControl;
 	KeyCombo ringGlobalHotKey;
@@ -63,6 +64,7 @@
 - (KeyCombo)currentKeyCombo;
 - (NSImage *)currentRingImage;
 - (NSDictionary *)dictionaryForRing;
+- (void)setOpenPrefs:(BOOL)open;
 
 - (void)addAppsToRing;
 - (void)removeAllAppsFromRing;

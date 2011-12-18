@@ -22,4 +22,6 @@
 - (NSString *)ringWritePath;
 - (NSArray *)ringReadPaths;
 
+- (void)removeRingAtPath:(NSString *)path;
+
 @end

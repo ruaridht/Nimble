@@ -27,6 +27,7 @@
     handler = [[[FileHandler alloc] init] retain];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeAppFromFront) name:@"escapeWindow" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPreferences:) name:@"iCommandThePrefsToOpen" object:nil];
 	
 	return self;
 }
@@ -35,10 +36,7 @@
 {
     [handler checkSupportPaths];
     
-	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
-	[statusItem setTitle:@"N"];
-	[statusItem setHighlightMode:YES];
-	[statusItem setMenu:statusMenu];
+	[self toggleMenubarIcon:self];
 	
     // TODO: This is wrong at the moment.
     //[ringRecords addObject:[self tableViewRecordForTab:@"Rings" iconName:NULL]];
@@ -61,7 +59,9 @@
     [column setResizingMask: NSTableColumnAutoresizingMask];
 	[cell release];
     
-    //if ([self saveRings]) NSLog(@"Saved?");
+    [self setOpenPrefsUsingRing:self];
+    [prefToolbar setSelectedItemIdentifier:[generalButton itemIdentifier] ];
+    [self loadView:generalView];
 }
 
 - (void)dealloc
@@ -298,7 +298,7 @@
 {
     //NSLog(@"Hotkey: %@", [theRingRecorderControl keyComboString]);
     [currentRing setGlobalHotkey:[theRingRecorderControl keyCombo]];
-    //[self saveRings];
+    [self saveRings];
 }
 
 #pragma mark -
@@ -306,8 +306,43 @@
 
 - (IBAction)ringPreferenceChanged:(id)sender
 {
-    if ([self saveRings]) {
-        NSLog(@"Rings saved");
+    [self saveRings];
+}
+
+- (IBAction)ringSizeChanged:(id)sender
+{
+    [currentRing buildRing];
+    [self saveRings];
+}
+
+- (IBAction)setOpenPrefsUsingRing:(id)sender
+{
+    BOOL openPrefs = [[NSUserDefaults standardUserDefaults] boolForKey:@"prefsUsingRing"];
+    
+    for (Ring *r in allRings) {
+        [r setOpenPrefs:openPrefs];
+    }
+}
+
+- (IBAction)toggleMenubarIcon:(id)sender
+{
+    BOOL hideIcon = [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMenubar"];
+    if (!hideIcon) {
+        statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
+        [statusItem setTitle:@"N"];
+        [statusItem setHighlightMode:YES];
+        [statusItem setMenu:statusMenu];
+        
+        [openPrefsButton setEnabled:YES];
+    } else {
+        if (statusItem) {
+            [statusItem release];
+            statusItem = nil;
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"prefsUsingRing"];
+        [self setOpenPrefsUsingRing:self];
+        [openPrefsButton setEnabled:NO];
     }
 }
 
@@ -337,7 +372,7 @@
 	}
     
 	for (Ring *r in allRings) {
-		[ringRecords addObject:[self tableViewRecordForTab:[r ringName] iconName:@"circleCentre"]];
+		[ringRecords addObject:[self tableViewRecordForTab:[r ringName] iconName:@"dark_noir_circle_blue"]];
 	}
 	
 	return YES;
@@ -346,15 +381,17 @@
 /*
  *	Returns true if all rings have been loaded/saved properly, and false if there are any errors.
  */
-- (BOOL)saveRings
+- (void)saveRings
 {
     for (Ring *r in allRings) {
         NSDictionary *dict = [r dictionaryForRing];
         NSString *writePath = [NSString stringWithFormat:@"%@/%@%@", [handler ringWritePath], [r ringName], @".nimblering"];
         
-        [dict writeToFile:writePath atomically:YES];
+        //NSLog(@"Path: %@", writePath);
+        //[handler removeRingAtPath: writePath];
+        [dict writeToFile:writePath atomically:NO];
     }
-	return YES;
+	//return YES;
 }
 
 @end

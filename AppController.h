@@ -43,6 +43,8 @@
 	IBOutlet NSTableView *ringTable;
 	NSMutableArray *ringRecords;
     
+    IBOutlet NSButton *openPrefsButton;
+    
     // Anything past here is being tested.
     // Nothing
 }
@@ -62,9 +64,12 @@
 
 - (IBAction)openPreferences:(id)sender;
 - (IBAction)ringPreferenceChanged:(id)sender;
+- (IBAction)ringSizeChanged:(id)sender;
+- (IBAction)setOpenPrefsUsingRing:(id)sender;
+- (IBAction)toggleMenubarIcon:(id)sender;
 
 - (BOOL)loadRings;
-- (BOOL)saveRings;
+- (void)saveRings;
 
 // Delegates
 - (NSDictionary *)tableViewRecordForTab:(NSString *)tabName iconName:(NSString *)iconName;

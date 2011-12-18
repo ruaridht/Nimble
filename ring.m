@@ -9,8 +9,6 @@
 #import "Ring.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define RING_RADIUS 300
-#define ARROW_RADIUS 300
 #define ROTATION_SPEED 10.0
 #define CROP_VALUE 50.0
 
@@ -54,6 +52,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	iconSize = 128;
 	iconRadius = 300;
     ringTheme = @"default";
+    openPrefsOnRing = NO;
 	
 	ringPosition = 0;
 	
@@ -99,6 +98,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	iconSize = [[dict objectForKey:RING_ICON_SIZE] floatValue];
 	iconRadius = [[dict objectForKey:RING_ICON_RAD] floatValue];;
     ringTheme = [dict objectForKey:RING_THEME];
+    openPrefsOnRing = NO;
 	
 	ringPosition = [[dict objectForKey:RING_POSITION] integerValue];
 	
@@ -146,7 +146,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 
 - (void)setGlobalHotkey:(KeyCombo)theCombo
 {
-	NSLog(@"Setting hotkey to: %i and %i", theCombo.code, theCombo.flags);
+	//NSLog(@"Setting hotkey to: %i and %i", theCombo.code, theCombo.flags);
 	[ringHotkeyControl setKeyCombo:theCombo];
 }
 
@@ -195,6 +195,11 @@ NSNumber* DegreesToNumber(CGFloat degrees)
     [dict setValue:[NSNumber numberWithFloat:iconSize] forKey:RING_ICON_SIZE];
     
     return dict;
+}
+
+- (void)setOpenPrefs:(BOOL)open
+{
+    openPrefsOnRing = open;
 }
 
 #pragma mark -
@@ -323,8 +328,8 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	
 	// Add the ring to the centre
 	NSPoint ringCentre = [self viewCenter:ringView];
-	NSRect arrowFrame = NSMakeRect(ringCentre.x - (ARROW_RADIUS/2), ringCentre.y - (ARROW_RADIUS/2), ARROW_RADIUS, ARROW_RADIUS);
-	NSRect ringFrame = NSMakeRect(ringCentre.x - (RING_RADIUS/2), ringCentre.y - (RING_RADIUS/2), RING_RADIUS, RING_RADIUS);
+	NSRect arrowFrame = NSMakeRect(ringCentre.x - (ringSize/2), ringCentre.y - (ringSize/2), ringSize, ringSize);
+	NSRect ringFrame = NSMakeRect(ringCentre.x - (ringSize/2), ringCentre.y - (ringSize/2), ringSize, ringSize);
     
     // weird blur thing
     
@@ -509,6 +514,19 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 
 - (void)mouseDownForRing
 {
+    // check if we should open the preferences. I don't know how to spell 'centre'
+    if (openPrefsOnRing) {
+        NSPoint ringCentre = [self viewCenter:theRing];
+        NSPoint mousePos = [NSEvent mouseLocation];
+        float mouseDistFromCentre = sqrt(pow((ringCentre.x - mousePos.x), 2) + pow((ringCentre.y - mousePos.y), 2));
+        
+        if (mouseDistFromCentre < (ringSize/2)) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"iCommandThePrefsToOpen" object:nil];
+            return;
+        }
+    }
+    
+    // Otherwise do the normal ring stuff
 	CGFloat angle = [self mouseAngleAboutRing];
 	
 	CGFloat spacing = 360.0 / [ringApps count];
