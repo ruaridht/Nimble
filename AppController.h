@@ -13,8 +13,6 @@
 #import "NSArray+Datasource.h"
 
 @interface AppController : NSObject <NSApplicationDelegate, NSTableViewDelegate, NSTableViewDataSource> {
-	BOOL ringIsActive;
-	
     FileHandler *handler;
     
 	Ring *currentRing;
@@ -51,8 +49,10 @@
 
 @property (readwrite, assign) Ring *_currentRing;
 
+// Test
 - (IBAction)testButton:(id)sender;
 
+// General
 - (void)removeAppFromFront;
 
 // Preferences
@@ -67,6 +67,10 @@
 - (IBAction)ringSizeChanged:(id)sender;
 - (IBAction)setOpenPrefsUsingRing:(id)sender;
 - (IBAction)toggleMenubarIcon:(id)sender;
+
+- (IBAction)openURLWebsite:(id)sender;
+- (IBAction)openURLFaq:(id)sender;
+- (IBAction)openURLChangelog:(id)sender;
 
 - (BOOL)loadRings;
 - (void)saveRings;

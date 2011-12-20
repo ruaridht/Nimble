@@ -14,7 +14,7 @@
 
 @implementation Ring
 
-@synthesize ringName, ringColour, ringSize, iconSize, iconRadius,/* ringHotkeyControl,*/ isSticky, isBGBlur, ringPosition, ringTheme;
+@synthesize ringName, ringSize, iconSize, iconRadius, isSticky, isBGBlur, ringPosition, ringTheme;
 
 // Standard functions
 CGFloat DegreesToRadians(CGFloat degrees)
@@ -43,11 +43,9 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseMovedForRing) name:[NSString stringWithFormat:@"%@%@",name,@"movedMouse"] object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateRingOut) name:@"escapeWindow" object:nil];
 	
-	ringAllowsActions = NO;
 	isSticky = NO;
     isBGBlur = NO;
 	ringIsActive = NO;
-	ringColour = [NSColor clearColor];
 	ringSize = 300;
 	iconSize = 128;
 	iconRadius = 300;
@@ -89,11 +87,9 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mouseDownForRing) name:@"mouseDownForRing" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateRingOut) name:@"escapeWindow" object:nil];
 	
-	ringAllowsActions = NO;
 	isSticky = [[dict objectForKey:RING_STICKY] boolValue];
     isBGBlur = [[dict objectForKey:RING_BLUR] boolValue];
 	ringIsActive = NO;
-	ringColour = [NSColor clearColor];
 	ringSize = [[dict objectForKey:RING_SIZE] intValue];
 	iconSize = [[dict objectForKey:RING_ICON_SIZE] floatValue];
 	iconRadius = [[dict objectForKey:RING_ICON_RAD] floatValue];;
@@ -175,6 +171,9 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	return image;
 }
 
+/*
+ *  Returns a dictionary with the ring preferences that can be written to file.
+ */
 - (NSDictionary *)dictionaryForRing
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -206,7 +205,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 #pragma mark Drawing
 
 /*
- *	Adds all the specified applications icons to the ring.
+ *	Adds all the specified app icons to the ring.
  */
 - (void)addAppsToRing
 {
@@ -241,7 +240,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 }
 
 /*
- *	Removes all applications from the ring that are not the ring or arrow.
+ *	Removes all applications from the ring that are not the ring or arrow (or BG).
  */
 - (void)removeAllAppsFromRing
 {
@@ -267,10 +266,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
  *  Gets the current screen's background image, scales it to the screen size and 
  *  blurs it using either CIGaussianBlur, CIBoxBlur, CIDiscBlur, CIMotionBlur or
  *  CIZoomBlur.
- *  Also crop 21 pixels off the top of the image to account for the menubar we can't
- *  get rid of.
  */
-
 - (void)blurAndSetBackground
 {
     NSRect screenRect = [[NSScreen mainScreen] frame];
@@ -287,21 +283,24 @@ NSNumber* DegreesToNumber(CGFloat degrees)
     [blur setValue:[NSNumber numberWithFloat:5.0] forKey:@"inputRadius"];
     CIImage *blurred = [blur valueForKey:@"outputImage"];
     
-    //scaleFactor = screenRect.size.width / [blurred extent].size.width;
-    
     CIFilter *scale = [CIFilter filterWithName:@"CILanczosScaleTransform"];
     [scale setValue:blurred forKey:@"inputImage"];
     [scale setValue:[NSNumber numberWithFloat:scaleFactor] forKey:@"inputScale"];
     [scale setValue:[NSNumber numberWithFloat:1.0] forKey:@"inputAspectRatio"];
     CIImage *scaled = [scale valueForKey:@"outputImage"];
     
-    NSImage *blurredImage = [[NSImage alloc] initWithSize:screenRect.size];
+    int w = [scaled extent].size.width;
+    int h = [scaled extent].size.height;
+    NSSize outSize = NSMakeSize(w, h);
+    NSRect outRect = NSMakeRect(0.0, 0.0, w, h);
+    
+    //NSImage *blurredImage = [[NSImage alloc] initWithSize:screenRect.size];
+    NSImage *blurredImage = [[NSImage alloc] initWithSize:outSize];
     
     [blurredImage lockFocus];
-    [scaled drawAtPoint:NSZeroPoint fromRect:screenRect operation:NSCompositeCopy fraction:1.0];
+    //[scaled drawAtPoint:NSZeroPoint fromRect:screenRect operation:NSCompositeCopy fraction:1.0];
+    [scaled drawAtPoint:NSZeroPoint fromRect:outRect operation:NSCompositeCopy fraction:1.0];
     [blurredImage unlockFocus];
-    
-    //NSLog(@"Size: %fx%f", [scaled extent].size.width, [scaled extent].size.height);
     
     [blurView setImage:blurredImage];
 }
@@ -322,24 +321,16 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	[ringWindow setContentView:ringView];
 	[ringWindow setHidesOnDeactivate:YES];
 	[ringWindow setViewsNeedDisplay:YES];
-    
-    // Does this work?
-    //[ringWindow setLevel:kCGDockWindowLevel - 1];
 	
 	// Add the ring to the centre
 	NSPoint ringCentre = [self viewCenter:ringView];
 	NSRect arrowFrame = NSMakeRect(ringCentre.x - (ringSize/2), ringCentre.y - (ringSize/2), ringSize, ringSize);
 	NSRect ringFrame = NSMakeRect(ringCentre.x - (ringSize/2), ringCentre.y - (ringSize/2), ringSize, ringSize);
     
-    // weird blur thing
-    
     blurView = [[NSImageView alloc] initWithFrame:windowFrame];
     [blurView setAutoresizingMask:NSScaleToFit];
     [blurView setImageFrameStyle:NSImageFrameNone];
     [self blurAndSetBackground];
-    //NSURL *bgURL = [[NSWorkspace sharedWorkspace] desktopImageURLForScreen:[NSScreen mainScreen]];
-    //[blurView setImage:[[NSImage alloc] initWithContentsOfURL:bgURL]];
-    
 	
 	theArrow = [[NSImageView alloc] initWithFrame:arrowFrame];
 	theRing = [[NSImageView alloc] initWithFrame:ringFrame];
@@ -390,7 +381,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	NSScreen *main = [NSScreen mainScreen];
 	NSRect screenRect = [main frame];
 	
-	// Note: there is a bug here.  If the user chooses a large ring (or large icons) then graphic will be cut at the edge of the window.
+	// Note: there is a (somewhat) bug here.  If the user chooses a large ring (or large icons) then graphic will be cut at the edge of the window.
 	//		 Using the approach below the apps are drawn appropriately, though the ring is off.
 	/*
 	NSRect windowFrame = NSMakeRect(center.x - (screenRect.size.width), center.y - (screenRect.size.height), screenRect.size.width*2, screenRect.size.height*2);
@@ -442,9 +433,6 @@ NSNumber* DegreesToNumber(CGFloat degrees)
         NSApplicationPresentationOptions options = NSApplicationPresentationHideDock + NSApplicationPresentationHideMenuBar;
         [NSApp setPresentationOptions:options];
     }
-    
-	//[[ringWindow contentView] setWantsLayer:YES];
-	//[[[ringWindow contentView] layer] addAnimation:[self sizeDecreaseAnimation] forKey:@"size"];
 	
 	if (ringPosition == 0) {
 		[ringWindow center];
@@ -459,8 +447,6 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	 
 	[ringWindow makeKeyAndOrderFront:self];
 	[[ringWindow animator] setAlphaValue:1.0];
-	
-	//NSLog(@"Animate %@ in", ringName);
 }
 
 - (void)animateRingOut
@@ -567,12 +553,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
     
 	[self animateRingOut];
 	[self mouseDownForRing];
-	/*
-	NSWorkspace
-	NSApplication
-	NSScreen
-	 */
-	//[[NSWorkspace sharedWorkspace] launchApplication:@"Safari"];
+	
 }
 
 - (CAAnimation *)rotateToMouseAnimation
@@ -613,6 +594,9 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	return animation;
 }
 
+/*
+ *  Here's a nice bit of unfinished code that I don't know how to fix anymore. :)
+ */
 - (CAAnimation *)sizeDecreaseAnimation
 {
 	//NSRect fromRect = [ringWindow frame];
@@ -633,6 +617,9 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	return animation;
 }
 
+/*
+ *  I wrote this so long that I don't actually know what it's doing anymore. =/
+ */
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)context;
 {
     if( layer == ringLayer )

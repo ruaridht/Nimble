@@ -117,13 +117,7 @@
 }
 
 #pragma mark -
-#pragma mark IBActions
-
-- (void)removeAppFromFront
-{  
-    // Basically we just want to send the app to the background.
-    [[NSApplication sharedApplication] hide:self];
-}
+#pragma mark Test
 
 - (IBAction)testButton:(id)sender
 {
@@ -135,6 +129,15 @@
     
     NSLog(@"Size of allRings: %i", [allRings count]);
     NSLog(@"What's in ringRecords: %@", [ringRecords count]);
+}
+
+#pragma -
+#pragma General
+
+- (void)removeAppFromFront
+{  
+    // Basically we just want to send the app to the background.
+    [[NSApplication sharedApplication] hide:self];
 }
 
 #pragma mark -
@@ -193,11 +196,72 @@
 - (IBAction)setRingCenterPosition:(id)sender
 {
 	[currentRing setRingDrawingPosition:[sender selectedSegment]];
+    [self saveRings];
 }
 
 - (IBAction)toggleBlurredBackground:(id)sender
 {
     [currentRing toggleBlurredBackground];
+    [self saveRings];
+}
+
+- (IBAction)ringPreferenceChanged:(id)sender
+{
+    [self saveRings];
+}
+
+- (IBAction)ringSizeChanged:(id)sender
+{
+    [currentRing buildRing];
+    [self saveRings];
+}
+
+- (IBAction)setOpenPrefsUsingRing:(id)sender
+{
+    BOOL openPrefs = [[NSUserDefaults standardUserDefaults] boolForKey:@"prefsUsingRing"];
+    
+    for (Ring *r in allRings) {
+        [r setOpenPrefs:openPrefs];
+    }
+    
+    [self saveRings];
+}
+
+- (IBAction)toggleMenubarIcon:(id)sender
+{
+    BOOL hideIcon = [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMenubar"];
+    if (!hideIcon) {
+        statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
+        [statusItem setTitle:@"N"];
+        [statusItem setHighlightMode:YES];
+        [statusItem setMenu:statusMenu];
+        
+        [openPrefsButton setEnabled:YES];
+    } else {
+        if (statusItem) {
+            [statusItem release];
+            statusItem = nil;
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"prefsUsingRing"];
+        [self setOpenPrefsUsingRing:self];
+        [openPrefsButton setEnabled:NO];
+    }
+}
+
+- (IBAction)openURLWebsite:(id)sender
+{
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://lifeupnorth.co.uk/nimble"]];
+}
+
+- (IBAction)openURLFaq:(id)sender
+{
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://lifeupnorth.co.uk/nimble/faq"]];
+}
+
+- (IBAction)openURLChangelog:(id)sender
+{
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://lifeupnorth.co.uk/nimble/changelog"]];
 }
 
 #pragma mark -
@@ -304,48 +368,6 @@
 #pragma mark -
 #pragma mark Ring Loading and Saving
 
-- (IBAction)ringPreferenceChanged:(id)sender
-{
-    [self saveRings];
-}
-
-- (IBAction)ringSizeChanged:(id)sender
-{
-    [currentRing buildRing];
-    [self saveRings];
-}
-
-- (IBAction)setOpenPrefsUsingRing:(id)sender
-{
-    BOOL openPrefs = [[NSUserDefaults standardUserDefaults] boolForKey:@"prefsUsingRing"];
-    
-    for (Ring *r in allRings) {
-        [r setOpenPrefs:openPrefs];
-    }
-}
-
-- (IBAction)toggleMenubarIcon:(id)sender
-{
-    BOOL hideIcon = [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMenubar"];
-    if (!hideIcon) {
-        statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
-        [statusItem setTitle:@"N"];
-        [statusItem setHighlightMode:YES];
-        [statusItem setMenu:statusMenu];
-        
-        [openPrefsButton setEnabled:YES];
-    } else {
-        if (statusItem) {
-            [statusItem release];
-            statusItem = nil;
-        }
-        
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"prefsUsingRing"];
-        [self setOpenPrefsUsingRing:self];
-        [openPrefsButton setEnabled:NO];
-    }
-}
-
 /*
  *	Returns true if all rings have been loaded/saved properly, and false if there are any errors.
  */
@@ -372,7 +394,7 @@
 	}
     
 	for (Ring *r in allRings) {
-		[ringRecords addObject:[self tableViewRecordForTab:[r ringName] iconName:@"dark_noir_circle_blue"]];
+		[ringRecords addObject:[self tableViewRecordForTab:[r ringName] iconName:@"ring_icon"]];
 	}
 	
 	return YES;

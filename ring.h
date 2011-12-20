@@ -17,14 +17,15 @@
 	NSArray *ringApps;
 	
 	NSString *ringName;
-	NSColor *ringColour;
 	int ringSize;
 	CGFloat iconSize;
 	CGFloat iconRadius;
-	int ringType;
 	NSInteger ringPosition;
     NSString *ringTheme;
 	
+    NSImageView *blurView;
+    NSImage *bgBlur;
+    
 	NSImageView *theArrow;
 	NSImageView *theRing;
 	CALayer *arrowLayer;
@@ -32,7 +33,6 @@
 	
 	float previousValue;
 	
-	BOOL ringAllowsActions;
 	BOOL isSticky;
     BOOL isBGBlur;
 	BOOL ringIsActive;
@@ -40,13 +40,9 @@
 	
 	SRRecorderControl *ringHotkeyControl;
 	KeyCombo ringGlobalHotKey;
-    
-    NSImageView *blurView;
-    NSImage *bgBlur;
 }
 
 @property (readwrite, retain) NSString *ringName;
-@property (readwrite, retain) NSColor *ringColour;
 @property (readwrite) int ringSize;
 @property (readwrite) CGFloat iconRadius;
 @property (readwrite) CGFloat iconSize;
@@ -55,17 +51,20 @@
 @property (readwrite) NSInteger ringPosition;
 @property (readwrite, retain) NSString *ringTheme;
 
+// Creating rings
 - (id)initWithName:(NSString *)name;
 - (id)initFromDictionary:(NSDictionary *)dict;
 
-- (void)setTheme:(RingTheme *)theTheme;
+// Getting and setting ring info
 - (RingTheme *)currentTheme;
-- (void)setGlobalHotkey:(KeyCombo)theCombo;
+- (void)setTheme:(RingTheme *)theTheme;
 - (KeyCombo)currentKeyCombo;
+- (void)setGlobalHotkey:(KeyCombo)theCombo;
 - (NSImage *)currentRingImage;
 - (NSDictionary *)dictionaryForRing;
 - (void)setOpenPrefs:(BOOL)open;
 
+// Building the visual ring
 - (void)addAppsToRing;
 - (void)removeAllAppsFromRing;
 - (NSPoint)viewCenter:(NSView *)theView;
@@ -92,7 +91,5 @@
 
 - (CGFloat)mouseAngleAboutRing;
 - (void)getAndPresentLaunchedApps;
-
-// Saving and loading the ring
 
 @end
