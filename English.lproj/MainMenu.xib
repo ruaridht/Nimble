@@ -420,14 +420,12 @@
 							<int key="NSvFlags">274</int>
 							<string key="NSFrameSize">{408, 367}</string>
 							<reference key="NSSuperview" ref="964358278"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView"/>
 							<string key="NSClassName">NSView</string>
 						</object>
 					</object>
 					<string key="NSFrameSize">{408, 367}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="220445218"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
@@ -669,7 +667,7 @@
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSCustomView" id="658976396">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -678,8 +676,6 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{248, 19}, {100, 23}}</string>
 						<reference key="NSSuperview" ref="658976396"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:1566</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="467211124">
@@ -702,7 +698,6 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{149, 19}, {100, 23}}</string>
 						<reference key="NSSuperview" ref="658976396"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="848469274"/>
 						<string key="NSReuseIdentifierKey">_NS:1566</string>
 						<bool key="NSEnabled">YES</bool>
@@ -726,7 +721,6 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{36, 19}, {114, 23}}</string>
 						<reference key="NSSuperview" ref="658976396"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="464457259"/>
 						<string key="NSReuseIdentifierKey">_NS:1566</string>
 						<bool key="NSEnabled">YES</bool>
@@ -750,7 +744,6 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{353, 238}, {286, 60}}</string>
 						<reference key="NSSuperview" ref="658976396"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="157393672"/>
 						<string key="NSReuseIdentifierKey">_NS:3596</string>
 						<bool key="NSEnabled">YES</bool>
@@ -777,7 +770,6 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{353, 306}, {224, 48}}</string>
 						<reference key="NSSuperview" ref="658976396"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="56881919"/>
 						<string key="NSReuseIdentifierKey">_NS:3596</string>
 						<bool key="NSEnabled">YES</bool>
@@ -813,7 +805,6 @@
 						</object>
 						<string key="NSFrame">{{0, 49}, {348, 345}}</string>
 						<reference key="NSSuperview" ref="658976396"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="128473367"/>
 						<string key="NSReuseIdentifierKey">_NS:1658</string>
 						<bool key="NSEnabled">YES</bool>
@@ -831,8 +822,6 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{668, 394}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="358585698"/>
 				<string key="NSClassName">NSView</string>
 			</object>
@@ -4480,256 +4469,7 @@ bW1vZAAAAAAAAAYQAACcaAAAAADCEQ4AAAAAAAAAAAAAAAAAAAAAAA</bytes>
 			<nil key="sourceID"/>
 			<int key="maxID">1498</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<object class="IBPartialClassDescription">
-					<string key="className">AppController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>openPreferences:</string>
-							<string>openURLChangelog:</string>
-							<string>openURLFaq:</string>
-							<string>openURLWebsite:</string>
-							<string>ringPreferenceChanged:</string>
-							<string>ringSizeChanged:</string>
-							<string>setOpenPrefsUsingRing:</string>
-							<string>setRingCenterPosition:</string>
-							<string>switchPreferenceView:</string>
-							<string>testButton:</string>
-							<string>toggleBlurredBackground:</string>
-							<string>toggleMenubarIcon:</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>openPreferences:</string>
-							<string>openURLChangelog:</string>
-							<string>openURLFaq:</string>
-							<string>openURLWebsite:</string>
-							<string>ringPreferenceChanged:</string>
-							<string>ringSizeChanged:</string>
-							<string>setOpenPrefsUsingRing:</string>
-							<string>setRingCenterPosition:</string>
-							<string>switchPreferenceView:</string>
-							<string>testButton:</string>
-							<string>toggleBlurredBackground:</string>
-							<string>toggleMenubarIcon:</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">openPreferences:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">openURLChangelog:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">openURLFaq:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">openURLWebsite:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">ringPreferenceChanged:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">ringSizeChanged:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">setOpenPrefsUsingRing:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">setRingCenterPosition:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">switchPreferenceView:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">testButton:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">toggleBlurredBackground:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">toggleMenubarIcon:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>aboutButton</string>
-							<string>aboutView</string>
-							<string>contentView</string>
-							<string>generalButton</string>
-							<string>generalView</string>
-							<string>openPrefsButton</string>
-							<string>prefToolbar</string>
-							<string>prefWindow</string>
-							<string>ringPositionControl</string>
-							<string>ringTable</string>
-							<string>ringsButtons</string>
-							<string>ringsView</string>
-							<string>statusMenu</string>
-							<string>theRingRecorderControl</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>NSToolbarItem</string>
-							<string>NSView</string>
-							<string>NSView</string>
-							<string>NSToolbarItem</string>
-							<string>NSView</string>
-							<string>NSButton</string>
-							<string>NSToolbar</string>
-							<string>NSWindow</string>
-							<string>NSSegmentedControl</string>
-							<string>NSTableView</string>
-							<string>NSToolbarItem</string>
-							<string>NSView</string>
-							<string>NSMenu</string>
-							<string>SRRecorderControl</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>aboutButton</string>
-							<string>aboutView</string>
-							<string>contentView</string>
-							<string>generalButton</string>
-							<string>generalView</string>
-							<string>openPrefsButton</string>
-							<string>prefToolbar</string>
-							<string>prefWindow</string>
-							<string>ringPositionControl</string>
-							<string>ringTable</string>
-							<string>ringsButtons</string>
-							<string>ringsView</string>
-							<string>statusMenu</string>
-							<string>theRingRecorderControl</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">aboutButton</string>
-								<string key="candidateClassName">NSToolbarItem</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">aboutView</string>
-								<string key="candidateClassName">NSView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">contentView</string>
-								<string key="candidateClassName">NSView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">generalButton</string>
-								<string key="candidateClassName">NSToolbarItem</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">generalView</string>
-								<string key="candidateClassName">NSView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">openPrefsButton</string>
-								<string key="candidateClassName">NSButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">prefToolbar</string>
-								<string key="candidateClassName">NSToolbar</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">prefWindow</string>
-								<string key="candidateClassName">NSWindow</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">ringPositionControl</string>
-								<string key="candidateClassName">NSSegmentedControl</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">ringTable</string>
-								<string key="candidateClassName">NSTableView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">ringsButtons</string>
-								<string key="candidateClassName">NSToolbarItem</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">ringsView</string>
-								<string key="candidateClassName">NSView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">statusMenu</string>
-								<string key="candidateClassName">NSMenu</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">theRingRecorderControl</string>
-								<string key="candidateClassName">SRRecorderControl</string>
-							</object>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/AppController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SRRecorderControl</string>
-					<string key="superclassName">NSControl</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">delegate</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">delegate</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">delegate</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SRRecorderControl.h</string>
-					</object>
-				</object>
-			</object>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">

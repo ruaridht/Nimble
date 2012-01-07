@@ -51,6 +51,14 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	iconRadius = 300;
     ringTheme = @"default";
     openPrefsOnRing = NO;
+    
+    lastHighlighted = -1; // So something is highlighted the first time.
+    NSRect hFrame = NSMakeRect(0.0, 0.0, 1024.0, 1024.0);
+    highlightView = [[NSImageView alloc] initWithFrame:hFrame];
+	[highlightView setAutoresizingMask:NSScaleToFit];
+	[highlightView setImageFrameStyle:NSImageFrameNone];
+    [highlightView setImage:[NSImage imageNamed:@"apphighlight"]];
+    [highlightView setHidden:YES];
 	
 	ringPosition = 0;
 	
@@ -95,6 +103,14 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	iconRadius = [[dict objectForKey:RING_ICON_RAD] floatValue];;
     ringTheme = [dict objectForKey:RING_THEME];
     openPrefsOnRing = NO;
+    
+    lastHighlighted = -1; // So something is highlighted the first time.
+    NSRect hFrame = NSMakeRect(0.0, 0.0, 1024.0, 1024.0);
+    highlightView = [[NSImageView alloc] initWithFrame:hFrame];
+	[highlightView setAutoresizingMask:NSScaleToFit];
+	[highlightView setImageFrameStyle:NSImageFrameNone];
+    [highlightView setImage:[NSImage imageNamed:@"apphighlight"]];
+    [highlightView setHidden:YES];
 	
 	ringPosition = [[dict objectForKey:RING_POSITION] integerValue];
 	
@@ -227,7 +243,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 		
 		ivFrame.origin.x = position.x + windowCenter.x - (iconsSize/2);
 		ivFrame.origin.y = position.y + windowCenter.y - (iconsSize/2);
-		
+																													
 		NSImageView *iv = [[NSImageView alloc] initWithFrame:ivFrame];
 		[iv setImageScaling:NSScaleToFit];
 		NSRunningApplication *app = [ringApps objectAtIndex:i];
@@ -247,7 +263,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	NSArray *allViews = [ringView subviews];
 	NSMutableArray *allViewsMut = [NSMutableArray arrayWithArray:allViews];
 	for (NSView *aView in allViewsMut) {
-		if ((aView != theRing) && (aView != theArrow) && (aView != blurView)){
+		if ((aView != theRing) && (aView != theArrow) && (aView != blurView) && (aView != highlightView)){
 			[aView removeFromSuperview];
 		}
 	}
@@ -274,32 +290,37 @@ NSNumber* DegreesToNumber(CGFloat degrees)
     
     NSImage *sourceImage = [[NSImage alloc] initWithContentsOfURL:bgURL];
     NSSize sourceSize = [sourceImage size];
-    float scaleFactor = screenRect.size.width / sourceSize.width;
+    //float scaleFactor = screenRect.size.width / sourceSize.width;
     
-    CIImage *inputImage = [CIImage imageWithData:[sourceImage TIFFRepresentation]];
+    NSImage *resizedImage = [[NSImage alloc] initWithSize: NSMakeSize(screenRect.size.width, screenRect.size.height)];
+    [resizedImage lockFocus];
+    [sourceImage drawInRect: NSMakeRect(0, 0, screenRect.size.width, screenRect.size.height) 
+                   fromRect: NSMakeRect(0, 0, sourceSize.width, sourceSize.height) 
+                  operation: NSCompositeSourceOver fraction: 1.0];
+    [resizedImage unlockFocus];
+    
+    //CIImage *inputImage = [CIImage imageWithData:[sourceImage TIFFRepresentation]];
+    CIImage *inputImage = [CIImage imageWithData:[resizedImage TIFFRepresentation]];
     
     CIFilter *blur = [CIFilter filterWithName:@"CIGaussianBlur"];
     [blur setValue:inputImage forKey:@"inputImage"];
     [blur setValue:[NSNumber numberWithFloat:5.0] forKey:@"inputRadius"];
     CIImage *blurred = [blur valueForKey:@"outputImage"];
     
+    /*
     CIFilter *scale = [CIFilter filterWithName:@"CILanczosScaleTransform"];
     [scale setValue:blurred forKey:@"inputImage"];
     [scale setValue:[NSNumber numberWithFloat:scaleFactor] forKey:@"inputScale"];
     [scale setValue:[NSNumber numberWithFloat:1.0] forKey:@"inputAspectRatio"];
     CIImage *scaled = [scale valueForKey:@"outputImage"];
+    */
     
-    int w = [scaled extent].size.width;
-    int h = [scaled extent].size.height;
-    NSSize outSize = NSMakeSize(w, h);
-    NSRect outRect = NSMakeRect(0.0, 0.0, w, h);
-    
-    //NSImage *blurredImage = [[NSImage alloc] initWithSize:screenRect.size];
-    NSImage *blurredImage = [[NSImage alloc] initWithSize:outSize];
+    NSImage *blurredImage = [[NSImage alloc] initWithSize:screenRect.size];
+    //NSImage *blurredImage = [[NSImage alloc] initWithSize:outSize];
     
     [blurredImage lockFocus];
-    //[scaled drawAtPoint:NSZeroPoint fromRect:screenRect operation:NSCompositeCopy fraction:1.0];
-    [scaled drawAtPoint:NSZeroPoint fromRect:outRect operation:NSCompositeCopy fraction:1.0];
+    [blurred drawAtPoint:NSZeroPoint fromRect:screenRect operation:NSCompositeCopy fraction:1.0];
+    //[scaled drawAtPoint:NSZeroPoint fromRect:outRect operation:NSCompositeCopy fraction:1.0];
     [blurredImage unlockFocus];
     
     [blurView setImage:blurredImage];
@@ -317,6 +338,10 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	
 	ringView = [[CustomView alloc] initWithFrame:windowFrame];
 	ringWindow = [[CustomWindow alloc] initWithContentRect:[ringView frame] styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
+    
+    // A very bad way to stop the window locking to a desktop! :)
+    [ringWindow setRestorable:YES];
+    [ringWindow setReleasedWhenClosed:NO];
 	
 	[ringWindow setContentView:ringView];
 	[ringWindow setHidesOnDeactivate:YES];
@@ -347,6 +372,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
     if (isBGBlur) [ringView addSubview:blurView];
 	[ringView addSubview:theArrow];
 	[ringView addSubview:theRing];
+    [ringView addSubview:highlightView];
 	
 	[ringWindow center]; // Centers the ringWindow on the users screen.
 	
@@ -391,6 +417,8 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	
 	NSPoint new = NSMakePoint(center.x - (screenRect.size.width/2), center.y - (screenRect.size.height/2));
 	[ringWindow setFrameOrigin:new];
+    //[theRing setFrameOrigin:new];
+    //[theArrow setFrameOrigin:new];
 }
 
 - (void)setRingDrawingPosition:(NSInteger)position
@@ -442,52 +470,71 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	
 	[self getAndPresentLaunchedApps];
 	[self initiateAnimations];
-	
+    
 	[NSApp activateIgnoringOtherApps:YES];
-	 
+    
 	[ringWindow makeKeyAndOrderFront:self];
 	[[ringWindow animator] setAlphaValue:1.0];
+    
+    [self adjustHighlightedApp];
 }
 
 - (void)animateRingOut
 {
+    // We could just set this all the time (not necessary but may be safer).
     if (isBGBlur)
         [NSApp setPresentationOptions:NSApplicationPresentationDefault];
 	
     [[ringWindow animator] setAlphaValue:0.0];
+    [ringWindow close];
 }
 
 - (void)adjustHighlightedApp
 {
-    CGFloat angle = [self mouseAngleAboutRing];
+    int count = [ringApps count];
+    CGFloat mAngle = [self mouseAngleAboutRing];
 	
-	CGFloat spacing = 360.0 / [ringApps count];
-	CGFloat increment = spacing/2;
+	CGFloat spacing = 360.0 / count;
+	CGFloat mInc = spacing/2;
 	int index = 0;
 	
 	BOOL found = NO;
 	
-	if (angle > 0) {
-		angle -= 360;
+	if (mAngle > 0) {
+		mAngle -= 360;
 	}
 	
-	angle = -angle;
+	mAngle = -mAngle;
 	
-	// Ineffiecient, but the number of loops is the index. Typically there shouldn't be too many loops.
+	// Probably ineffiecient.  But the number of loops is the index.  Typically there shouldn't be too many loops.
 	while (!found) {
-		if (angle > (360 - (spacing/2))) {
+		if (mAngle > (360 - (spacing/2))) {
 			found = YES;
 			index = 0;
-		} else if (angle < increment ) {
+		} else if (mAngle < mInc ) {
 			found = YES;
 		} else {
-			increment += spacing;
+			mInc += spacing;
 			index++;
 		}
 	}
-    
-    //NSImageView *ringViewApp = [[ringView subviews] objectAtIndex:index];
-    
+	
+    if (lastHighlighted != index) {
+        int iSize = (int)iconSize + 32;
+        int iRad = (int)iconRadius - 50;
+        NSPoint windowCenter = [self viewCenter:ringView];
+        NSRect ivFrame = NSMakeRect(0, 0, iSize, iSize);
+        
+        NSPoint position = NSMakePoint( iRad*sin(DegreesToRadians(mInc - (spacing/2))), iRad*cos(DegreesToRadians(mInc - (spacing/2))) );
+            
+        ivFrame.origin.x = position.x + windowCenter.x - (iSize/2);
+        ivFrame.origin.y = position.y + windowCenter.y - (iSize/2);
+        
+        [highlightView setFrame:ivFrame];
+        if ([highlightView isHidden]) [highlightView setHidden:NO];
+        
+        lastHighlighted = index;
+    }
 }
 
 - (void)mouseMovedForRing
@@ -495,7 +542,8 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	[arrowLayer addAnimation:[self rotateToMouseAnimation] forKey:@"rotate"];
 	[[theArrow layer] setNeedsDisplay];
     
-    //[self adjustHighlightedApp];
+    // The way it is right now this is a very expensive step.
+    [self adjustHighlightedApp];
 }
 
 - (void)mouseDownForRing

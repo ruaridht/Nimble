@@ -32,6 +32,9 @@
 	CALayer *ringLayer;
 	
 	float previousValue;
+    
+    NSImageView *highlightView;
+    int lastHighlighted;
 	
 	BOOL isSticky;
     BOOL isBGBlur;
