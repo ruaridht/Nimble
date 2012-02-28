@@ -1,9 +1,9 @@
 //
 //  RingTheme.m
-//  opiemac
+//  Nimble
 //
 //  Created by Ruaridh Thomson on 01/02/2011.
-//  Copyright 2011 Life Up North. All rights reserved.
+//  Copyright 2011 Ruaridh Thomson. All rights reserved.
 //
 //	Info regarding the images:
 //	All images should be at least 512x512 (height and width ratio must be 1:1).

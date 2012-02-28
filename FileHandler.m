@@ -1,9 +1,9 @@
 //
 //  FileHandler.m
-//  opiemac
+//  Nimble
 //
 //  Created by Ruaridh Thomson on 17/12/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Nimble. All rights reserved.
 //
 
 #import "FileHandler.h"

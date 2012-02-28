@@ -1,4 +1,4 @@
-// Header file for Opie Mac
+// Header file for Nimble
 
 #import <QuartzCore/QuartzCore.h>
 #import <Carbon/Carbon.h>

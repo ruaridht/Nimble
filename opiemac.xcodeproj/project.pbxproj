@@ -33,11 +33,14 @@
 		55C3FA9D149AC9840044D0C3 /* nimbletheme_center.png in Resources */ = {isa = PBXBuildFile; fileRef = 55C3FA9B149AC9840044D0C3 /* nimbletheme_center.png */; };
 		55C3FA9E149AC9840044D0C3 /* nimbletheme_pointer.psd in Resources */ = {isa = PBXBuildFile; fileRef = 55C3FA9C149AC9840044D0C3 /* nimbletheme_pointer.psd */; };
 		55C606FA12F87B3900A48443 /* RingTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C606F912F87B3900A48443 /* RingTheme.m */; };
+		55C96E5914D81C0000BB9904 /* nimble.icns in Resources */ = {isa = PBXBuildFile; fileRef = 55C96E5814D81C0000BB9904 /* nimble.icns */; };
 		55DDA921149D4EBF003351B1 /* FileHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 55DDA920149D4EBF003351B1 /* FileHandler.m */; };
 		55E19E47149BB39C006C6221 /* dark_noir_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E19E45149BB39C006C6221 /* dark_noir_circle.png */; };
 		55E19E48149BB39C006C6221 /* dark_noir_pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E19E46149BB39C006C6221 /* dark_noir_pointer.png */; };
 		55E19E4A149BB428006C6221 /* dark_noir_circle_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E19E49149BB428006C6221 /* dark_noir_circle_blue.png */; };
 		55E19E4C149BB8B8006C6221 /* icon_name.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E19E4B149BB8B8006C6221 /* icon_name.png */; };
+		55E4283C14D81A100061B0D8 /* dark_noir_circle_blue_ds.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E4283B14D81A100061B0D8 /* dark_noir_circle_blue_ds.png */; };
+		55E4283E14D81A700061B0D8 /* dark_noir_pointer_ds.png in Resources */ = {isa = PBXBuildFile; fileRef = 55E4283D14D81A700061B0D8 /* dark_noir_pointer_ds.png */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -98,12 +101,15 @@
 		55C3FA9C149AC9840044D0C3 /* nimbletheme_pointer.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = nimbletheme_pointer.psd; sourceTree = "<group>"; };
 		55C606F812F87B3900A48443 /* RingTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingTheme.h; sourceTree = "<group>"; };
 		55C606F912F87B3900A48443 /* RingTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RingTheme.m; sourceTree = "<group>"; };
+		55C96E5814D81C0000BB9904 /* nimble.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = nimble.icns; sourceTree = "<group>"; };
 		55DDA91F149D4EBF003351B1 /* FileHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHandler.h; sourceTree = "<group>"; };
 		55DDA920149D4EBF003351B1 /* FileHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHandler.m; sourceTree = "<group>"; };
 		55E19E45149BB39C006C6221 /* dark_noir_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dark_noir_circle.png; sourceTree = "<group>"; };
 		55E19E46149BB39C006C6221 /* dark_noir_pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dark_noir_pointer.png; sourceTree = "<group>"; };
 		55E19E49149BB428006C6221 /* dark_noir_circle_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dark_noir_circle_blue.png; sourceTree = "<group>"; };
 		55E19E4B149BB8B8006C6221 /* icon_name.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_name.png; sourceTree = "<group>"; };
+		55E4283B14D81A100061B0D8 /* dark_noir_circle_blue_ds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dark_noir_circle_blue_ds.png; sourceTree = "<group>"; };
+		55E4283D14D81A700061B0D8 /* dark_noir_pointer_ds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dark_noir_pointer_ds.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* opiemac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "opiemac-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* opiemac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = opiemac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -204,6 +210,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				55C96E5814D81C0000BB9904 /* nimble.icns */,
 				5589200114B61DAE008D5809 /* apphighlight.png */,
 				55AF1C14149FB7B200F85ACD /* icon_closed_red.png */,
 				55AF1C15149FB7B200F85ACD /* icon_closed.png */,
@@ -212,8 +219,10 @@
 				55AF1C12149FB31B00F85ACD /* ring_icon.png */,
 				55E19E4B149BB8B8006C6221 /* icon_name.png */,
 				55E19E49149BB428006C6221 /* dark_noir_circle_blue.png */,
+				55E4283B14D81A100061B0D8 /* dark_noir_circle_blue_ds.png */,
 				55E19E45149BB39C006C6221 /* dark_noir_circle.png */,
 				55E19E46149BB39C006C6221 /* dark_noir_pointer.png */,
+				55E4283D14D81A700061B0D8 /* dark_noir_pointer_ds.png */,
 				55C3FA9B149AC9840044D0C3 /* nimbletheme_center.png */,
 				55C3FA9C149AC9840044D0C3 /* nimbletheme_pointer.psd */,
 				5514380F1309764E00E68F77 /* UIDivider.png */,
@@ -306,6 +315,9 @@
 				55AF1C1A149FB7B200F85ACD /* icon_open_red.png in Resources */,
 				55AF1C1B149FB7B200F85ACD /* icon_open.png in Resources */,
 				5589200214B61DAE008D5809 /* apphighlight.png in Resources */,
+				55E4283C14D81A100061B0D8 /* dark_noir_circle_blue_ds.png in Resources */,
+				55E4283E14D81A700061B0D8 /* dark_noir_pointer_ds.png in Resources */,
+				55C96E5914D81C0000BB9904 /* nimble.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
