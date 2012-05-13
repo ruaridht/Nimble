@@ -1,12 +1,12 @@
-# Image Processing and Classification (AV2) #
-Luke Brown & Ruaridh Thomson
+![Nimble Alpha](https://github.com/echelous/Nimble/raw/master/screenshot.png)
 
-Image processing techniques and a simple Naive Bayes classifier, done in MATLAB.
-(For Advanced Vision, UG4)
+# Nimble (application switcher) #
+Ruaridh Thomson
 
-## What does it do? ##
-* detects a moving hand against a background (using background removal)
-* computes a bounding box that surrounds the moving hand/arm in all frames in a given action (i.e. all frames in a subdirectory).
-* computes a Motion History Image for the action,
-* computes a moment invariant descriptor of the motion,
-* trains and tests a Naive Bayes classifier for the three actions (rock, paper, scissors).
+The Xcode project for an application switcher.
+
+Invoked in a similar manner to cmd+tab, the app presents currently running apps around a ring instead of in a line.
+
+## Features ##
+* Shows a ring in the centre of the screen, populated with currently running apps.
+* Provides some support for customisation (background, placement, hotkeys)
