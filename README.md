@@ -1,4 +1,4 @@
-![Nimble Alpha](https://github.com/echelous/Nimble/raw/master/screenshot.png)
+![Nimble Alpha](https://github.com/ruaridht/Nimble/blob/master/screenshot.png)
 
 # Nimble (application switcher) #
 Ruaridh Thomson
