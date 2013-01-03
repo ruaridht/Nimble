@@ -41,9 +41,10 @@
     // TODO: This is wrong at the moment.
     //[ringRecords addObject:[self tableViewRecordForTab:@"Rings" iconName:NULL]];
     
-	if ([self loadRings])
-		[self setCurrentRing:[allRings objectAtIndex:0]];
-	
+	if ([self loadRings]) {
+        [self setCurrentRing:[allRings objectAtIndex:0]];
+	}
+    
 	[ringTable setDataSource:ringRecords]; // Does not implement NSTableViewDelegate ... but it does!
 	[ringTable setDelegate:self];
 	[ringTable setTarget:self];
@@ -128,7 +129,7 @@
 	}
     
     NSLog(@"Size of allRings: %i", [allRings count]);
-    NSLog(@"What's in ringRecords: %@", [ringRecords count]);
+    NSLog(@"What's in ringRecords: %i", [ringRecords count]);
 }
 
 #pragma -
@@ -385,7 +386,7 @@
     }
     
     // If there aren't any known rings then create the default.
-    if ([ringPaths count] == 1) {
+    if ([ringPaths count] < 1) {
         Ring *ring1 = [[[Ring alloc] initWithName:@"Launched Apps"] retain];
         //Ring *ring2 = [[[Ring alloc] initWithName:@"Spaces"] retain];
         [allRings addObject:ring1];
@@ -396,8 +397,11 @@
 	for (Ring *r in allRings) {
 		[ringRecords addObject:[self tableViewRecordForTab:[r ringName] iconName:@"ring_icon"]];
 	}
-	
-	return YES;
+    
+	if ([allRings count] > 0){
+        return YES;
+    }
+    return NO;
 }
 
 /*

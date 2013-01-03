@@ -521,7 +521,7 @@ NSNumber* DegreesToNumber(CGFloat degrees)
 	
     if (lastHighlighted != index) {
         int iSize = (int)iconSize + 32;
-        int iRad = (int)iconRadius - 50;
+        int iRad = (int)iconRadius - 65;
         NSPoint windowCenter = [self viewCenter:ringView];
         NSRect ivFrame = NSMakeRect(0, 0, iSize, iSize);
         
